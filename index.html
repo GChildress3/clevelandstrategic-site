@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cleveland Strategic | Fractional Head of Data & Analytics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Cleveland Strategic provides fractional Head of Data & Analytics leadership, data strategy, and modern reporting for growing organizations.">
+
+    <style>
+        /* Base layout */
+        :root {
+            --bg-gray: #f2f3f5;
+            --card-bg: #ffffff;
+            --text-main: #1f2933;
+            --text-muted: #6b7280;
+            --accent: #2563eb;
+            --accent-soft: #e0ecff;
+            --border-soft: #e5e7eb;
+            --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
+            --radius-lg: 14px;
+            --radius-md: 10px;
+            --max-width: 960px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg-gray);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .page {
+            min-height: 100vh;
+            padding: 32px 16px 40px 16px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: var(--max-width);
+        }
+
+        /* Hero */
+
+        .hero {
+            background: linear-gradient(135deg, #ffffff, #f5f7fb);
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-soft);
+        }
+
+        .hero-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .brand-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color: #111827;
+        }
+
+        .brand-tagline {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .hero-main {
+            margin-top: 16px;
+            max-width: 640px;
+        }
+
+        .hero-title {
+            font-size: 1.9rem;
+            margin: 0 0 8px 0;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin: 0 0 16px 0;
+        }
+
+        .hero-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            display: grid;
+            gap: 4px;
+        }
+
+        .hero-bullets li::before {
+            content: "•";
+            color: var(--accent);
+            margin-right: 6px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #ffffff;
+            font-size: 0.98rem;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 8px 18px rgba(37, 99, 235, 0.3);
+            transition: background 0.15s ease, transform 0.15s ease,
+                box-shadow 0.15s ease;
+            white-space: nowrap;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+        }
+
+        .hero-email {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .hero-email a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .hero-email a:hover {
+            text-decoration: underline;
+        }
+
+        /* Section cards */
+
+        .sections {
+            margin-top: 24px;
+            display: grid;
+            gap: 18px;
+        }
+
+        .section-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            padding: 22px 20px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-soft);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .section-kicker {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .section-body p {
+            margin: 0 0 10px 0;
+            font-size: 0.97rem;
+        }
+
+        .pill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .pill {
+            background: var(--accent-soft);
+            border-radius: 999px;
+            padding: 7px 12px;
+            font-size: 0.9rem;
+            color: #1e3a8a;
+        }
+
+        .pill-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .pill-text {
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        .list {
+            margin: 6px 0 4px 18px;
+            padding: 0;
+            font-size: 0.95rem;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .step {
+            border-radius: 10px;
+            border: 1px solid var(--border-soft);
+            padding: 10px 12px;
+            background: #f9fafb;
+        }
+
+        .step-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .step-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+
+        .muted {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+            gap: 16px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: #e5f0ff;
+            color: #1e40af;
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+
+        .contact-line {
+            font-weight: 500;
+            font-size: 0.96rem;
+        }
+
+        .contact-line a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-line a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive tweaks */
+
+        @media (max-width: 700px) {
+            .hero {
+                padding: 24px 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.5rem;
+            }
+            .hero-main {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="wrapper">
+
+        <!-- Hero -->
+        <header class="hero">
+            <div class="hero-header">
+                <div>
+                    <div class="brand-name">Cleveland Strategic</div>
+                    <div class="brand-tagline">Fractional Head of Data &amp; Analytics</div>
+                </div>
+                <span class="badge">Currently accepting a limited number of clients</span>
+            </div>
+
+            <div class="hero-main">
+                <h1 class="hero-title">Turn messy data into a trusted decision engine.</h1>
+                <p class="hero-subtitle">
+                    Cleveland Strategic helps growing organizations move from fragile,
+                    ad-hoc reporting to reliable, executive-ready analytics and a clear roadmap.
+                </p>
+
+                <ul class="hero-bullets">
+                    <li>Align data and analytics with your business strategy.</li>
+                    <li>Stabilize critical reporting so leaders trust the numbers.</li>
+                    <li>Build a pragmatic roadmap that business and IT can both support.</li>
+                </ul>
+
+                <div class="hero-actions">
+                    <a class="btn-primary" href="mailto:inquiry@clevelandstrategic.com?subject=Introductory%20Call%20-%20Cleveland%20Strategic">
+                        Schedule an introductory call
+                    </a>
+                    <div class="hero-email">
+                        Or email directly:
+                        <a href="mailto:inquiry@clevelandstrategic.com">inquiry@clevelandstrategic.com</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sections -->
+        <main class="sections">
+
+            <!-- What I help with -->
+            <section class="section-card">
+                <div class="section-header">
+                    <h2 class="section-title">What Cleveland Strategic Can Help You Do</h2>
+                    <div class="section-kicker">Services</div>
+                </div>
+                <div class="section-body">
+                    <p>
+                        Fractional leadership for organizations that need a Head of Data &amp; Analytics,
+                        but are not ready for a full time executive hire.
+                    </p>
+
+                    <div class="pill-grid">
+                        <div class="pill">
+                            <div class="pill-title">Fractional Data &amp; Analytics Leadership</div>
+                            <div class="pill-text">
+                                Executive-level guidance across data, BI, and analytics, partnering with
+                                finance, operations, and IT to set direction and keep work on track.
+                            </div>
+                        </div>
+
+                        <div class="pill">
+                            <div class="pill-title">Data &amp; Analytics Strategy</div>
+                            <div class="pill-text">
+                                Clarify where data should support the business, define critical use cases,
+                                and translate them into a roadmap your teams can deliver.
+                            </div>
+                        </div>
+
+                        <div class="pill">
+                            <div class="pill-title">Modern Reporting &amp; BI</div>
+                            <div class="pill-text">
+                                Move away from manual Excel and slide decks toward governed dashboards
+                                and a smaller set of trusted reports.
+                            </div>
+                        </div>
+
+                        <div class="pill">
+                            <div class="pill-title">Data Quality &amp; Governance</div>
+                            <div class="pill-text">
+                                Establish ownership, definitions, and simple controls so leaders stop
+                                arguing about the numbers and start discussing decisions.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results -->
+            <section class="section-card">
+                <div class="section-header">
+                    <h2 class="section-title">Results You Can Expect</h2>
+                    <div class="section-kicker">Outcomes</div>
+                </div>
+                <div class="section-body">
+                    <p class="muted">
+                        Each engagement is tailored, but clients typically look for outcomes like these:
+                    </p>
+                    <ul class="list">
+                        <li>A clear, prioritized analytics roadmap tied directly to business goals.</li>
+                        <li>Executive dashboards your CEO and CFO actually rely on.</li>
+                        <li>Fewer fire drills around broken reports or conflicting metrics.</li>
+                        <li>Less dependency on a few Excel heroes to run the business.</li>
+                        <li>Better visibility into revenue, cost, and operational performance.</li>
+                        <li>A stronger foundation for future AI and advanced analytics work.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- How we work together -->
+            <section class="section-card">
+                <div class="section-header">
+                    <h2 class="section-title">How We Work Together</h2>
+                    <div class="section-kicker">Approach</div>
+                </div>
+                <div class="section-body">
+                    <p>
+                        Simple structure. Clear expectations. No buzzword-heavy slide decks required.
+                    </p>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-label">Step 1</div>
+                            <div class="step-title">Discovery &amp; Assessment</div>
+                            <p class="muted">
+                                Stakeholder interviews, review of your current reporting and data landscape,
+                                and a quick diagnostic of key pain points.
+                            </p>
+                        </div>
+                        <div class="step">
+                            <div class="step-label">Step 2</div>
+                            <div class="step-title">Strategy &amp; Roadmap</div>
+                            <p class="muted">
+                                Define target state, align on what matters most, then shape a 90 day
+                                and 12 month roadmap across people, process, and technology.
+                            </p>
+                        </div>
+                        <div class="step">
+                            <div class="step-label">Step 3</div>
+                            <div class="step-title">Execution &amp; Ongoing Leadership</div>
+                            <p class="muted">
+                                Ongoing fractional leadership to drive initiatives, coach your team,
+                                and keep work aligned with business priorities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About + Engagement options -->
+            <section class="section-card">
+                <div class="section-header">
+                    <h2 class="section-title">About Cleveland Strategic &amp; Trey Childress</h2>
+                    <div class="section-kicker">Background</div>
+                </div>
+                <div class="section-body two-column">
+                    <div>
+                        <p>
+                            Cleveland Strategic is the consulting practice of Trey Childress,
+                            a data and analytics leader with more than two decades of experience
+                            across operations, technology, and analytics.
+                        </p>
+                        <p class="muted">
+                            Trey has led data and analytics teams of 20 to 30 people, modernized
+                            analytics platforms, and partnered with executives to turn data into
+                            measurable business outcomes.
+                        </p>
+                        <ul class="list">
+                            <li>Leadership across data engineering, BI, and analytics teams.</li>
+                            <li>Consolidation of hundreds of reports into focused executive dashboards.</li>
+                            <li>Hands on understanding of data platforms paired with executive level communication.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="muted">
+                            Engagements are structured to match where you are in your journey:
+                        </p>
+                        <ul class="list">
+                            <li><strong>Fractional Head of Data &amp; Analytics</strong> for ongoing part time leadership.</li>
+                            <li><strong>Project based work</strong> for roadmaps, KPI definition, or stabilizing reporting.</li>
+                            <li><strong>Advisory and coaching</strong> for your existing data and analytics leaders.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Coming soon + contact -->
+            <section class="section-card">
+                <div class="section-header">
+                    <h2 class="section-title">Full Site Coming Soon</h2>
+                    <div class="section-kicker">Next</div>
+                </div>
+                <div class="section-body">
+                    <p>
+                        This site will expand with case studies, sample roadmaps, and additional resources.
+                        In the meantime, Cleveland Strategic is actively working with a small number of clients.
+                    </p>
+                    <p class="muted">
+                        If you would like to explore whether a fractional Head of Data &amp; Analytics is the right fit,
+                        share a brief summary of your current reporting or data challenges. You will receive a few
+                        clarifying questions and a link to schedule time.
+                    </p>
+                    <p class="contact-line">
+                        Contact: <a href="mailto:inquiry@clevelandstrategic.com">inquiry@clevelandstrategic.com</a>
+                    </p>
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            &copy; <span id="year"></span> Cleveland Strategic. All rights reserved.
+        </footer>
+
+    </div>
+</div>
+
+<script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
