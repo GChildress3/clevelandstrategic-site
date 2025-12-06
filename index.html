@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cleveland Strategic | Fractional Head of Data & Analytics</title>
+    <title>Cleveland Strategic | Fractional Data, Analytics & AI Readiness Leadership</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Cleveland Strategic provides fractional Head of Data & Analytics leadership, data strategy, and modern reporting for growing organizations.">
+    <meta name="description" content="Cleveland Strategic provides fractional Head of Data & Analytics leadership, data estate inventory, AI readiness, and modern reporting for growing organizations that need strong data foundations for analytics and AI.">
 
     <style>
         /* Base layout */
@@ -35,10 +35,21 @@
             color: var(--text-main);
             line-height: 1.6;
         }
+        
+        .staging-banner {
+            width: 100%;
+            background: #b91c1c;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
 
         .page {
             min-height: 100vh;
-            padding: 32px 16px 40px 16px;
+            padding: 24px 16px 40px 16px;
             display: flex;
             justify-content: center;
         }
@@ -62,10 +73,10 @@
 
         /* Hero */
 
-        .hero {
+        header.hero {
             background: linear-gradient(135deg, #ffffff, #f5f7fb);
             border-radius: var(--radius-lg);
-            padding: 32px 24px;
+            padding: 28px 24px;
             box-shadow: var(--shadow-soft);
             border: 1px solid var(--border-soft);
         }
@@ -94,26 +105,30 @@
 
         .hero-main {
             margin-top: 16px;
-            max-width: 640px;
+            max-width: 680px;
         }
 
         .hero-title {
-            font-size: 1.9rem;
-            margin: 0 0 8px 0;
+            font-size: 2rem;
+            margin: 0 0 10px 0;
         }
 
         .hero-subtitle {
             font-size: 1.05rem;
             color: var(--text-muted);
-            margin: 0 0 16px 0;
+            margin: 0 0 18px 0;
         }
 
         .hero-bullets {
             list-style: none;
             padding: 0;
-            margin: 0 0 20px 0;
+            margin: 0 0 22px 0;
             display: grid;
-            gap: 4px;
+            gap: 6px;
+        }
+
+        .hero-bullets li {
+            font-size: 0.97rem;
         }
 
         .hero-bullets li::before {
@@ -208,24 +223,27 @@
             font-size: 0.97rem;
         }
 
+        /* Service cards (replacing circular pills) */
+
         .pill-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 10px;
-            margin-top: 8px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
         }
 
         .pill {
-            background: var(--accent-soft);
-            border-radius: 999px;
-            padding: 7px 12px;
-            font-size: 0.9rem;
-            color: #1e3a8a;
+            background: #f9fafb;
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
         }
 
         .pill-title {
             font-weight: 600;
             margin-bottom: 4px;
+            font-size: 0.96rem;
         }
 
         .pill-text {
@@ -286,6 +304,7 @@
             color: #1e40af;
             font-size: 0.78rem;
             font-weight: 500;
+            white-space: nowrap;
         }
 
         .contact-line {
@@ -312,248 +331,281 @@
         /* Responsive tweaks */
 
         @media (max-width: 700px) {
-            .hero {
-                padding: 24px 18px;
+            header.hero {
+                padding: 22px 18px;
             }
         }
 
         @media (max-width: 480px) {
             .hero-title {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
             .hero-main {
                 max-width: 100%;
+            }
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     </style>
 </head>
 <body>
-<div class="page">
-    <div class="wrapper">
 
-        <!-- Logo -->
-        <div class="logo-wrapper">
-            <img src="Cleveland Strategic Logo.png" alt="Cleveland Strategic Logo">
-        </div>
-
-        <!-- Hero -->
-        <header class="hero">
-            <div class="hero-header">
-                <div>
-                    <div class="brand-name">Cleveland Strategic</div>
-                    <div class="brand-tagline">Fractional Head of Data &amp; Analytics</div>
-                </div>
-                <span class="badge">Currently accepting a limited number of clients</span>
-            </div>
-
-            <div class="hero-main">
-                <h1 class="hero-title">Turn messy data into a trusted decision engine.</h1>
-                <p class="hero-subtitle">
-                    Cleveland Strategic helps growing organizations move from fragile,
-                    ad-hoc reporting to reliable, executive-ready analytics and a clear roadmap.
-                </p>
-
-                <ul class="hero-bullets">
-                    <li>Align data and analytics with your business strategy.</li>
-                    <li>Stabilize critical reporting so leaders trust the numbers.</li>
-                    <li>Build a pragmatic roadmap that business and IT can both support.</li>
-                </ul>
-
-                <div class="hero-actions">
-                    <a class="btn-primary" href="mailto:inquiry@clevelandstrategic.com?subject=Introductory%20Call%20-%20Cleveland%20Strategic">
-                        Schedule an introductory call
-                    </a>
-                    <div class="hero-email">
-                        Or email directly:
-                        <a href="mailto:inquiry@clevelandstrategic.com">inquiry@clevelandstrategic.com</a>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Sections -->
-        <main class="sections">
-
-            <!-- What I help with -->
-            <section class="section-card">
-                <div class="section-header">
-                    <h2 class="section-title">What Cleveland Strategic Can Help You Do</h2>
-                    <div class="section-kicker">Services</div>
-                </div>
-                <div class="section-body">
-                    <p>
-                        Fractional leadership for organizations that need a Head of Data &amp; Analytics,
-                        but are not ready for a full time executive hire.
-                    </p>
-
-                    <div class="pill-grid">
-                        <div class="pill">
-                            <div class="pill-title">Fractional Data &amp; Analytics Leadership</div>
-                            <div class="pill-text">
-                                Executive-level guidance across data, BI, and analytics, partnering with
-                                finance, operations, and IT to set direction and keep work on track.
-                            </div>
-                        </div>
-
-                        <div class="pill">
-                            <div class="pill-title">Data &amp; Analytics Strategy</div>
-                            <div class="pill-text">
-                                Clarify where data should support the business, define critical use cases,
-                                and translate them into a roadmap your teams can deliver.
-                            </div>
-                        </div>
-
-                        <div class="pill">
-                            <div class="pill-title">Modern Reporting &amp; BI</div>
-                            <div class="pill-text">
-                                Move away from manual Excel and slide decks toward governed dashboards
-                                and a smaller set of trusted reports.
-                            </div>
-                        </div>
-
-                        <div class="pill">
-                            <div class="pill-title">Data Quality &amp; Governance</div>
-                            <div class="pill-text">
-                                Establish ownership, definitions, and simple controls so leaders stop
-                                arguing about the numbers and start discussing decisions.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Results -->
-            <section class="section-card">
-                <div class="section-header">
-                    <h2 class="section-title">Results You Can Expect</h2>
-                    <div class="section-kicker">Outcomes</div>
-                </div>
-                <div class="section-body">
-                    <p class="muted">
-                        Each engagement is tailored, but clients typically look for outcomes like these:
-                    </p>
-                    <ul class="list">
-                        <li>A clear, prioritized analytics roadmap tied directly to business goals.</li>
-                        <li>Executive dashboards your CEO and CFO actually rely on.</li>
-                        <li>Fewer fire drills around broken reports or conflicting metrics.</li>
-                        <li>Less dependency on a few Excel heroes to run the business.</li>
-                        <li>Better visibility into revenue, cost, and operational performance.</li>
-                        <li>A stronger foundation for future AI and advanced analytics work.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- How we work together -->
-            <section class="section-card">
-                <div class="section-header">
-                    <h2 class="section-title">How We Work Together</h2>
-                    <div class="section-kicker">Approach</div>
-                </div>
-                <div class="section-body">
-                    <p>
-                        Simple structure. Clear expectations. No buzzword-heavy slide decks required.
-                    </p>
-                    <div class="steps">
-                        <div class="step">
-                            <div class="step-label">Step 1</div>
-                            <div class="step-title">Discovery &amp; Assessment</div>
-                            <p class="muted">
-                                Stakeholder interviews, review of your current reporting and data landscape,
-                                and a quick diagnostic of key pain points.
-                            </p>
-                        </div>
-                        <div class="step">
-                            <div class="step-label">Step 2</div>
-                            <div class="step-title">Strategy &amp; Roadmap</div>
-                            <p class="muted">
-                                Define target state, align on what matters most, then shape a 90 day
-                                and 12 month roadmap across people, process, and technology.
-                            </p>
-                        </div>
-                        <div class="step">
-                            <div class="step-label">Step 3</div>
-                            <div class="step-title">Execution &amp; Ongoing Leadership</div>
-                            <p class="muted">
-                                Ongoing fractional leadership to drive initiatives, coach your team,
-                                and keep work aligned with business priorities.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- About + Engagement options -->
-            <section class="section-card">
-                <div class="section-header">
-                    <h2 class="section-title">About Cleveland Strategic &amp; Trey Childress</h2>
-                    <div class="section-kicker">Background</div>
-                </div>
-                <div class="section-body two-column">
-                    <div>
-                        <p>
-                            Cleveland Strategic is the consulting practice of Trey Childress,
-                            a data and analytics leader with more than two decades of experience
-                            across operations, technology, and analytics.
-                        </p>
-                        <p class="muted">
-                            Trey has led data and analytics teams of 20 to 30 people, modernized
-                            analytics platforms, and partnered with executives to turn data into
-                            measurable business outcomes.
-                        </p>
-                        <ul class="list">
-                            <li>Leadership across data engineering, BI, and analytics teams.</li>
-                            <li>Consolidation of hundreds of reports into focused executive dashboards.</li>
-                            <li>Hands on understanding of data platforms paired with executive level communication.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p class="muted">
-                            Engagements are structured to match where you are in your journey:
-                        </p>
-                        <ul class="list">
-                            <li><strong>Fractional Head of Data &amp; Analytics</strong> for ongoing part time leadership.</li>
-                            <li><strong>Project based work</strong> for roadmaps, KPI definition, or stabilizing reporting.</li>
-                            <li><strong>Advisory and coaching</strong> for your existing data and analytics leaders.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Coming soon + contact -->
-            <section class="section-card">
-                <div class="section-header">
-                    <h2 class="section-title">Full Site Coming Soon</h2>
-                    <div class="section-kicker">Next</div>
-                </div>
-                <div class="section-body">
-                    <p>
-                        This site will expand with case studies, sample roadmaps, and additional resources.
-                        In the meantime, Cleveland Strategic is actively working with a small number of clients.
-                    </p>
-                    <p class="muted">
-                        If you would like to explore whether a fractional Head of Data &amp; Analytics is the right fit,
-                        share a brief summary of your current reporting or data challenges. You will receive a few
-                        clarifying questions and a link to schedule time.
-                    </p>
-                    <p class="contact-line">
-                        Contact: <a href="mailto:inquiry@clevelandstrategic.com">inquiry@clevelandstrategic.com</a>
-                    </p>
-                </div>
-            </section>
-
-        </main>
-
-        <footer>
-            &copy; <span id="year"></span> Cleveland Strategic. All rights reserved.
-        </footer>
-
+    <div class="staging-banner">
+        🚧 This is a staging preview of Cleveland Strategic — not the production site. 🚧
     </div>
-</div>
 
-<script>
-    // Set current year in footer
-    document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+    <div class="page">
+        <div class="wrapper">
+
+            <!-- Logo -->
+            <div class="logo-wrapper">
+                <img src="Cleveland Strategic Logo.png" alt="Cleveland Strategic Logo">
+            </div>
+
+            <!-- Hero -->
+            <header class="hero">
+                <div class="hero-header">
+                    <div>
+                        <div class="brand-name">Cleveland Strategic</div>
+                        <div class="brand-tagline">Fractional Head of Data, Analytics &amp; AI Readiness</div>
+                    </div>
+                    <span class="badge">Currently accepting a limited number of clients</span>
+                </div>
+
+                <div class="hero-main">
+                    <h1 class="hero-title">Stronger data foundations. Clearer estate. Smarter AI.</h1>
+                    <p class="hero-subtitle">
+                        Cleveland Strategic helps growing organizations move from fragile, ad-hoc reporting
+                        to a trusted data estate and practical AI readiness, without hiring a full-time executive.
+                    </p>
+
+                    <ul class="hero-bullets">
+                        <li>Align data, analytics, and AI strategy to real business outcomes.</li>
+                        <li>Stabilize critical reporting and KPI definitions so leaders trust the numbers.</li>
+                        <li>Inventory and curate your data estate across systems, pipelines, and reports.</li>
+                        <li>Prepare for AI with governed, accurate, and well-documented data foundations.</li>
+                    </ul>
+
+                    <div class="hero-actions">
+                        <a class="btn-primary" href="mailto:inquiry@clevelandstrategic.com?subject=Introductory%20Call%20-%20Cleveland%20Strategic">
+                            Schedule an introductory call
+                        </a>
+                        <div class="hero-email">
+                            Or email directly:
+                            <a href="mailto:inquiry@clevelandstrategic.com">inquiry@clevelandstrategic.com</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Sections -->
+            <main class="sections">
+
+                <!-- Services -->
+                <section class="section-card">
+                    <div class="section-header">
+                        <h2 class="section-title">What Cleveland Strategic Can Help You Do</h2>
+                        <div class="section-kicker">Services</div>
+                    </div>
+                    <div class="section-body">
+                        <p>
+                            Fractional leadership and practical consulting for organizations that need a Head of Data &amp; Analytics
+                            to stabilize reporting, organize the data estate, and get ready for AI.
+                        </p>
+
+                        <div class="pill-grid">
+                            <div class="pill">
+                                <div class="pill-title">Fractional Data &amp; Analytics Leadership</div>
+                                <div class="pill-text">
+                                    Act as your part-time Head of Data &amp; Analytics, partnering with finance, operations,
+                                    and IT to set priorities, unblock teams, and keep work aligned with the strategy.
+                                    Gives you executive-level oversight without the cost and risk of a full-time hire.
+                                </div>
+                            </div>
+
+                            <div class="pill">
+                                <div class="pill-title">Data &amp; Analytics Strategy</div>
+                                <div class="pill-text">
+                                    Clarify where data, analytics, and AI should support the business, define the most important use cases,
+                                    and translate them into a roadmap your teams can actually execute. Connects investments in data to
+                                    measurable business outcomes.
+                                </div>
+                            </div>
+
+                            <div class="pill">
+                                <div class="pill-title">Modern Reporting &amp; BI</div>
+                                <div class="pill-text">
+                                    Reduce reliance on fragile spreadsheets and one-off slide decks by moving to governed dashboards
+                                    and a smaller set of trusted reports. Frees up your team from manual reporting so they can focus
+                                    on higher-value analysis and AI use cases.
+                                </div>
+                            </div>
+
+                            <div class="pill">
+                                <div class="pill-title">Data Quality &amp; Governance</div>
+                                <div class="pill-text">
+                                    Establish ownership, definitions, and simple controls for your most important data and KPIs.
+                                    Shifts leadership conversations away from "which number is right?" toward "what decision do we make?"
+                                    and lays the groundwork for safe, reliable AI.
+                                </div>
+                            </div>
+
+                            <div class="pill">
+                                <div class="pill-title">AI Readiness &amp; Enablement</div>
+                                <div class="pill-text">
+                                    Assess where AI can realistically add value today, what data it depends on, and what guardrails you need.
+                                    Aligns AI experiments with business priorities and ensures your data, governance, and risk posture
+                                    can support AI instead of fighting it.
+                                </div>
+                            </div>
+
+                            <div class="pill">
+                                <div class="pill-title">Data Estate Inventory &amp; Curation</div>
+                                <div class="pill-text">
+                                    Catalog and rationalize databases, pipelines, and reports so you know what you have, what is trusted,
+                                    and what should be retired. Reduces duplication and clutter while creating curated datasets that
+                                    analytics and AI teams can safely build on.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Results -->
+                <section class="section-card">
+                    <div class="section-header">
+                        <h2 class="section-title">Results You Can Expect</h2>
+                        <div class="section-kicker">Outcomes</div>
+                    </div>
+                    <div class="section-body">
+                        <p class="muted">
+                            Every organization starts from a different place, but engagements typically drive outcomes like:
+                        </p>
+                        <ul class="list">
+                            <li>A clear analytics and AI roadmap tied directly to revenue, cost, and risk goals.</li>
+                            <li>A stable, trusted reporting environment where executives see the same numbers everywhere.</li>
+                            <li>Consistent KPI definitions with clear owners, documentation, and business context.</li>
+                            <li>A well-documented data estate, with clarity on which sources, pipelines, and reports actually matter.</li>
+                            <li>Decommissioned or consolidated legacy reports and dashboards that were creating noise and duplicate work.</li>
+                            <li>Curated datasets designed for analytics and AI use cases, instead of ad-hoc extracts and one-off tables.</li>
+                            <li>Reduced dependence on a few “Excel heroes” and fewer fire drills to explain conflicting metrics.</li>
+                            <li>A realistic, risk-aware path to adopting AI that matches the maturity of your data foundations.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- How we work together -->
+                <section class="section-card">
+                    <div class="section-header">
+                        <h2 class="section-title">How We Work Together</h2>
+                        <div class="section-kicker">Approach</div>
+                    </div>
+                    <div class="section-body">
+                        <p>
+                            Simple structure, clear expectations, and plain language. No buzzword-heavy decks or vague “transformations.”
+                        </p>
+                        <div class="steps">
+                            <div class="step">
+                                <div class="step-label">Step 1</div>
+                                <div class="step-title">Discovery &amp; Assessment</div>
+                                <p class="muted">
+                                    Stakeholder interviews, review of your current reporting, and a quick diagnostic of data quality
+                                    and governance. Includes a focused data estate inventory to understand key sources, pipelines,
+                                    and reports and where trust is breaking down.
+                                </p>
+                            </div>
+                            <div class="step">
+                                <div class="step-label">Step 2</div>
+                                <div class="step-title">Strategy &amp; Roadmap</div>
+                                <p class="muted">
+                                    Define the target state for reporting, analytics, and AI, then prioritize a practical 90-day and
+                                    12-month roadmap. Links specific analytics and AI use cases to the data, governance, and technical
+                                    work required so everyone understands the trade-offs.
+                                </p>
+                            </div>
+                            <div class="step">
+                                <div class="step-label">Step 3</div>
+                                <div class="step-title">Execution &amp; Ongoing Leadership</div>
+                                <p class="muted">
+                                    Provide fractional leadership, embedded with your teams as needed, to drive delivery, coach staff,
+                                    and keep decisions anchored in business outcomes. Ensures that reporting, data estate cleanup, and
+                                    AI pilots move forward together instead of in silos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- About + Engagement options -->
+                <section class="section-card">
+                    <div class="section-header">
+                        <h2 class="section-title">About Cleveland Strategic &amp; Trey Childress</h2>
+                        <div class="section-kicker">Background</div>
+                    </div>
+                    <div class="section-body two-column">
+                        <div>
+                            <p>
+                                Cleveland Strategic is the consulting practice of Trey Childress, a data and analytics leader
+                                with more than two decades of experience across operations, technology, and analytics in complex,
+                                highly regulated environments.
+                            </p>
+                            <p class="muted">
+                                Trey has led data engineering, BI, and analytics functions; modernized reporting platforms; and
+                                partnered with executives to turn scattered, low-trust data into a stable foundation for decision
+                                making, automation, and AI.
+                            </p>
+                            <ul class="list">
+                                <li>Leadership across data engineering, BI, analytics, and operational reporting teams.</li>
+                                <li>Consolidation of hundreds of reports into focused, executive-ready KPI and performance dashboards.</li>
+                                <li>Hands-on understanding of data platforms, paired with clear, plain-spoken communication with senior leaders.</li>
+                                <li>Experience building governance, data quality, and control frameworks that support AI rather than constrain it.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="muted">
+                                Engagements are structured to match where you are in your data and AI journey:
+                            </p>
+                            <ul class="list">
+                                <li><strong>Fractional Head of Data &amp; Analytics</strong> for ongoing part-time leadership across reporting, data estate, and AI readiness.</li>
+                                <li><strong>Project-based work</strong> for analytics and AI roadmaps, KPI definition, or stabilizing critical reporting and datasets.</li>
+                                <li><strong>Executive advisory and coaching</strong> to support your existing data, analytics, and technology leaders as they scale.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Coming soon + contact -->
+                <section class="section-card">
+                    <div class="section-header">
+                        <h2 class="section-title">Ready to Talk?</h2>
+                        <div class="section-kicker">Contact</div>
+                    </div>
+                    <div class="section-body">
+                        <p>
+                            This site will expand with case studies, data estate inventory examples, and AI readiness resources.
+                            In the meantime, Cleveland Strategic is actively working with a small number of clients.
+                        </p>
+                        <p class="muted">
+                            If you would like to explore whether fractional data and analytics leadership is the right fit,
+                            share a brief summary of your current reporting, data estate, or AI questions. You will receive a few
+                            clarifying questions and a link to schedule time.
+                        </p>
+                        <p class="contact-line">
+                            Contact: <a href="mailto:inquiry@clevelandstrategic.com">inquiry@clevelandstrategic.com</a>
+                        </p>
+                    </div>
+                </section>
+
+            </main>
+
+            <footer>
+                &copy; 2025 Cleveland Strategic. All rights reserved.
+            </footer>
+
+        </div>
+    </div>
 
 </body>
 </html>
