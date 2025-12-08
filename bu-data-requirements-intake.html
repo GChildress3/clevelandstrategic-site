@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cleveland Strategic | Business Unit Data Requirements Intake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Capture data, reporting, and analytics needs by department or business unit.">
+  <style>
+    :root {
+      --bg-gray: #f3f4f6;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #e0ecff;
+      --border-soft: #e5e7eb;
+      --shadow-soft: 0 10px 25px rgba(15,23,42,0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 45%, #020617 100%);
+      color: var(--text-main);
+    }
+    .page { min-height:100vh; display:flex; justify-content:center; padding:32px 16px; }
+    .card { width:100%; max-width:980px; background:#f3f4f6; border-radius:24px; box-shadow:var(--shadow-soft); overflow:hidden; }
+    header {
+      padding:20px 28px 16px;
+      background:linear-gradient(135deg,#020617,#111827);
+      color:#f9fafb;
+      display:flex; align-items:center; gap:16px;
+    }
+    header img { height:40px; object-fit:contain; }
+    header h1 { margin:0; font-size:1.35rem; }
+    header p { margin:4px 0 0; font-size:0.85rem; color:#e5e7eb; }
+    main { padding:20px 24px 24px; }
+    .section-title { font-size:0.95rem; font-weight:600; margin:18px 0 6px; }
+    .section-hint { font-size:0.8rem; color:var(--text-muted); margin-bottom:8px; }
+    .two-col { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px 16px; }
+    label { display:block; font-size:0.8rem; font-weight:600; margin-bottom:4px; }
+    input[type="text"], textarea {
+      width:100%; border-radius:10px; border:1px solid var(--border-soft);
+      padding:8px 10px; font-size:0.85rem; font-family:inherit; resize:vertical; min-height:36px;
+    }
+    textarea { min-height:70px; }
+    .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--accent-soft);border-radius:999px;font-size:0.72rem;color:#1d4ed8;margin-bottom:4px;}
+    .actions{margin-top:20px;display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;}
+    button[type="submit"]{
+      border:none;border-radius:999px;padding:9px 18px;font-size:0.85rem;font-weight:600;
+      cursor:pointer;background:var(--accent);color:#f9fafb;
+    }
+    button[type="submit"]:hover{background:#1d4ed8;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+<div class="page">
+  <div class="card">
+    <header>
+      <img src="Cleveland Strategic Logo.png" alt="">
+      <div>
+        <h1>Business Unit Data Requirements</h1>
+        <p>Understand what each department needs from data, reporting, and analytics.</p>
+      </div>
+    </header>
+    <main>
+      <form id="bu-form">
+        <div class="badge">Business context</div>
+        <div class="two-col">
+          <div>
+            <label for="company">Organization</label>
+            <input id="company" name="company" type="text" required>
+          </div>
+          <div>
+            <label for="bu_name">Business unit / department</label>
+            <input id="bu_name" name="bu_name" type="text" placeholder="Sales, Operations, Finance, etc.">
+          </div>
+          <div>
+            <label for="leader">Leader / primary contact</label>
+            <input id="leader" name="leader" type="text">
+          </div>
+          <div>
+            <label for="role">Role / title</label>
+            <input id="role" name="role" type="text">
+          </div>
+        </div>
+
+        <p class="section-title">Current KPIs and success measures</p>
+        <p class="section-hint">Include how they are currently calculated (if known).</p>
+        <textarea id="kpis" name="kpis"></textarea>
+
+        <p class="section-title">Decisions this team makes regularly</p>
+        <p class="section-hint">Daily, weekly, monthly decisions that require data.</p>
+        <textarea id="decisions" name="decisions"></textarea>
+
+        <p class="section-title">Key reports or dashboards in use today</p>
+        <textarea id="current_reports" name="current_reports"></textarea>
+
+        <p class="section-title">Reports or insights they wish they had</p>
+        <textarea id="desired_reports" name="desired_reports"></textarea>
+
+        <p class="section-title">Data sources used by this team</p>
+        <p class="section-hint">CRMs, spreadsheets, files, tools, or applications.</p>
+        <textarea id="data_sources" name="data_sources"></textarea>
+
+        <p class="section-title">Pain points with data today</p>
+        <textarea id="pain_points" name="pain_points"></textarea>
+
+        <p class="section-title">Compliance / regulatory requirements specific to this team</p>
+        <textarea id="compliance" name="compliance"></textarea>
+
+        <p class="section-title">Most important data improvements for this business unit</p>
+        <textarea id="top_needs" name="top_needs"></textarea>
+
+        <div class="actions">
+          <button type="submit">Download Excel Summary</button>
+        </div>
+      </form>
+    </main>
+  </div>
+</div>
+
+<script>
+  document.getElementById("bu-form").addEventListener("submit", function(e){
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const fields = [
+      ["Organization","company"],
+      ["Business Unit / Department","bu_name"],
+      ["Leader / Primary Contact","leader"],
+      ["Role / Title","role"],
+      ["Current KPIs & Success Measures","kpis"],
+      ["Decisions Made Regularly","decisions"],
+      ["Current Reports / Dashboards","current_reports"],
+      ["Desired Reports / Insights","desired_reports"],
+      ["Data Sources Used","data_sources"],
+      ["Data Pain Points","pain_points"],
+      ["Compliance / Regulatory Requirements","compliance"],
+      ["Most Important Improvements","top_needs"]
+    ];
+    const headerRow = fields.map(f=>f[0]);
+    const valueRow = fields.map(f=>fd.get(f[1])||"");
+    const ws = XLSX.utils.aoa_to_sheet([headerRow,valueRow]);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb,ws,"BU Requirements");
+    XLSX.writeFile(wb,"ClevelandStrategic_BU_Data_Requirements_Intake.xlsx");
+    alert("Excel file downloaded.");
+    e.target.reset();
+  });
+</script>
+</body>
+</html>
