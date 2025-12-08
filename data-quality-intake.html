@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cleveland Strategic | Data Quality & Reliability Assessment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #e0ecff;
+      --border: #e5e7eb;
+      --radius-lg: 20px;
+      --radius-md: 10px;
+      --shadow-soft: 0 12px 28px rgba(15,23,42,0.10);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #e5edff 0, var(--bg) 52%, #e5e7eb 100%);
+      color: var(--text-main);
+    }
+
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 24px 12px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 960px;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 28px;
+    }
+
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .logo-wrap img {
+      max-width: 220px;
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 5px 11px;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      font-size: 0.78rem;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .title {
+      font-size: 1.55rem;
+      font-weight: 650;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+
+    .section {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px 22px;
+      margin-bottom: 20px;
+      background: #fff;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .help-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .field {
+      margin-bottom: 12px;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    textarea, input {
+      width: 100%;
+      padding: 7px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .actions {
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    .btn-primary {
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #2563eb, #1d4ed8);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrap">
+  <div class="card">
+
+    <div class="logo-wrap">
+      <img src="Cleveland Strategic Logo.png">
+    </div>
+
+    <div class="pill">🛠️ Data Quality & Reliability Assessment</div>
+    <div class="title">Data Quality & Reliability Assessment</div>
+    <div class="subtitle">
+      Identify issues across data pipelines, accuracy, consistency, governance, and operational risk.
+    </div>
+
+    <form id="dq-form">
+
+      <!-- SECTION 1 -->
+      <div class="section">
+        <div class="section-title">1. Data Quality Issues</div>
+        <div class="help-text">
+          Surface known problems in accuracy, completeness, duplication, or incorrect values.
+        </div>
+
+        <div class="field">
+          <label for="accuracy_issues">Where does your data lack accuracy or correctness?</label>
+          <textarea id="accuracy_issues" name="accuracy_issues"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="completeness_issues">Where is data often incomplete or missing?</label>
+          <textarea id="completeness_issues" name="completeness_issues"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="duplication_problems">Where do duplicate records frequently occur?</label>
+          <textarea id="duplication_problems" name="duplication_problems"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="definition_inconsistency">Where do different teams define things differently?</label>
+          <textarea id="definition_inconsistency" name="definition_inconsistency"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 2 -->
+      <div class="section">
+        <div class="section-title">2. Data Pipeline Reliability</div>
+        <div class="help-text">
+          Understand pipeline downtime, breakage frequency, manual reprocessing, and latency risks.
+        </div>
+
+        <div class="field">
+          <label for="pipeline_breaks">How often do pipelines break or fail?</label>
+          <textarea id="pipeline_breaks" name="pipeline_breaks"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="latency_issues">Where do you experience data delays or slow refreshes?</label>
+          <textarea id="latency_issues" name="latency_issues"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="manual_fixes">What manual fixes or reprocessing steps are frequently needed?</label>
+          <textarea id="manual_fixes" name="manual_fixes"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="incident_history">Recent or recurring incidents affecting data availability</label>
+          <textarea id="incident_history" name="incident_history"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 3 -->
+      <div class="section">
+        <div class="section-title">3. System & Source Quality</div>
+        <div class="help-text">
+          Evaluate data quality at the source before it reaches downstream systems.
+        </div>
+
+        <div class="field">
+          <label for="source_system_issues">Which source systems create the most quality issues?</label>
+          <textarea id="source_system_issues" name="source_system_issues"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="integration_gaps">Where integrations between systems cause mismatches?</label>
+          <textarea id="integration_gaps" name="integration_gaps"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="data_validation">What data validation exists at entry or ingestion?</label>
+          <textarea id="data_validation" name="data_validation"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 4 -->
+      <div class="section">
+        <div class="section-title">4. Governance, Ownership & Standards</div>
+        <div class="help-text">
+          Identify clarity gaps in data ownership, domain management, and rules.
+        </div>
+
+        <div class="field">
+          <label for="ownership_clarity">How clear is ownership across data domains?</label>
+          <textarea id="ownership_clarity" name="ownership_clarity"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="standards_processes">Where are standards missing or inconsistently applied?</label>
+          <textarea id="standards_processes" name="standards_processes"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="privacy_compliance">Any privacy, compliance, or regulatory quality concerns?</label>
+          <textarea id="privacy_compliance" name="privacy_compliance"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 5 -->
+      <div class="section">
+        <div class="section-title">5. Business Impact & Risk</div>
+        <div class="help-text">
+          Understand cost, operational risk, and downstream impact of data problems.
+        </div>
+
+        <div class="field">
+          <label for="operational_risk">What operational risks arise from poor data quality?</label>
+          <textarea id="operational_risk" name="operational_risk"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="decision_risk">What decisions are negatively affected by unreliable data?</label>
+          <textarea id="decision_risk" name="decision_risk"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="cost_of_poor_quality">Estimated cost or effort wasted due to data issues</label>
+          <textarea id="cost_of_poor_quality" name="cost_of_poor_quality"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 6 -->
+      <div class="section">
+        <div class="section-title">6. Future State & Priorities</div>
+
+        <div class="field">
+          <label for="improvement_priorities">Top priorities for improving data quality & reliability</label>
+          <textarea id="improvement_priorities" name="improvement_priorities"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="quick_wins">Quick wins (60–90 days)</label>
+          <textarea id="quick_wins" name="quick_wins"></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn-primary">Download Responses as Excel</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<script>
+  document.getElementById("dq-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const fd = new FormData(e.target);
+
+    const fields = [
+      ["Accuracy Issues", "accuracy_issues"],
+      ["Incomplete Data Issues", "completeness_issues"],
+      ["Duplicate Data Problems", "duplication_problems"],
+      ["Definition Inconsistencies", "definition_inconsistency"],
+      ["Pipeline Break Frequency", "pipeline_breaks"],
+      ["Latency Issues", "latency_issues"],
+      ["Manual Fixes Required", "manual_fixes"],
+      ["Incident History", "incident_history"],
+      ["Source System Issues", "source_system_issues"],
+      ["Integration Gaps", "integration_gaps"],
+      ["Data Validation at Entry", "data_validation"],
+      ["Ownership Clarity", "ownership_clarity"],
+      ["Missing Standards", "standards_processes"],
+      ["Privacy/Compliance Concerns", "privacy_compliance"],
+      ["Operational Risk", "operational_risk"],
+      ["Decision-Making Risk", "decision_risk"],
+      ["Cost of Poor Data Quality", "cost_of_poor_quality"],
+      ["Improvement Priorities", "improvement_priorities"],
+      ["Quick Wins", "quick_wins"]
+    ];
+
+    const headerRow = fields.map(([label]) => label);
+    const valuesRow = fields.map(([_, key]) => fd.get(key) || "");
+
+    const ws = XLSX.utils.aoa_to_sheet([headerRow, valuesRow]);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Data Quality");
+
+    XLSX.writeFile(wb, "ClevelandStrategic_Data_Quality_Assessment.xlsx");
+
+    alert("Responses downloaded as Excel.");
+  });
+</script>
+
+</body>
+</html>
