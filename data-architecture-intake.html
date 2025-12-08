@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cleveland Strategic | Data Architecture & Systems Mapping Intake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Intake form for documenting data sources, integrations, and architecture for Cleveland Strategic engagements.">
+  <style>
+    :root {
+      --bg-gray: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #e0ecff;
+      --border-soft: #e5e7eb;
+      --radius-lg: 14px;
+      --shadow-soft: 0 10px 25px rgba(15,23,42,0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 45%, #020617 100%);
+      color: var(--text-main);
+    }
+    .page {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+    .card {
+      width: 100%;
+      max-width: 980px;
+      background: var(--bg-gray);
+      border-radius: 24px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+    header {
+      padding: 20px 28px 16px;
+      background: linear-gradient(135deg, #020617, #111827);
+      color: #f9fafb;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    header img {
+      height: 40px;
+      object-fit: contain;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      letter-spacing: 0.02em;
+    }
+    header p {
+      margin: 4px 0 0;
+      font-size: 0.85rem;
+      color: #e5e7eb;
+    }
+    main {
+      padding: 20px 24px 24px;
+    }
+    .section-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 18px 0 6px;
+      color: #111827;
+    }
+    .section-hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px 16px;
+    }
+    label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #111827;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border-soft);
+      padding: 8px 10px;
+      font-size: 0.85rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 36px;
+    }
+    textarea { min-height: 70px; }
+    .hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .actions {
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    button[type="submit"] {
+      border: none;
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--accent);
+      color: #f9fafb;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    button[type="submit"]:hover {
+      background: #1d4ed8;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: var(--accent-soft);
+      border-radius: 999px;
+      font-size: 0.72rem;
+      color: #1d4ed8;
+      margin-bottom: 4px;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+<div class="page">
+  <div class="card">
+    <header>
+      <img src="Cleveland Strategic Logo.png" alt="">
+      <div>
+        <h1>Data Architecture & Systems Mapping Intake</h1>
+        <p>Document core data sources, pipelines, and integrations powering your organization.</p>
+      </div>
+    </header>
+    <main>
+      <form id="architecture-form">
+        <div class="badge">Section 1 · Organization basics</div>
+        <div class="two-col">
+          <div>
+            <label for="company">Organization</label>
+            <input id="company" name="company" type="text" required>
+          </div>
+          <div>
+            <label for="industry">Industry</label>
+            <input id="industry" name="industry" type="text">
+          </div>
+          <div>
+            <label for="contact_name">Your name</label>
+            <input id="contact_name" name="contact_name" type="text">
+          </div>
+          <div>
+            <label for="role">Role / title</label>
+            <input id="role" name="role" type="text">
+          </div>
+        </div>
+
+        <p class="section-title">Core data platforms</p>
+        <p class="section-hint">List primary databases, warehouses, and lakes in use today.</p>
+        <textarea id="platforms" name="platforms"></textarea>
+
+        <p class="section-title">Source systems & applications</p>
+        <p class="section-hint">Major operational systems feeding data (ERP, CRM, EHR, POS, etc.).</p>
+        <textarea id="sources" name="sources"></textarea>
+
+        <p class="section-title">ETL / ELT & data movement</p>
+        <p class="section-hint">Tools used, batch vs real time, typical schedules, critical jobs.</p>
+        <textarea id="etl" name="etl"></textarea>
+
+        <p class="section-title">Reporting & analytics tools</p>
+        <p class="section-hint">BI tools, semantic layers, cubes, or custom analytics apps.</p>
+        <textarea id="bi_tools" name="bi_tools"></textarea>
+
+        <p class="section-title">Known architectural pain points</p>
+        <p class="section-hint">Brittle jobs, performance issues, circular feeds, manual extracts, etc.</p>
+        <textarea id="pain_points" name="pain_points"></textarea>
+
+        <p class="section-title">Data security & access patterns</p>
+        <p class="section-hint">How access is granted, role models, sensitive-data handling.</p>
+        <textarea id="security" name="security"></textarea>
+
+        <p class="section-title">Planned changes or initiatives</p>
+        <p class="section-hint">Upcoming migrations, tool evaluations, or modernization projects.</p>
+        <textarea id="initiatives" name="initiatives"></textarea>
+
+        <div class="section-title">Architecture priorities (next 12–24 months)</div>
+        <textarea id="priorities" name="priorities"></textarea>
+
+        <div class="actions">
+          <button type="submit">Download Excel Summary</button>
+        </div>
+      </form>
+    </main>
+  </div>
+</div>
+
+<script>
+  document.getElementById("architecture-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const fd = new FormData(form);
+
+    const fields = [
+      ["Organization", "company"],
+      ["Industry", "industry"],
+      ["Your Name", "contact_name"],
+      ["Role / Title", "role"],
+      ["Core Data Platforms", "platforms"],
+      ["Source Systems & Applications", "sources"],
+      ["ETL / ELT & Data Movement", "etl"],
+      ["Reporting & Analytics Tools", "bi_tools"],
+      ["Known Architectural Pain Points", "pain_points"],
+      ["Data Security & Access Patterns", "security"],
+      ["Planned Changes / Initiatives", "initiatives"],
+      ["Architecture Priorities (12–24 months)", "priorities"]
+    ];
+
+    const headerRow = fields.map(([label]) => label);
+    const valueRow = fields.map(([, key]) => fd.get(key) || "");
+
+    const ws = XLSX.utils.aoa_to_sheet([headerRow, valueRow]);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Architecture Intake");
+    XLSX.writeFile(wb, "ClevelandStrategic_Data_Architecture_Intake.xlsx");
+
+    alert("Excel file downloaded. You can close this tab or continue editing.");
+    form.reset();
+  });
+</script>
+</body>
+</html>
