@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cleveland Strategic | Analytics Maturity Assessment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #e0ecff;
+      --border: #e5e7eb;
+      --radius-lg: 20px;
+      --radius-md: 10px;
+      --shadow-soft: 0 12px 28px rgba(15,23,42,0.10);
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #e5edff 0, var(--bg) 52%, #e5e7eb 100%);
+      color: var(--text-main);
+    }
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 24px 12px;
+    }
+    .card {
+      width: 100%;
+      max-width: 960px;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 28px;
+    }
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .logo-wrap img {
+      max-width: 220px;
+    }
+    .pill {
+      display: inline-flex;
+      padding: 5px 11px;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      font-size: 0.78rem;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    .title {
+      font-size: 1.55rem;
+      font-weight: 650;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+    .section {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px 22px;
+      margin-bottom: 20px;
+      background: #fff;
+    }
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .help-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .field {
+      margin-bottom: 12px;
+    }
+    label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+      display: block;
+    }
+    textarea, input {
+      width: 100%;
+      padding: 7px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    .actions {
+      margin-top: 20px;
+      text-align: right;
+    }
+    .btn-primary {
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #2563eb, #1d4ed8);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrap">
+  <div class="card">
+
+    <div class="logo-wrap">
+      <img src="Cleveland Strategic Logo.png">
+    </div>
+
+    <div class="pill">📊 Analytics Maturity Assessment</div>
+    <div class="title">Analytics Maturity Assessment</div>
+    <div class="subtitle">
+      Evaluate analytics capabilities, gaps, and opportunities across your organization.
+    </div>
+
+    <form id="maturity-form">
+
+      <!-- SECTION 1 -->
+      <div class="section">
+        <div class="section-title">1. Data Foundation</div>
+        <div class="help-text">
+          Assess your foundational data structure, accessibility, and reliability.
+        </div>
+
+        <div class="field">
+          <label for="data_accessibility">How easy is it for teams to access the data they need?</label>
+          <textarea id="data_accessibility" name="data_accessibility"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="data_reliability">How reliable and trustworthy is your data?</label>
+          <textarea id="data_reliability" name="data_reliability"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="data_integration">How well are systems integrated today?</label>
+          <textarea id="data_integration" name="data_integration"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 2 -->
+      <div class="section">
+        <div class="section-title">2. Reporting & BI</div>
+        <div class="help-text">
+          Explore how data is turned into insights today.
+        </div>
+
+        <div class="field">
+          <label for="reporting_tools">What reporting or BI tools do teams use?</label>
+          <textarea id="reporting_tools" name="reporting_tools"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="reporting_automation">How automated are your reports and dashboards?</label>
+          <textarea id="reporting_automation" name="reporting_automation"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="reporting_gaps">Where do reporting gaps still exist?</label>
+          <textarea id="reporting_gaps" name="reporting_gaps"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 3 -->
+      <div class="section">
+        <div class="section-title">3. Advanced Analytics</div>
+        <div class="help-text">
+          Understand predictive, machine learning, and more complex analytics capabilities.
+        </div>
+
+        <div class="field">
+          <label for="predictive_analytics">Is predictive or advanced analytics used today?</label>
+          <textarea id="predictive_analytics" name="predictive_analytics"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ml_capabilities">Do you have in-house machine learning or data science skills?</label>
+          <textarea id="ml_capabilities" name="ml_capabilities"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="advanced_analytics_gaps">Where are the biggest capability gaps?</label>
+          <textarea id="advanced_analytics_gaps" name="advanced_analytics_gaps"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 4 -->
+      <div class="section">
+        <div class="section-title">4. Governance & Quality</div>
+        <div class="help-text">
+          Evaluate structure, trust, and consistency around data.
+        </div>
+
+        <div class="field">
+          <label for="governance_practices">What data governance practices exist today?</label>
+          <textarea id="governance_practices" name="governance_practices"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="quality_issues">Where do data quality issues appear most frequently?</label>
+          <textarea id="quality_issues" name="quality_issues"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="data_ownership">Who owns your data domains?</label>
+          <textarea id="data_ownership" name="data_ownership"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 5 -->
+      <div class="section">
+        <div class="section-title">5. Culture, Adoption & Literacy</div>
+        <div class="help-text">
+          Determine how well analytics is adopted across the company.
+        </div>
+
+        <div class="field">
+          <label for="data_literacy">How would you describe data literacy across teams?</label>
+          <textarea id="data_literacy" name="data_literacy"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="adoption_barriers">What barriers limit analytics adoption?</label>
+          <textarea id="adoption_barriers" name="adoption_barriers"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="training_needs">What training or enablement would be most helpful?</label>
+          <textarea id="training_needs" name="training_needs"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 6 -->
+      <div class="section">
+        <div class="section-title">6. Future Vision & Opportunities</div>
+
+        <div class="field">
+          <label for="future_state">Describe your ideal analytics future state</label>
+          <textarea id="future_state" name="future_state"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="quick_wins">Quick wins (60–90 days)</label>
+          <textarea id="quick_wins" name="quick_wins"></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn-primary">Download Responses as Excel</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<script>
+  document.getElementById("maturity-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const fd = new FormData(e.target);
+
+    const fields = [
+      ["Data Accessibility", "data_accessibility"],
+      ["Data Reliability", "data_reliability"],
+      ["System Integration", "data_integration"],
+      ["Reporting Tools", "reporting_tools"],
+      ["Reporting Automation Level", "reporting_automation"],
+      ["Reporting Gaps", "reporting_gaps"],
+      ["Predictive Analytics Usage", "predictive_analytics"],
+      ["ML Capabilities", "ml_capabilities"],
+      ["Advanced Analytics Gaps", "advanced_analytics_gaps"],
+      ["Governance Practices", "governance_practices"],
+      ["Data Quality Issues", "quality_issues"],
+      ["Data Ownership", "data_ownership"],
+      ["Data Literacy", "data_literacy"],
+      ["Adoption Barriers", "adoption_barriers"],
+      ["Training Needs", "training_needs"],
+      ["Future State", "future_state"],
+      ["Quick Wins", "quick_wins"]
+    ];
+
+    const headerRow = fields.map(([label]) => label);
+    const valuesRow = fields.map(([_, key]) => fd.get(key) || "");
+
+    const ws = XLSX.utils.aoa_to_sheet([headerRow, valuesRow]);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Analytics Maturity");
+
+    XLSX.writeFile(wb, "ClevelandStrategic_Analytics_Maturity.xlsx");
+
+    alert("Responses downloaded as Excel.");
+  });
+</script>
+
+</body>
+</html>
