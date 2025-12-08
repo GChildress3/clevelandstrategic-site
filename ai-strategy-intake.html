@@ -714,12 +714,12 @@
       ["Additional Notes on AI in the Organization", "ai_additional_notes"]
     ];
 
-    const rows = [["Field", "Response"]];
-    fields.forEach(([label, key]) => {
-      rows.push([label, fd.get(key) || ""]);
-    });
+    // Row 1 (headers) and Row 2 (responses)
+    const headerRow = fields.map(([label]) => label);
+    const valuesRow = fields.map(([_, key]) => fd.get(key) || "");
 
-    const ws = XLSX.utils.aoa_to_sheet(rows);
+    const ws = XLSX.utils.aoa_to_sheet([headerRow, valuesRow]);
+
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "AI Intake");
 
