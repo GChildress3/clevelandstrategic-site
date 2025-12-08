@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cleveland Strategic | Leadership Alignment Survey</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #e0ecff;
+      --border: #e5e7eb;
+      --radius-lg: 20px;
+      --radius-md: 10px;
+      --shadow-soft: 0 12px 28px rgba(15,23,42,0.10);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #e5edff 0, var(--bg) 52%, #e5e7eb 100%);
+      color: var(--text-main);
+    }
+
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 24px 12px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 960px;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 28px;
+    }
+
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .logo-wrap img {
+      max-width: 220px;
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 5px 11px;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      font-size: 0.78rem;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .title {
+      font-size: 1.55rem;
+      font-weight: 650;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+
+    .section {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px 22px;
+      margin-bottom: 20px;
+      background: #fff;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .help-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .field {
+      margin-bottom: 12px;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    textarea, input {
+      width: 100%;
+      padding: 7px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .actions {
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    .btn-primary {
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #2563eb, #1d4ed8);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrap">
+  <div class="card">
+
+    <div class="logo-wrap">
+      <img src="Cleveland Strategic Logo.png">
+    </div>
+
+    <div class="pill">🧭 Leadership Alignment</div>
+    <div class="title">Leadership Alignment Pre-Workshop Survey</div>
+    <div class="subtitle">
+      Identify priorities, concerns, expectations, and misalignments before a strategic workshop.
+    </div>
+
+    <form id="leader-form">
+
+      <!-- SECTION 1 -->
+      <div class="section">
+        <div class="section-title">1. Personal Role & Perspective</div>
+        <div class="help-text">
+          Understand each leader’s unique viewpoint and responsibilities.
+        </div>
+
+        <div class="field">
+          <label for="leader_name">Your name</label>
+          <input type="text" id="leader_name" name="leader_name">
+        </div>
+
+        <div class="field">
+          <label for="leader_role">Your role / title</label>
+          <input type="text" id="leader_role" name="leader_role">
+        </div>
+
+        <div class="field">
+          <label for="leader_responsibilities">What are you personally accountable for delivering?</label>
+          <textarea id="leader_responsibilities" name="leader_responsibilities"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 2 -->
+      <div class="section">
+        <div class="section-title">2. Top Priorities</div>
+        <div class="help-text">
+          Capture key goals and strategic focus areas.
+        </div>
+
+        <div class="field">
+          <label for="top_goals">What are your top 3 strategic goals for the next 12 months?</label>
+          <textarea id="top_goals" name="top_goals"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="goal_success">What does success look like for you?</label>
+          <textarea id="goal_success" name="goal_success"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 3 -->
+      <div class="section">
+        <div class="section-title">3. Business Challenges</div>
+        <div class="help-text">
+          Identify what is slowing the business down today.
+        </div>
+
+        <div class="field">
+          <label for="top_challenges">What challenges are most preventing progress?</label>
+          <textarea id="top_challenges" name="top_challenges"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="team_constraints">Where do you feel capacity or skill gaps the most?</label>
+          <textarea id="team_constraints" name="team_constraints"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="organizational_risks">What risks worry you the most?</label>
+          <textarea id="organizational_risks" name="organizational_risks"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 4 -->
+      <div class="section">
+        <div class="section-title">4. Data, Reporting & Insights</div>
+        <div class="help-text">
+          Understand pain points and opportunities in analytics.
+        </div>
+
+        <div class="field">
+          <label for="decision_blocks">What decisions do you struggle to make due to lack of data?</label>
+          <textarea id="decision_blocks" name="decision_blocks"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="reporting_pain">What frustrates you the most about current reporting?</label>
+          <textarea id="reporting_pain" name="reporting_pain"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="visibility_gaps">Where do you feel blind spots or lack visibility?</label>
+          <textarea id="visibility_gaps" name="visibility_gaps"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 5 -->
+      <div class="section">
+        <div class="section-title">5. Alignment & Collaboration</div>
+        <div class="help-text">
+          Discover hidden disagreements or differing expectations.
+        </div>
+
+        <div class="field">
+          <label for="alignment_gaps">Where do you believe leaders are misaligned today?</label>
+          <textarea id="alignment_gaps" name="alignment_gaps"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="cross_team_strain">Where do cross-functional tensions occur?</label>
+          <textarea id="cross_team_strain" name="cross_team_strain"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="decision_bottlenecks">Where do decisions get delayed or stuck?</label>
+          <textarea id="decision_bottlenecks" name="decision_bottlenecks"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 6 -->
+      <div class="section">
+        <div class="section-title">6. Expectations for the Workshop</div>
+
+        <div class="field">
+          <label for="workshop_outcomes">What outcomes do you hope come from this workshop?</label>
+          <textarea id="workshop_outcomes" name="workshop_outcomes"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="workshop_concerns">Any concerns or topics you feel must be addressed?</label>
+          <textarea id="workshop_concerns" name="workshop_concerns"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="quick_wins">Quick wins you believe we should pursue</label>
+          <textarea id="quick_wins" name="quick_wins"></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn-primary">Download Responses as Excel</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<script>
+  document.getElementById("leader-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const fd = new FormData(e.target);
+
+    const fields = [
+      ["Leader Name", "leader_name"],
+      ["Leader Role", "leader_role"],
+      ["Responsibilities", "leader_responsibilities"],
+      ["Top Goals", "top_goals"],
+      ["Goal Success Definition", "goal_success"],
+      ["Top Challenges", "top_challenges"],
+      ["Team Constraints", "team_constraints"],
+      ["Key Risks", "organizational_risks"],
+      ["Decision Blocks", "decision_blocks"],
+      ["Reporting Pain Points", "reporting_pain"],
+      ["Visibility Gaps", "visibility_gaps"],
+      ["Alignment Gaps", "alignment_gaps"],
+      ["Cross-Team Strain", "cross_team_strain"],
+      ["Decision Bottlenecks", "decision_bottlenecks"],
+      ["Workshop Outcomes Desired", "workshop_outcomes"],
+      ["Workshop Concerns", "workshop_concerns"],
+      ["Quick Wins", "quick_wins"]
+    ];
+
+    const headerRow = fields.map(([label]) => label);
+    const valuesRow = fields.map(([_, key]) => fd.get(key) || "");
+
+    const ws = XLSX.utils.aoa_to_sheet([headerRow, valuesRow]);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Leadership Alignment");
+
+    XLSX.writeFile(wb, "ClevelandStrategic_Leadership_Alignment.xlsx");
+
+    alert("Responses downloaded as Excel.");
+  });
+</script>
+
+</body>
+</html>
