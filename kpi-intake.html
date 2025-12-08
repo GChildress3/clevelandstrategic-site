@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cleveland Strategic | KPI & Metrics Alignment Intake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #e0ecff;
+      --border: #e5e7eb;
+      --radius-lg: 20px;
+      --radius-md: 10px;
+      --shadow-soft: 0 12px 28px rgba(15,23,42,0.10);
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #e5edff 0, var(--bg) 52%, #e5e7eb 100%);
+      color: var(--text-main);
+    }
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 24px 12px;
+    }
+    .card {
+      width: 100%;
+      max-width: 960px;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 28px;
+    }
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .logo-wrap img {
+      max-width: 220px;
+    }
+    .pill {
+      display: inline-flex;
+      padding: 5px 11px;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      font-size: 0.78rem;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    .title {
+      font-size: 1.55rem;
+      font-weight: 650;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+    .section {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px 22px;
+      margin-bottom: 20px;
+      background: #fff;
+    }
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .help-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .field {
+      margin-bottom: 12px;
+    }
+    label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+      display: block;
+    }
+    textarea, input {
+      width: 100%;
+      padding: 7px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    .actions {
+      margin-top: 20px;
+      text-align: right;
+    }
+    .btn-primary {
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #2563eb, #1d4ed8);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrap">
+  <div class="card">
+
+    <div class="logo-wrap">
+      <img src="Cleveland Strategic Logo.png">
+    </div>
+
+    <div class="pill">📏 KPI & Metrics Alignment</div>
+    <div class="title">KPI & Metrics Alignment Intake</div>
+    <div class="subtitle">
+      Use this form to align on critical metrics, definitions, ownership, and visibility gaps.
+    </div>
+
+    <form id="kpi-form">
+
+      <!-- SECTION 1 -->
+      <div class="section">
+        <div class="section-title">Business Context</div>
+        <div class="help-text">
+          Establish clarity on goals and what metrics matter most.
+        </div>
+
+        <div class="field">
+          <label for="business_goals">Top business goals that KPIs should support</label>
+          <textarea id="business_goals" name="business_goals"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="success_definition">What does success look like for the organization?</label>
+          <textarea id="success_definition" name="success_definition"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 2 -->
+      <div class="section">
+        <div class="section-title">Current Metrics Landscape</div>
+        <div class="help-text">
+          Capture what is measured today and how decisions depend on metrics.
+        </div>
+
+        <div class="field">
+          <label for="critical_metrics">Most critical KPIs used today</label>
+          <textarea id="critical_metrics" name="critical_metrics"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="metric_definitions">How are these metrics currently defined?</label>
+          <textarea id="metric_definitions" name="metric_definitions"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="metric_owners">Who owns each KPI?</label>
+          <textarea id="metric_owners" name="metric_owners"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 3 -->
+      <div class="section">
+        <div class="section-title">Quality, Trust & Alignment</div>
+        <div class="help-text">
+          Identify inconsistencies, duplication, or low-confidence indicators.
+        </div>
+
+        <div class="field">
+          <label for="trust_issues">Where do leaders NOT trust the metrics?</label>
+          <textarea id="trust_issues" name="trust_issues"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="definition_conflicts">Conflicts in definitions between teams</label>
+          <textarea id="definition_conflicts" name="definition_conflicts"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="manual_work">Manual steps required to assemble KPI reporting</label>
+          <textarea id="manual_work" name="manual_work"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 4 -->
+      <div class="section">
+        <div class="section-title">Data Sources & Systems</div>
+        <div class="help-text">
+          Understand where KPI data originates.
+        </div>
+
+        <div class="field">
+          <label for="data_sources">Systems that feed KPI calculations</label>
+          <textarea id="data_sources" name="data_sources"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="aggregation_process">How KPIs are currently aggregated</label>
+          <textarea id="aggregation_process" name="aggregation_process"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 5 -->
+      <div class="section">
+        <div class="section-title">Visibility, Reporting & Decisions</div>
+        <div class="help-text">
+          Determine who uses metrics and how.
+        </div>
+
+        <div class="field">
+          <label for="who_uses_kpis">Who relies on KPIs for decision-making?</label>
+          <textarea id="who_uses_kpis" name="who_uses_kpis"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="reporting_tools">Where do reports and dashboards live today?</label>
+          <textarea id="reporting_tools" name="reporting_tools"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="visibility_gaps">Where visibility is lacking today</label>
+          <textarea id="visibility_gaps" name="visibility_gaps"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 6 -->
+      <div class="section">
+        <div class="section-title">Future State & Priority Opportunities</div>
+
+        <div class="field">
+          <label for="kpi_future_state">Ideal KPI future state</label>
+          <textarea id="kpi_future_state" name="kpi_future_state"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="quick_wins">Quick wins (60–90 days)</label>
+          <textarea id="quick_wins" name="quick_wins"></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn-primary">Download Responses as Excel</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<script>
+  document.getElementById("kpi-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const fd = new FormData(e.target);
+
+    const fields = [
+      ["Business Goals", "business_goals"],
+      ["Definition of Success", "success_definition"],
+      ["Critical KPIs", "critical_metrics"],
+      ["Metric Definitions", "metric_definitions"],
+      ["Metric Owners", "metric_owners"],
+      ["Trust Issues with Metrics", "trust_issues"],
+      ["Definition Conflicts", "definition_conflicts"],
+      ["Manual Reporting Work", "manual_work"],
+      ["Data Sources", "data_sources"],
+      ["Aggregation Process", "aggregation_process"],
+      ["Who Uses KPIs", "who_uses_kpis"],
+      ["Reporting Tools", "reporting_tools"],
+      ["Visibility Gaps", "visibility_gaps"],
+      ["Future State Vision", "kpi_future_state"],
+      ["Quick Wins", "quick_wins"]
+    ];
+
+    // Row 1 = headers, Row 2 = values
+    const headerRow = fields.map(([label]) => label);
+    const valuesRow = fields.map(([_, key]) => fd.get(key) || "");
+
+    const ws = XLSX.utils.aoa_to_sheet([headerRow, valuesRow]);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "KPI Intake");
+
+    XLSX.writeFile(wb, "ClevelandStrategic_KPI_Intake.xlsx");
+
+    alert("Responses downloaded as Excel.");
+  });
+</script>
+
+</body>
+</html>
