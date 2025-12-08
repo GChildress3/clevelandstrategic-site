@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cleveland Strategic | Data Governance Readiness Assessment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #e0ecff;
+      --border: #e5e7eb;
+      --radius-lg: 20px;
+      --radius-md: 10px;
+      --shadow-soft: 0 12px 28px rgba(15,23,42,0.10);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #e5edff 0, var(--bg) 52%, #e5e7eb 100%);
+      color: var(--text-main);
+    }
+
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 24px 12px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 960px;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 28px;
+    }
+
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .logo-wrap img {
+      max-width: 220px;
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 5px 11px;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      font-size: 0.78rem;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .title {
+      font-size: 1.55rem;
+      font-weight: 650;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+
+    .section {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px 22px;
+      margin-bottom: 20px;
+      background: #fff;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .help-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .field {
+      margin-bottom: 12px;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    textarea, input {
+      width: 100%;
+      padding: 7px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .actions {
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    .btn-primary {
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #2563eb, #1d4ed8);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrap">
+  <div class="card">
+
+    <div class="logo-wrap">
+      <img src="Cleveland Strategic Logo.png">
+    </div>
+
+    <div class="pill">📚 Data Governance Readiness</div>
+    <div class="title">Data Governance Readiness Assessment</div>
+    <div class="subtitle">
+      Evaluate ownership, definitions, access, compliance, and organizational readiness for formal governance.
+    </div>
+
+    <form id="gov-form">
+
+      <!-- SECTION 1 -->
+      <div class="section">
+        <div class="section-title">1. Data Ownership & Stewardship</div>
+        <div class="help-text">
+          Understand clarity of ownership and accountability across the organization.
+        </div>
+
+        <div class="field">
+          <label for="domain_ownership">How clearly defined are data domain owners?</label>
+          <textarea id="domain_ownership" name="domain_ownership"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="steward_roles">Do data stewards or custodians exist today?</label>
+          <textarea id="steward_roles" name="steward_roles"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ownership_gaps">Where does ownership break down or become unclear?</label>
+          <textarea id="ownership_gaps" name="ownership_gaps"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 2 -->
+      <div class="section">
+        <div class="section-title">2. Data Definitions & Standards</div>
+        <div class="help-text">
+          Identify inconsistencies or lack of standardization.
+        </div>
+
+        <div class="field">
+          <label for="definition_conflicts">Where do definitions differ across teams?</label>
+          <textarea id="definition_conflicts" name="definition_conflicts"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="standardization_gaps">Where are definitions, rules, or calculations missing?</label>
+          <textarea id="standardization_gaps" name="standardization_gaps"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="glossary_use">Do you have a data glossary or dictionary?</label>
+          <textarea id="glossary_use" name="glossary_use"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 3 -->
+      <div class="section">
+        <div class="section-title">3. Access, Permissions & Security</div>
+        <div class="help-text">
+          Evaluate how access is granted, tracked, and governed.
+        </div>
+
+        <div class="field">
+          <label for="access_management">Who can access what data? How is this controlled?</label>
+          <textarea id="access_management" name="access_management"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="permission_issues">Where do permission issues or inappropriate access occur?</label>
+          <textarea id="permission_issues" name="permission_issues"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="security_concerns">Any concerns around data security or sensitive data handling?</label>
+          <textarea id="security_concerns" name="security_concerns"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 4 -->
+      <div class="section">
+        <div class="section-title">4. Compliance, Privacy & Risk</div>
+        <div class="help-text">
+          Understand how compliance requirements are identified and enforced.
+        </div>
+
+        <div class="field">
+          <label for="compliance_standards">What compliance frameworks apply to your organization?</label>
+          <textarea id="compliance_standards" name="compliance_standards"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="privacy_risks">Where are privacy or regulatory risks most likely?</label>
+          <textarea id="privacy_risks" name="privacy_risks"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="audit_history">Any audit findings related to data?</label>
+          <textarea id="audit_history" name="audit_history"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 5 -->
+      <div class="section">
+        <div class="section-title">5. Systems, Metadata & Lineage</div>
+        <div class="help-text">
+          Evaluate visibility, cataloging, and traceability of data.
+        </div>
+
+        <div class="field">
+          <label for="metadata_management">Do you maintain metadata or a data catalog?</label>
+          <textarea id="metadata_management" name="metadata_management"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="lineage_visibility">How well do you understand data lineage?</label>
+          <textarea id="lineage_visibility" name="lineage_visibility"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="system_gaps">Where do system or pipeline gaps impact governance?</label>
+          <textarea id="system_gaps" name="system_gaps"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 6 -->
+      <div class="section">
+        <div class="section-title">6. Culture, Adoption & Readiness</div>
+
+        <div class="field">
+          <label for="culture_readiness">How ready is the organization for formal governance?</label>
+          <textarea id="culture_readiness" name="culture_readiness"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="resistance_points">Where is resistance to governance most likely?</label>
+          <textarea id="resistance_points" name="resistance_points"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="training_needs">What training or enablement would make governance successful?</label>
+          <textarea id="training_needs" name="training_needs"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 7 -->
+      <div class="section">
+        <div class="section-title">7. Priorities & Quick Wins</div>
+
+        <div class="field">
+          <label for="governance_priorities">Top priorities for implementing governance</label>
+          <textarea id="governance_priorities" name="governance_priorities"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="quick_wins">Quick wins (60–90 days)</label>
+          <textarea id="quick_wins" name="quick_wins"></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn-primary">Download Responses as Excel</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<script>
+  document.getElementById("gov-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const fd = new FormData(e.target);
+
+    const fields = [
+      ["Domain Ownership Clarity", "domain_ownership"],
+      ["Data Steward Roles", "steward_roles"],
+      ["Ownership Gaps", "ownership_gaps"],
+      ["Definition Conflicts", "definition_conflicts"],
+      ["Missing Standards", "standardization_gaps"],
+      ["Glossary Use", "glossary_use"],
+      ["Access Management", "access_management"],
+      ["Permission Issues", "permission_issues"],
+      ["Security Concerns", "security_concerns"],
+      ["Compliance Standards", "compliance_standards"],
+      ["Privacy Risks", "privacy_risks"],
+      ["Audit History", "audit_history"],
+      ["Metadata Management", "metadata_management"],
+      ["Lineage Visibility", "lineage_visibility"],
+      ["System Gaps", "system_gaps"],
+      ["Culture Readiness", "culture_readiness"],
+      ["Resistance Points", "resistance_points"],
+      ["Training Needs", "training_needs"],
+      ["Governance Priorities", "governance_priorities"],
+      ["Quick Wins", "quick_wins"]
+    ];
+
+    const headerRow = fields.map(([label]) => label);
+    const valuesRow = fields.map(([_, key]) => fd.get(key) || "");
+
+    const ws = XLSX.utils.aoa_to_sheet([headerRow, valuesRow]);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Governance Readiness");
+
+    XLSX.writeFile(wb, "ClevelandStrategic_Governance_Readiness.xlsx");
+
+    alert("Responses downloaded as Excel.");
+  });
+</script>
+
+</body>
+</html>
