@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cleveland Strategic | AI Strategy Intake Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #e0ecff;
+      --border: #e5e7eb;
+      --radius-lg: 20px;
+      --radius-md: 10px;
+      --shadow-soft: 0 12px 28px rgba(15, 23, 42, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #e5edff 0, var(--bg) 52%, #e5e7eb 100%);
+      color: var(--text-main);
+    }
+
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 24px 12px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 960px;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 28px 24px 32px;
+    }
+
+    @media (min-width: 768px) {
+      .card {
+        padding: 32px 40px 40px;
+      }
+    }
+
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .logo-wrap img {
+      max-width: 220px;
+      height: auto;
+      display: inline-block;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 6px;
+      font-size: 1.55rem;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 22px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
+
+    .pill span.icon {
+      font-size: 0.9rem;
+    }
+
+    form {
+      margin-top: 6px;
+    }
+
+    .section {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      padding: 14px 14px 18px;
+      margin-bottom: 16px;
+      background-color: #ffffff;
+    }
+
+    @media (min-width: 768px) {
+      .section {
+        padding: 18px 20px 22px;
+        margin-bottom: 18px;
+      }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .section-tag {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .help-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .field {
+      margin-bottom: 9px;
+    }
+
+    .field-inline {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .field-inline {
+        flex-direction: row;
+      }
+      .field-inline .field {
+        flex: 1;
+        margin-bottom: 0;
+      }
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .required::after {
+      content: " *";
+      color: #dc2626;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 36px;
+      background-color: #ffffff;
+    }
+
+    textarea {
+      min-height: 70px;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+
+    .actions {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .btn-primary {
+      border: none;
+      border-radius: 999px;
+      padding: 9px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(to right, #2563eb, #1d4ed8);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(0.97);
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 8px 15px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border);
+      background-color: #ffffff;
+      color: var(--text-muted);
+      cursor: default;
+    }
+
+    .footer-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: right;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <div class="card">
+
+    <!-- Logo from repo root -->
+    <div class="logo-wrap">
+      <img src="Cleveland Strategic Logo.png">
+    </div>
+
+    <div class="pill">
+      <span class="icon">🤖</span>
+      <span>AI Strategy Discovery</span>
+    </div>
+
+    <div class="title">AI Strategy Intake Form</div>
+    <div class="subtitle">
+      Help us understand how artificial intelligence can create value for your organization.
+    </div>
+
+    <form id="ai-intake-form">
+
+      <!-- SECTION 1: Business Context -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">About You and Your Organization</div>
+          <div class="section-tag">Section 1</div>
+        </div>
+        <p class="help-text">
+          Basic details so we can connect your responses to the right team and strategy context.
+        </p>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="company" class="required">Organization</label>
+            <input type="text" id="company" name="company" required>
+          </div>
+          <div class="field">
+            <label for="industry">Industry</label>
+            <input type="text" id="industry" name="industry">
+          </div>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="name" class="required">Your Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="role">Your Role / Title</label>
+            <input type="text" id="role" name="role">
+          </div>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="email" class="required">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="ai_goals" class="required">
+            Top business priorities where AI could help (next 12 to 24 months)
+          </label>
+          <textarea id="ai_goals" name="ai_goals" required
+                    placeholder="For example: automate manual work, personalize experiences, reduce risk, improve forecasting."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_challenges">
+            Main challenges or constraints you face today
+          </label>
+          <textarea id="ai_challenges" name="ai_challenges"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_vision">
+            Do you have an existing AI vision, roadmap, or initiative?
+          </label>
+          <textarea id="ai_vision" name="ai_vision"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 2: AI Readiness -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">AI Readiness Snapshot</div>
+          <div class="section-tag">Section 2</div>
+        </div>
+        <p class="help-text">
+          A high level view of familiarity, attitudes, and current AI usage.
+        </p>
+
+        <div class="field">
+          <label for="ai_familiarity">
+            How familiar are leaders and teams with AI opportunities and limitations?
+          </label>
+          <textarea id="ai_familiarity" name="ai_familiarity"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_concerns">
+            What concerns or questions do people have about AI?
+          </label>
+          <textarea id="ai_concerns" name="ai_concerns"
+                    placeholder="Examples: bias, job impact, accuracy, cost, compliance."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="existing_ai">
+            Where, if anywhere, do you already use AI or advanced automation today?
+          </label>
+          <textarea id="existing_ai" name="existing_ai"
+                    placeholder="Chatbots, CRM predictions, fraud detection, recommendations, document classification, etc."></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 3: Products -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">AI for Products</div>
+          <div class="section-tag">Section 3</div>
+        </div>
+        <p class="help-text">
+          Use this section to explore how AI could make your products or offerings smarter.
+        </p>
+
+        <div class="field">
+          <label for="product_ai_areas">
+            Which products or offerings could benefit most from AI?
+          </label>
+          <textarea id="product_ai_areas" name="product_ai_areas"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="product_data">
+            What data or signals could be used to make these products smarter?
+          </label>
+          <textarea id="product_data" name="product_data"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="product_success">
+            What would a successful AI-enhanced product experience look like for customers?
+          </label>
+          <textarea id="product_success" name="product_success"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 4: Services -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">AI for Services and Customer Experience</div>
+          <div class="section-tag">Section 4</div>
+        </div>
+        <p class="help-text">
+          How AI could enhance or personalize your services and touchpoints.
+        </p>
+
+        <div class="field">
+          <label for="services_ai_areas">
+            What services or customer interactions could be improved with AI?
+          </label>
+          <textarea id="services_ai_areas" name="services_ai_areas"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="service_friction">
+            Where do customers experience friction, delay, or confusion today?
+          </label>
+          <textarea id="service_friction" name="service_friction"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="service_decisions">
+            What service-related decisions could be automated or augmented with AI?
+          </label>
+          <textarea id="service_decisions" name="service_decisions"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 5: Internal Processes -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">AI for Internal Processes</div>
+          <div class="section-tag">Section 5</div>
+        </div>
+        <p class="help-text">
+          Focus on operations, back office, and internal decision making.
+        </p>
+
+        <div class="field">
+          <label for="processes_manual">
+            Which internal processes are most manual, repetitive, or error-prone?
+          </label>
+          <textarea id="processes_manual" name="processes_manual"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="processes_ai_opportunities">
+            Where could AI or automation realistically remove workload in the next 6 to 12 months?
+          </label>
+          <textarea id="processes_ai_opportunities" name="processes_ai_opportunities"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="processes_impact">
+            Where would AI-driven process improvements create the biggest impact?
+          </label>
+          <textarea id="processes_impact" name="processes_impact"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 6: Data Requirements -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Data for AI</div>
+          <div class="section-tag">Section 6</div>
+        </div>
+        <p class="help-text">
+          AI depends on data quality, access, and history.
+        </p>
+
+        <div class="field">
+          <label for="ai_data_sources">
+            What data sources could support AI use cases you are considering?
+          </label>
+          <textarea id="ai_data_sources" name="ai_data_sources"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_data_issues">
+            Are there known issues with data quality, access, or consistency?
+          </label>
+          <textarea id="ai_data_issues" name="ai_data_issues"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_historical_data">
+            Do you have historical data that could be used to train or fine tune models?
+          </label>
+          <textarea id="ai_historical_data" name="ai_historical_data"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 7: Ethical & Legal -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Ethical and Legal Considerations</div>
+          <div class="section-tag">Section 7</div>
+        </div>
+        <p class="help-text">
+          Capture risks related to bias, fairness, privacy, and regulation.
+        </p>
+
+        <div class="field">
+          <label for="ai_sensitive_data">
+            Do any potential AI use cases involve sensitive or regulated data?
+          </label>
+          <textarea id="ai_sensitive_data" name="ai_sensitive_data"
+                    placeholder="Examples: health data, financial data, minors, government regulated information."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_risks">
+            What are your biggest concerns around AI risk, bias, or compliance?
+          </label>
+          <textarea id="ai_risks" name="ai_risks"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_policies">
+            Do you have existing AI, data, or model governance policies?
+          </label>
+          <textarea id="ai_policies" name="ai_policies"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 8: Technology & Infrastructure -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Technology and Infrastructure</div>
+          <div class="section-tag">Section 8</div>
+        </div>
+        <p class="help-text">
+          A snapshot of your technical foundation for AI.
+        </p>
+
+        <div class="field">
+          <label for="ai_platforms">
+            Do you have existing cloud or data platforms suitable for AI workloads?
+          </label>
+          <textarea id="ai_platforms" name="ai_platforms"
+                    placeholder="Examples: Azure, AWS, GCP, Snowflake, Databricks, Microsoft Fabric."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_tools">
+            What tools or services are already in use related to AI or automation?
+          </label>
+          <textarea id="ai_tools" name="ai_tools"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_engineering_capacity">
+            Do you have engineering or integration capacity to support AI projects?
+          </label>
+          <textarea id="ai_engineering_capacity" name="ai_engineering_capacity"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 9: Skills & Capacity -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Skills and Capacity</div>
+          <div class="section-tag">Section 9</div>
+        </div>
+        <p class="help-text">
+          Your people and partners for AI work.
+        </p>
+
+        <div class="field">
+          <label for="ai_inhouse_skills">
+            Do you have in-house AI, ML, or data science skills today?
+          </label>
+          <textarea id="ai_inhouse_skills" name="ai_inhouse_skills"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_skill_gaps">
+            What skill or capacity gaps exist for delivering AI initiatives?
+          </label>
+          <textarea id="ai_skill_gaps" name="ai_skill_gaps"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_flexible_resourcing">
+            Would you consider fractional leadership or external partners for AI work?
+          </label>
+          <textarea id="ai_flexible_resourcing" name="ai_flexible_resourcing"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 10: Implementation & Change -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Implementation and Change Management</div>
+          <div class="section-tag">Section 10</div>
+        </div>
+        <p class="help-text">
+          How AI changes will land with teams and stakeholders.
+        </p>
+
+        <div class="field">
+          <label for="ai_change_readiness">
+            How ready is your organization for adopting AI-driven changes to workflows?
+          </label>
+          <textarea id="ai_change_readiness" name="ai_change_readiness"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_employee_impact">
+            What potential employee impact or resistance do you anticipate?
+          </label>
+          <textarea id="ai_employee_impact" name="ai_employee_impact"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_comms_plan">
+            Do you have a communication or training approach in mind for AI initiatives?
+          </label>
+          <textarea id="ai_comms_plan" name="ai_comms_plan"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 11: Priorities -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Priorities and Quick Wins</div>
+          <div class="section-tag">Section 11</div>
+        </div>
+        <p class="help-text">
+          Use this section to highlight what we should focus on first.
+        </p>
+
+        <div class="field">
+          <label for="ai_top_use_cases">
+            What are the most important AI use cases or problems you want to solve first?
+          </label>
+          <textarea id="ai_top_use_cases" name="ai_top_use_cases"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_quick_wins">
+            Are there 1 to 3 quick win ideas that could show value within 60 to 90 days?
+          </label>
+          <textarea id="ai_quick_wins" name="ai_quick_wins"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_additional_notes">
+            Anything else you would like us to know about AI in your organization?
+          </label>
+          <textarea id="ai_additional_notes" name="ai_additional_notes"></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="btn-secondary">Fields marked with * are required</div>
+        <button type="submit" class="btn-primary">Download Responses as Excel</button>
+      </div>
+
+      <div class="footer-note">
+        Cleveland Strategic · Fractional Head of Data and Analytics
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- SheetJS CDN for Excel generation -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<script>
+  document.getElementById("ai-intake-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const fd = new FormData(form);
+
+    const fields = [
+      ["Organization", "company"],
+      ["Industry", "industry"],
+      ["Your Name", "name"],
+      ["Your Role / Title", "role"],
+      ["Email", "email"],
+      ["Phone", "phone"],
+      ["AI Related Business Priorities (12–24 months)", "ai_goals"],
+      ["Main Business Challenges / Constraints", "ai_challenges"],
+      ["Existing AI Vision, Roadmap, or Initiatives", "ai_vision"],
+      ["AI Familiarity Across Leadership and Teams", "ai_familiarity"],
+      ["AI Concerns or Questions", "ai_concerns"],
+      ["Existing AI or Advanced Automation Use", "existing_ai"],
+      ["AI for Products – Candidate Areas", "product_ai_areas"],
+      ["AI for Products – Data or Signals Available", "product_data"],
+      ["AI for Products – Desired Customer Experience", "product_success"],
+      ["AI for Services – Candidate Areas", "services_ai_areas"],
+      ["Customer Friction in Services", "service_friction"],
+      ["Service Decisions that Could Use AI", "service_decisions"],
+      ["Manual or Repetitive Internal Processes", "processes_manual"],
+      ["AI Opportunities for Internal Processes", "processes_ai_opportunities"],
+      ["Highest Impact Internal AI Opportunities", "processes_impact"],
+      ["Data Sources for AI", "ai_data_sources"],
+      ["Data Quality or Access Issues", "ai_data_issues"],
+      ["Historical Data Available for Training", "ai_historical_data"],
+      ["Sensitive or Regulated Data in AI Use Cases", "ai_sensitive_data"],
+      ["AI Risk, Bias, or Compliance Concerns", "ai_risks"],
+      ["Existing AI or Data Governance Policies", "ai_policies"],
+      ["Cloud or Data Platforms for AI", "ai_platforms"],
+      ["Existing AI or Automation Tools", "ai_tools"],
+      ["Engineering or Integration Capacity for AI", "ai_engineering_capacity"],
+      ["In-house AI or Data Science Skills", "ai_inhouse_skills"],
+      ["Skill or Capacity Gaps for AI", "ai_skill_gaps"],
+      ["Openness to Fractional or External AI Support", "ai_flexible_resourcing"],
+      ["Organizational Readiness for AI-driven Change", "ai_change_readiness"],
+      ["Employee Impact or Potential Resistance", "ai_employee_impact"],
+      ["Communication or Training Approach for AI", "ai_comms_plan"],
+      ["Top AI Use Cases / Priorities", "ai_top_use_cases"],
+      ["AI Quick Win Ideas (60–90 days)", "ai_quick_wins"],
+      ["Additional Notes on AI in the Organization", "ai_additional_notes"]
+    ];
+
+    const rows = [["Field", "Response"]];
+    fields.forEach(([label, key]) => {
+      rows.push([label, fd.get(key) || ""]);
+    });
+
+    const ws = XLSX.utils.aoa_to_sheet(rows);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "AI Intake");
+
+    XLSX.writeFile(wb, "ClevelandStrategic_AI_Strategy_Intake.xlsx");
+
+    alert("Thank you. Your responses have been downloaded as an Excel file.");
+    form.reset();
+  });
+</script>
+</body>
+</html>
