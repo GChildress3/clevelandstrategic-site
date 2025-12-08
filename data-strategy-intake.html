@@ -1,546 +1,595 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Cleveland Strategic | Data Strategy Discovery Form</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Cleveland Strategic | Data Strategy Discovery Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        :root {
-            --bg: #f3f4f6;
-            --card-bg: #ffffff;
-            --text-main: #111827;
-            --text-muted: #6b7280;
-            --accent: #2563eb;
-            --accent-soft: #e0ecff;
-            --border: #e5e7eb;
-            --radius-lg: 14px;
-            --radius-md: 10px;
-            --shadow-soft: 0 12px 28px rgba(15, 23, 42, 0.10);
-        }
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #e0ecff;
+      --border: #e5e7eb;
+      --radius-lg: 20px;
+      --radius-md: 10px;
+      --shadow-soft: 0 12px 28px rgba(15, 23, 42, 0.10);
+    }
 
-        * {
-            box-sizing: border-box;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            margin: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: radial-gradient(circle at top, #e5edff 0, var(--bg) 52%, #e5e7eb 100%);
-            color: var(--text-main);
-        }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #e5edff 0, var(--bg) 52%, #e5e7eb 100%);
+      color: var(--text-main);
+    }
 
-        .page-wrap {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 24px 12px;
-        }
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 24px 12px;
+    }
 
-        .card {
-            width: 100%;
-            max-width: 960px;
-            background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: var(--shadow-soft);
-            padding: 28px 24px 32px;
-        }
+    .card {
+      width: 100%;
+      max-width: 960px;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 28px 24px 32px;
+    }
 
-        @media (min-width: 768px) {
-            .card {
-                padding: 32px 40px 40px;
-            }
-        }
+    @media (min-width: 768px) {
+      .card {
+        padding: 32px 40px 40px;
+      }
+    }
 
-        .logo-wrap {
-            text-align: center;
-            margin-bottom: 18px;
-        }
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 18px;
+    }
 
-        .logo-wrap img {
-            max-width: 220px;
-            height: auto;
-        }
+    .logo-wrap img {
+      max-width: 220px;
+      height: auto;
+      display: inline-block;
+    }
 
-        .title {
-            text-align: center;
-            margin-bottom: 6px;
-            font-size: 1.55rem;
-            font-weight: 650;
-            letter-spacing: 0.02em;
-        }
+    .title {
+      text-align: center;
+      margin-bottom: 6px;
+      font-size: 1.55rem;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
 
-        .subtitle {
-            text-align: center;
-            margin-bottom: 22px;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
+    .subtitle {
+      text-align: center;
+      margin-bottom: 22px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
 
-        .pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 5px 11px;
-            border-radius: 999px;
-            font-size: 0.78rem;
-            background: var(--accent-soft);
-            color: #1d4ed8;
-            margin-bottom: 10px;
-        }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
 
-        .pill span.icon {
-            font-size: 0.9rem;
-        }
+    .pill span.icon {
+      font-size: 0.9rem;
+    }
 
-        form {
-            margin-top: 6px;
-        }
+    form {
+      margin-top: 6px;
+    }
 
-        .section {
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border);
-            padding: 14px 14px 18px;
-            margin-bottom: 16px;
-        }
+    .section {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      padding: 14px 14px 18px;
+      margin-bottom: 16px;
+    }
 
-        @media (min-width: 768px) {
-            .section {
-                padding: 18px 20px 22px;
-                margin-bottom: 18px;
-            }
-        }
+    @media (min-width: 768px) {
+      .section {
+        padding: 18px 20px 22px;
+        margin-bottom: 18px;
+      }
+    }
 
-        .section-header {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
 
-        .section-title {
-            font-size: 1rem;
-            font-weight: 600;
-        }
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
 
-        .section-tag {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
+    .section-tag {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
 
-        .help-text {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-        }
+    .help-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
 
-        .field {
-            margin-bottom: 9px;
-        }
+    .field {
+      margin-bottom: 9px;
+    }
 
-        .field-inline {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+    .field-inline {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
-        @media (min-width: 768px) {
-            .field-inline {
-                flex-direction: row;
-            }
-            .field-inline .field {
-                flex: 1;
-                margin-bottom: 0;
-            }
-        }
+    @media (min-width: 768px) {
+      .field-inline {
+        flex-direction: row;
+      }
+      .field-inline .field {
+        flex: 1;
+        margin-bottom: 0;
+      }
+    }
 
-        label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 3px;
-        }
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
 
-        .required::after {
-            content: " *";
-            color: #dc2626;
-        }
+    .required::after {
+      content: " *";
+      color: #dc2626;
+    }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        textarea,
-        select {
-            width: 100%;
-            padding: 7px 9px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            font-size: 0.9rem;
-            font-family: inherit;
-            resize: vertical;
-            min-height: 36px;
-            background-color: #ffffff;
-        }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 36px;
+      background-color: #ffffff;
+    }
 
-        textarea {
-            min-height: 70px;
-        }
+    textarea {
+      min-height: 70px;
+    }
 
-        input:focus,
-        textarea:focus,
-        select:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 1px var(--accent-soft);
-        }
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
 
-        .small-note {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
+    .footer-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: right;
+      margin-top: 10px;
+    }
 
-        .footer-note {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-align: right;
-            margin-top: 10px;
-        }
+    .actions {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+      align-items: center;
+    }
 
-        .actions {
-            margin-top: 16px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: flex-end;
-            align-items: center;
-        }
+    .btn-primary {
+      border: none;
+      border-radius: 999px;
+      padding: 9px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(to right, #2563eb, #1d4ed8);
+      color: #ffffff;
+    }
 
-        .btn-primary {
-            border: none;
-            border-radius: 999px;
-            padding: 9px 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            background: linear-gradient(to right, #2563eb, #1d4ed8);
-            color: #ffffff;
-        }
+    .btn-primary:hover {
+      filter: brightness(0.97);
+    }
 
-        .btn-primary:hover {
-            filter: brightness(0.97);
-        }
-
-        .btn-secondary {
-            border-radius: 999px;
-            padding: 8px 15px;
-            font-size: 0.8rem;
-            border: 1px solid var(--border);
-            background-color: #ffffff;
-            color: var(--text-muted);
-            cursor: default;
-        }
-    </style>
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 8px 15px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border);
+      background-color: #ffffff;
+      color: var(--text-muted);
+      cursor: default;
+    }
+  </style>
 </head>
 <body>
 <div class="page-wrap">
-    <div class="card">
+  <div class="card">
 
-        <!-- Replace the src value with your real logo path or URL -->
-        <div class="logo-wrap">
-            <img src="/assets/cleveland-strategic-logo.png">
-        </div>
-
-        <div class="pill">
-            <span class="icon">📊</span>
-            <span>Data Strategy Discovery</span>
-        </div>
-
-        <div class="title">Client Data Strategy Intake Form</div>
-        <div class="subtitle">
-            Help us understand your goals, current challenges, and how you use data today.
-        </div>
-
-        <form action="https://example.com/your-form-handler" method="post">
-            <!-- CONTACT INFO -->
-            <div class="section">
-                <div class="section-header">
-                    <div class="section-title">About You and Your Organization</div>
-                    <div class="section-tag">Section 1</div>
-                </div>
-                <p class="help-text">
-                    Basic details so we can connect your responses to the right team and context.
-                </p>
-
-                <div class="field-inline">
-                    <div class="field">
-                        <label for="company" class="required">Organization</label>
-                        <input type="text" id="company" name="company" required>
-                    </div>
-                    <div class="field">
-                        <label for="industry">Industry</label>
-                        <input type="text" id="industry" name="industry">
-                    </div>
-                </div>
-
-                <div class="field-inline">
-                    <div class="field">
-                        <label for="name" class="required">Your Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="field">
-                        <label for="role">Your Role / Title</label>
-                        <input type="text" id="role" name="role">
-                    </div>
-                </div>
-
-                <div class="field-inline">
-                    <div class="field">
-                        <label for="email" class="required">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="field">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                </div>
-            </div>
-
-            <!-- BUSINESS GOALS -->
-            <div class="section">
-                <div class="section-header">
-                    <div class="section-title">Business Goals and Challenges</div>
-                    <div class="section-tag">Section 2</div>
-                </div>
-                <p class="help-text">
-                    We always start with business outcomes. Data work should support clear goals.
-                </p>
-
-                <div class="field">
-                    <label for="goals" class="required">
-                        Top 3 business priorities for the next 12 to 24 months
-                    </label>
-                    <textarea id="goals" name="goals" required
-                              placeholder="For example: grow in a new market, improve retention, stabilize operations."></textarea>
-                </div>
-
-                <div class="field">
-                    <label for="challenges">
-                        Main challenges holding you back from these goals
-                    </label>
-                    <textarea id="challenges" name="challenges"></textarea>
-                </div>
-
-                <div class="field">
-                    <label for="success">
-                        If your data and reporting were “working perfectly,” what would be different?
-                    </label>
-                    <textarea id="success" name="success"
-                              placeholder="Faster decisions, fewer manual reports, single source of truth, etc."></textarea>
-                </div>
-            </div>
-
-            <!-- CUSTOMERS -->
-            <div class="section">
-                <div class="section-header">
-                    <div class="section-title">Understanding Your Customers</div>
-                    <div class="section-tag">Section 3</div>
-                </div>
-                <p class="help-text">
-                    How well you understand your customers is often the first lens for data strategy.
-                </p>
-
-                <div class="field">
-                    <label for="customers">Who are your primary customers or users?</label>
-                    <textarea id="customers" name="customers"></textarea>
-                </div>
-
-                <div class="field">
-                    <label for="customer_questions">
-                        What would you like to understand better about your customers?
-                    </label>
-                    <textarea id="customer_questions" name="customer_questions"
-                              placeholder="Examples: churn risk, what drives engagement, which segments are most valuable."></textarea>
-                </div>
-
-                <div class="field">
-                    <label for="customer_data">
-                        What customer data do you collect today and where does it live?
-                    </label>
-                    <textarea id="customer_data" name="customer_data"
-                              placeholder="CRM, web analytics, product telemetry, support tickets, surveys, etc."></textarea>
-                </div>
-            </div>
-
-            <!-- PRODUCTS AND SERVICES -->
-            <div class="section">
-                <div class="section-header">
-                    <div class="section-title">Products and Services</div>
-                    <div class="section-tag">Section 4</div>
-                </div>
-                <p class="help-text">
-                    Data can shape smarter products and more tailored services.
-                </p>
-
-                <div class="field">
-                    <label for="product_improvements">
-                        Where could data improve your products or services?
-                    </label>
-                    <textarea id="product_improvements" name="product_improvements"
-                              placeholder="Personalization, usage insights, predictive features, etc."></textarea>
-                </div>
-
-                <div class="field">
-                    <label for="usage_data">
-                        Do you track product or service usage today? If yes, how is it used?
-                    </label>
-                    <textarea id="usage_data" name="usage_data"></textarea>
-                </div>
-            </div>
-
-            <!-- OPERATIONS -->
-            <div class="section">
-                <div class="section-header">
-                    <div class="section-title">Internal Operations and Reporting</div>
-                    <div class="section-tag">Section 5</div>
-                </div>
-                <p class="help-text">
-                    This section focuses on efficiency, visibility, and automation inside the business.
-                </p>
-
-                <div class="field">
-                    <label for="manual_processes">
-                        Which processes rely heavily on manual work or spreadsheets?
-                    </label>
-                    <textarea id="manual_processes" name="manual_processes"></textarea>
-                </div>
-
-                <div class="field">
-                    <label for="visibility">
-                        Where do leaders or teams feel they lack visibility or trustworthy reporting?
-                    </label>
-                    <textarea id="visibility" name="visibility"></textarea>
-                </div>
-
-                <div class="field">
-                    <label for="automation">
-                        What recurring decisions or workflows could be automated with better data?
-                    </label>
-                    <textarea id="automation" name="automation"></textarea>
-                </div>
-            </div>
-
-            <!-- DATA AND TECH -->
-            <div class="section">
-                <div class="section-header">
-                    <div class="section-title">Data, Systems, and Governance</div>
-                    <div class="section-tag">Section 6</div>
-                </div>
-                <p class="help-text">
-                    A high level snapshot of your current data landscape.
-                </p>
-
-                <div class="field">
-                    <label for="systems">
-                        Which major systems or platforms hold important data today?
-                    </label>
-                    <textarea id="systems" name="systems"
-                              placeholder="For example: ERP, CRM, EMR, POS, data warehouse, reporting tools."></textarea>
-                </div>
-
-                <div class="field">
-                    <label for="data_issues">
-                        Are there known issues with data quality, duplication, or inconsistent definitions?
-                    </label>
-                    <textarea id="data_issues" name="data_issues"></textarea>
-                </div>
-
-                <div class="field">
-                    <label for="governance">
-                        Any privacy, compliance, or regulatory considerations we should keep in mind?
-                    </label>
-                    <textarea id="governance" name="governance"
-                              placeholder="PII, HIPAA, GDPR, contract obligations, internal policies, etc."></textarea>
-                </div>
-            </div>
-
-            <!-- PEOPLE AND CHANGE -->
-            <div class="section">
-                <div class="section-header">
-                    <div class="section-title">Teams, Skills, and Change Readiness</div>
-                    <div class="section-tag">Section 7</div>
-                </div>
-                <p class="help-text">
-                    Here we look at who works with data today and what support they need.
-                </p>
-
-                <div class="field">
-                    <label for="teams">
-                        Which teams are responsible for analytics, reporting, or data engineering?
-                    </label>
-                    <textarea id="teams" name="teams"></textarea>
-                </div>
-
-                <div class="field">
-                    <label for="skill_gaps">
-                        Any skill or capacity gaps that slow down data and reporting work?
-                    </label>
-                    <textarea id="skill_gaps" name="skill_gaps"></textarea>
-                </div>
-
-                <div class="field">
-                    <label for="change_culture">
-                        How does your organization typically handle new tools or process changes?
-                    </label>
-                    <textarea id="change_culture" name="change_culture"></textarea>
-                </div>
-            </div>
-
-            <!-- PRIORITIES -->
-            <div class="section">
-                <div class="section-header">
-                    <div class="section-title">Top Priorities and Quick Wins</div>
-                    <div class="section-tag">Section 8</div>
-                </div>
-                <p class="help-text">
-                    This helps us shape an initial roadmap and identify early wins.
-                </p>
-
-                <div class="field">
-                    <label for="top_use_cases">
-                        What are the most important data or reporting problems you want solved first?
-                    </label>
-                    <textarea id="top_use_cases" name="top_use_cases"></textarea>
-                </div>
-
-                <div class="field">
-                    <label for="quick_wins">
-                        Are there 1 to 3 “quick win” projects that could show value within 60 to 90 days?
-                    </label>
-                    <textarea id="quick_wins" name="quick_wins"></textarea>
-                </div>
-
-                <div class="field">
-                    <label for="additional_notes">
-                        Anything else you would like us to know?
-                    </label>
-                    <textarea id="additional_notes" name="additional_notes"></textarea>
-                </div>
-            </div>
-
-            <div class="actions">
-                <div class="btn-secondary">Fields marked with * are required</div>
-                <button type="submit" class="btn-primary">Submit Intake</button>
-            </div>
-
-            <div class="footer-note">
-                Cleveland Strategic · Fractional Head of Data and Analytics
-            </div>
-        </form>
+    <!-- Logo from repo root -->
+    <div class="logo-wrap">
+      <img src="Cleveland Strategic Logo.png">
     </div>
+
+    <div class="pill">
+      <span class="icon">📊</span>
+      <span>Data Strategy Discovery</span>
+    </div>
+
+    <div class="title">Client Data Strategy Intake Form</div>
+    <div class="subtitle">
+      Help us understand your goals, current challenges, and how you use data today.
+    </div>
+
+    <!-- FORM (handled entirely in JS) -->
+    <form id="intake-form">
+      <!-- Section 1 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">About You and Your Organization</div>
+          <div class="section-tag">Section 1</div>
+        </div>
+        <p class="help-text">
+          Basic details so we can connect your responses to the right team and context.
+        </p>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="company" class="required">Organization</label>
+            <input type="text" id="company" name="company" required>
+          </div>
+          <div class="field">
+            <label for="industry">Industry</label>
+            <input type="text" id="industry" name="industry">
+          </div>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="name" class="required">Your Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="role">Your Role / Title</label>
+            <input type="text" id="role" name="role">
+          </div>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="email" class="required">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Business Goals and Challenges</div>
+          <div class="section-tag">Section 2</div>
+        </div>
+        <p class="help-text">
+          We always start with business outcomes. Data work should support clear goals.
+        </p>
+
+        <div class="field">
+          <label for="goals" class="required">
+            Top 3 business priorities for the next 12 to 24 months
+          </label>
+          <textarea id="goals" name="goals" required
+                    placeholder="For example: grow in a new market, improve retention, stabilize operations."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="challenges">
+            Main challenges holding you back from these goals
+          </label>
+          <textarea id="challenges" name="challenges"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="success">
+            If your data and reporting were “working perfectly,” what would be different?
+          </label>
+          <textarea id="success" name="success"
+                    placeholder="Faster decisions, fewer manual reports, single source of truth, etc."></textarea>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Understanding Your Customers</div>
+          <div class="section-tag">Section 3</div>
+        </div>
+        <p class="help-text">
+          How well you understand your customers is often the first lens for data strategy.
+        </p>
+
+        <div class="field">
+          <label for="customers">Who are your primary customers or users?</label>
+          <textarea id="customers" name="customers"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="customer_questions">
+            What would you like to understand better about your customers?
+          </label>
+          <textarea id="customer_questions" name="customer_questions"
+                    placeholder="Examples: churn risk, what drives engagement, which segments are most valuable."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="customer_data">
+            What customer data do you collect today and where does it live?
+          </label>
+          <textarea id="customer_data" name="customer_data"
+                    placeholder="CRM, web analytics, product telemetry, support tickets, surveys, etc."></textarea>
+        </div>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Products and Services</div>
+          <div class="section-tag">Section 4</div>
+        </div>
+        <p class="help-text">
+          Data can shape smarter products and more tailored services.
+        </p>
+
+        <div class="field">
+          <label for="product_improvements">
+            Where could data improve your products or services?
+          </label>
+          <textarea id="product_improvements" name="product_improvements"
+                    placeholder="Personalization, usage insights, predictive features, etc."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="usage_data">
+            Do you track product or service usage today? If yes, how is it used?
+          </label>
+          <textarea id="usage_data" name="usage_data"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 5 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Internal Operations and Reporting</div>
+          <div class="section-tag">Section 5</div>
+        </div>
+        <p class="help-text">
+          This section focuses on efficiency, visibility, and automation inside the business.
+        </p>
+
+        <div class="field">
+          <label for="manual_processes">
+            Which processes rely heavily on manual work or spreadsheets?
+          </label>
+          <textarea id="manual_processes" name="manual_processes"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="visibility">
+            Where do leaders or teams feel they lack visibility or trustworthy reporting?
+          </label>
+          <textarea id="visibility" name="visibility"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="automation">
+            What recurring decisions or workflows could be automated with better data?
+          </label>
+          <textarea id="automation" name="automation"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 6 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Data, Systems, and Governance</div>
+          <div class="section-tag">Section 6</div>
+        </div>
+        <p class="help-text">
+          A high level snapshot of your current data landscape.
+        </p>
+
+        <div class="field">
+          <label for="systems">
+            Which major systems or platforms hold important data today?
+          </label>
+          <textarea id="systems" name="systems"
+                    placeholder="For example: ERP, CRM, EMR, POS, data warehouse, reporting tools."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="data_issues">
+            Are there known issues with data quality, duplication, or inconsistent definitions?
+          </label>
+          <textarea id="data_issues" name="data_issues"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="governance">
+            Any privacy, compliance, or regulatory considerations we should keep in mind?
+          </label>
+          <textarea id="governance" name="governance"
+                    placeholder="PII, HIPAA, GDPR, contract obligations, internal policies, etc."></textarea>
+        </div>
+      </div>
+
+      <!-- Section 7 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Teams, Skills, and Change Readiness</div>
+          <div class="section-tag">Section 7</div>
+        </div>
+        <p class="help-text">
+          Here we look at who works with data today and what support they need.
+        </p>
+
+        <div class="field">
+          <label for="teams">
+            Which teams are responsible for analytics, reporting, or data engineering?
+          </label>
+          <textarea id="teams" name="teams"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="skill_gaps">
+            Any skill or capacity gaps that slow down data and reporting work?
+          </label>
+          <textarea id="skill_gaps" name="skill_gaps"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="change_culture">
+            How does your organization typically handle new tools or process changes?
+          </label>
+          <textarea id="change_culture" name="change_culture"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 8 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Top Priorities and Quick Wins</div>
+          <div class="section-tag">Section 8</div>
+        </div>
+        <p class="help-text">
+          This helps shape an initial roadmap and identify early wins.
+        </p>
+
+        <div class="field">
+          <label for="top_use_cases">
+            What are the most important data or reporting problems you want solved first?
+          </label>
+          <textarea id="top_use_cases" name="top_use_cases"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="quick_wins">
+            Are there 1 to 3 “quick win” projects that could show value within 60 to 90 days?
+          </label>
+          <textarea id="quick_wins" name="quick_wins"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="additional_notes">
+            Anything else you would like us to know?
+          </label>
+          <textarea id="additional_notes" name="additional_notes"></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="btn-secondary">Fields marked with * are required</div>
+        <button type="submit" class="btn-primary">Download Responses as Excel</button>
+      </div>
+
+      <div class="footer-note">
+        Cleveland Strategic · Fractional Head of Data and Analytics
+      </div>
+    </form>
+  </div>
 </div>
+
+<!-- SheetJS for Excel generation -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<script>
+  document.getElementById("intake-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const fd = new FormData(form);
+
+    const fields = [
+      ["Organization", "company"],
+      ["Industry", "industry"],
+      ["Your Name", "name"],
+      ["Your Role / Title", "role"],
+      ["Email", "email"],
+      ["Phone", "phone"],
+      ["Top Business Priorities (12–24 months)", "goals"],
+      ["Main Business Challenges", "challenges"],
+      ["If data & reporting worked perfectly, what would be different?", "success"],
+      ["Primary Customers / Users", "customers"],
+      ["What you want to understand about customers", "customer_questions"],
+      ["Customer data collected & where it lives", "customer_data"],
+      ["Where data could improve products/services", "product_improvements"],
+      ["Product/service usage data & how it’s used", "usage_data"],
+      ["Manual / spreadsheet-heavy processes", "manual_processes"],
+      ["Where visibility / reporting is lacking", "visibility"],
+      ["Decisions/workflows that could be automated", "automation"],
+      ["Major systems/platforms with important data", "systems"],
+      ["Data quality / duplication / definition issues", "data_issues"],
+      ["Privacy / compliance / regulatory considerations", "governance"],
+      ["Teams responsible for analytics / reporting / data engineering", "teams"],
+      ["Skill or capacity gaps", "skill_gaps"],
+      ["How your org handles new tools or process changes", "change_culture"],
+      ["Most important data/reporting problems to solve first", "top_use_cases"],
+      ["Quick win ideas (60–90 days)", "quick_wins"],
+      ["Anything else we should know", "additional_notes"]
+    ];
+
+    const rows = [["Field", "Response"]];
+    fields.forEach(([label, key]) => {
+      rows.push([label, fd.get(key) || ""]);
+    });
+
+    const ws = XLSX.utils.aoa_to_sheet(rows);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Intake");
+
+    XLSX.writeFile(wb, "ClevelandStrategic_Data_Intake.xlsx");
+
+    alert("Thank you! Your responses have been downloaded as an Excel file.");
+    form.reset();
+  });
+</script>
 </body>
 </html>
