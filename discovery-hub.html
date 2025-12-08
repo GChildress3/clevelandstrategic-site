@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cleveland Strategic | Discovery Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #e0ecff;
+      --border: #e5e7eb;
+      --radius-lg: 18px;
+      --shadow-soft: 0 12px 30px rgba(0,0,0,0.10);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #e5edff 0, var(--bg) 55%, #e5e7eb 100%);
+      color: var(--text-main);
+    }
+
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 960px;
+      text-align: center;
+    }
+
+    .logo-wrap img {
+      max-width: 240px;
+      margin-bottom: 12px;
+    }
+
+    .title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 22px 20px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      text-align: left;
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.14);
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .card-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.32rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 14px;
+      background: var(--accent);
+      color: white;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #1e40af;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page-wrap">
+  <div class="container">
+
+    <div class="logo-wrap">
+      <img src="Cleveland Strategic Logo.png">
+    </div>
+
+    <div class="title">Discovery Hub</div>
+    <div class="subtitle">
+      A centralized home for all strategy, analytics, governance, and leadership intake forms.
+    </div>
+
+    <div class="grid">
+
+      <!-- Data Strategy -->
+      <div class="card">
+        <div class="card-title">Data Strategy Intake</div>
+        <div class="card-text">
+          Assess current-state reporting, data assets, challenges, and strategic use cases.
+        </div>
+        <a href="data-strategy-intake.html" class="btn">Open Form</a>
+      </div>
+
+      <!-- AI Strategy -->
+      <div class="card">
+        <div class="card-title">AI Strategy Intake</div>
+        <div class="card-text">
+          Capture opportunities for AI across products, services, and internal processes.
+        </div>
+        <a href="ai-strategy-intake.html" class="btn">Open Form</a>
+      </div>
+
+      <!-- KPI Alignment -->
+      <div class="card">
+        <div class="card-title">KPI & Metrics Alignment</div>
+        <div class="card-text">
+          Align on metric definitions, ownership, trust issues, and visibility gaps.
+        </div>
+        <a href="kpi-intake.html" class="btn">Open Form</a>
+      </div>
+
+      <!-- Analytics Maturity -->
+      <div class="card">
+        <div class="card-title">Analytics Maturity Assessment</div>
+        <div class="card-text">
+          Measure maturity across reporting, systems, governance, and predictive analytics.
+        </div>
+        <a href="analytics-maturity.html" class="btn">Open Form</a>
+      </div>
+
+      <!-- Data Quality -->
+      <div class="card">
+        <div class="card-title">Data Quality & Reliability Assessment</div>
+        <div class="card-text">
+          Identify data issues, pipeline failures, manual work, and reliability risks.
+        </div>
+        <a href="data-quality-intake.html" class="btn">Open Form</a>
+      </div>
+
+      <!-- Governance -->
+      <div class="card">
+        <div class="card-title">Data Governance Readiness</div>
+        <div class="card-text">
+          Evaluate ownership clarity, access controls, compliance, and metadata standards.
+        </div>
+        <a href="governance-intake.html" class="btn">Open Form</a>
+      </div>
+
+      <!-- Leadership Alignment -->
+      <div class="card">
+        <div class="card-title">Leadership Alignment Survey</div>
+        <div class="card-text">
+          Capture executive priorities, friction points, concerns, and expectations ahead of workshops.
+        </div>
+        <a href="leadership-alignment.html" class="btn">Open Form</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
