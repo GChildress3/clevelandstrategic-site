@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cleveland Strategic | ROI & Value Opportunity Intake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Identify manual work, cost leakage, and value opportunities for data and AI initiatives.">
+  <style>
+    :root{--bg-gray:#f3f4f6;--text-main:#111827;--text-muted:#6b7280;--accent:#2563eb;
+      --accent-soft:#e0ecff;--border-soft:#e5e7eb;--shadow-soft:0 10px 25px rgba(15,23,42,0.08);}
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:radial-gradient(circle at top,#0f172a 0,#020617 45%,#020617 100%);color:var(--text-main);}
+    .page{min-height:100vh;display:flex;justify-content:center;padding:32px 16px;}
+    .card{width:100%;max-width:980px;background:#f3f4f6;border-radius:24px;box-shadow:var(--shadow-soft);overflow:hidden;}
+    header{padding:20px 28px 16px;background:linear-gradient(135deg,#020617,#111827);color:#f9fafb;
+      display:flex;align-items:center;gap:16px;}
+    header img{height:40px;object-fit:contain;}
+    header h1{margin:0;font-size:1.35rem;}
+    header p{margin:4px 0 0;font-size:0.85rem;color:#e5e7eb;}
+    main{padding:20px 24px 24px;}
+    .section-title{font-size:0.95rem;font-weight:600;margin:18px 0 6px;}
+    .section-hint{font-size:0.8rem;color:var(--text-muted);margin-bottom:8px;}
+    .two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 16px;}
+    label{display:block;font-size:0.8rem;font-weight:600;margin-bottom:4px;}
+    input[type="text"],textarea{
+      width:100%;border-radius:10px;border:1px solid var(--border-soft);
+      padding:8px 10px;font-size:0.85rem;font-family:inherit;resize:vertical;min-height:36px;}
+    textarea{min-height:70px;}
+    .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--accent-soft);
+      border-radius:999px;font-size:0.72rem;color:#1d4ed8;margin-bottom:4px;}
+    .actions{margin-top:20px;display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;}
+    button[type="submit"]{border:none;border-radius:999px;padding:9px 18px;font-size:0.85rem;font-weight:600;
+      cursor:pointer;background:var(--accent);color:#f9fafb;}
+    button[type="submit"]:hover{background:#1d4ed8;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+<div class="page">
+  <div class="card">
+    <header>
+      <img src="Cleveland Strategic Logo.png" alt="">
+      <div>
+        <h1>ROI & Value Opportunity Intake</h1>
+        <p>Document manual work, inefficiencies, and value opportunities for data-driven improvement.</p>
+      </div>
+    </header>
+    <main>
+      <form id="roi-form">
+        <div class="badge">Context</div>
+        <div class="two-col">
+          <div>
+            <label for="company">Organization</label>
+            <input id="company" name="company" type="text" required>
+          </div>
+          <div>
+            <label for="contact">Primary contact</label>
+            <input id="contact" name="contact" type="text">
+          </div>
+          <div>
+            <label for="area">Business area / process</label>
+            <input id="area" name="area" type="text" placeholder="e.g., Claims intake, billing, marketing">
+          </div>
+          <div>
+            <label for="volume">Approximate volume (transactions / period)</label>
+            <input id="volume" name="volume" type="text">
+          </div>
+        </div>
+
+        <p class="section-title">Manual steps & effort</p>
+        <p class="section-hint">Where people manually move data, reconcile, or fix things.</p>
+        <textarea id="manual_steps" name="manual_steps"></textarea>
+
+        <p class="section-title">Common delays or bottlenecks</p>
+        <textarea id="delays" name="delays"></textarea>
+
+        <p class="section-title">Errors, rework, or leakage</p>
+        <p class="section-hint">Include any known error rates or financial leakage.</p>
+        <textarea id="errors" name="errors"></textarea>
+
+        <p class="section-title">Customer or partner impact</p>
+        <textarea id="customer_impact" name="customer_impact"></textarea>
+
+        <p class="section-title">Rough time spent per period</p>
+        <p class="section-hint">Estimate hours per week/month across the team.</p>
+        <textarea id="time_spent" name="time_spent"></textarea>
+
+        <p class="section-title">Compliance or risk implications</p>
+        <textarea id="risk" name="risk"></textarea>
+
+        <p class="section-title">Desired future state</p>
+        <p class="section-hint">What “good” would look like if this were automated and data-driven.</p>
+        <textarea id="future_state" name="future_state"></textarea>
+
+        <p class="section-title">Additional context or notes</p>
+        <textarea id="notes" name="notes"></textarea>
+
+        <div class="actions">
+          <button type="submit">Download Excel Summary</button>
+        </div>
+      </form>
+    </main>
+  </div>
+</div>
+
+<script>
+  document.getElementById("roi-form").addEventListener("submit", function(e){
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const fields = [
+      ["Organization","company"],
+      ["Primary Contact","contact"],
+      ["Business Area / Process","area"],
+      ["Approximate Volume","volume"],
+      ["Manual Steps & Effort","manual_steps"],
+      ["Delays or Bottlenecks","delays"],
+      ["Errors / Rework / Leakage","errors"],
+      ["Customer or Partner Impact","customer_impact"],
+      ["Rough Time Spent per Period","time_spent"],
+      ["Compliance or Risk Implications","risk"],
+      ["Desired Future State","future_state"],
+      ["Additional Notes","notes"]
+    ];
+    const headerRow = fields.map(f=>f[0]);
+    const valueRow  = fields.map(f=>fd.get(f[1])||"");
+    const ws = XLSX.utils.aoa_to_sheet([headerRow,valueRow]);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb,ws,"ROI Intake");
+    XLSX.writeFile(wb,"ClevelandStrategic_ROI_Value_Opportunity_Intake.xlsx");
+    alert("Excel file downloaded.");
+    e.target.reset();
+  });
+</script>
+</body>
+</html>
