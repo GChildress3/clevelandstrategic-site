@@ -5,111 +5,454 @@
   <title>Cleveland Strategic | AI Use Case Readiness Intake</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Capture key characteristics of AI use cases to assess readiness and priority.">
+
   <style>
-    :root{--bg-gray:#f3f4f6;--text-main:#111827;--text-muted:#6b7280;--accent:#2563eb;
-      --accent-soft:#e0ecff;--border-soft:#e5e7eb;--shadow-soft:0 10px 25px rgba(15,23,42,0.08);}
-    *{box-sizing:border-box;}
-    body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:radial-gradient(circle at top,#0f172a 0,#020617 45%,#020617 100%);color:var(--text-main);}
-    .page{min-height:100vh;display:flex;justify-content:center;padding:32px 16px;}
-    .card{width:100%;max-width:980px;background:#f3f4f6;border-radius:24px;box-shadow:var(--shadow-soft);overflow:hidden;}
-    header{padding:20px 28px 16px;background:linear-gradient(135deg,#020617,#111827);color:#f9fafb;
-      display:flex;align-items:center;gap:16px;}
-    header img{height:40px;object-fit:contain;}
-    header h1{margin:0;font-size:1.35rem;}
-    header p{margin:4px 0 0;font-size:0.85rem;color:#e5e7eb;}
-    main{padding:20px 24px 24px;}
-    .section-title{font-size:0.95rem;font-weight:600;margin:18px 0 6px;}
-    .section-hint{font-size:0.8rem;color:var(--text-muted);margin-bottom:8px;}
-    .two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 16px;}
-    label{display:block;font-size:0.8rem;font-weight:600;margin-bottom:4px;}
-    input[type="text"],textarea{
-      width:100%;border-radius:10px;border:1px solid var(--border-soft);
-      padding:8px 10px;font-size:0.85rem;font-family:inherit;resize:vertical;min-height:36px;}
-    textarea{min-height:70px;}
-    .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--accent-soft);
-      border-radius:999px;font-size:0.72rem;color:#1d4ed8;margin-bottom:4px;}
-    .actions{margin-top:20px;display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;}
-    button[type="submit"]{border:none;border-radius:999px;padding:9px 18px;font-size:0.85rem;font-weight:600;
-      cursor:pointer;background:var(--accent);color:#f9fafb;}
-    button[type="submit"]:hover{background:#1d4ed8;}
+    :root {
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #e0ecff;
+      --border: #e5e7eb;
+      --radius-lg: 20px;
+      --radius-md: 10px;
+      --shadow-soft: 0 12px 28px rgba(15, 23, 42, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #e5edff 0, var(--bg) 52%, #e5e7eb 100%);
+      color: var(--text-main);
+    }
+
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 24px 12px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 960px;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 28px 24px 32px;
+    }
+
+    @media (min-width: 768px) {
+      .card {
+        padding: 32px 40px 40px;
+      }
+    }
+
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .logo-wrap img {
+      max-width: 220px;
+      height: auto;
+      display: inline-block;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 6px;
+      font-size: 1.55rem;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 22px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
+
+    .pill span.icon {
+      font-size: 0.9rem;
+    }
+
+    form {
+      margin-top: 6px;
+    }
+
+    .section {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      padding: 14px 14px 18px;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .section {
+        padding: 18px 20px 22px;
+        margin-bottom: 18px;
+      }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .section-tag {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .help-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .field {
+      margin-bottom: 9px;
+    }
+
+    .field-inline {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .field-inline {
+        flex-direction: row;
+      }
+      .field-inline .field {
+        flex: 1;
+        margin-bottom: 0;
+      }
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .required::after {
+      content: " *";
+      color: #dc2626;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 36px;
+      background-color: #ffffff;
+    }
+
+    textarea {
+      min-height: 70px;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+
+    .footer-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    .actions {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .btn-primary {
+      border: none;
+      border-radius: 999px;
+      padding: 9px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(to right, #2563eb, #1d4ed8);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(0.97);
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 8px 15px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border);
+      background-color: #ffffff;
+      color: var(--text-muted);
+      cursor: default;
+    }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body>
-<div class="page">
+<div class="page-wrap">
   <div class="card">
-    <header>
-      <img src="Cleveland Strategic Logo.png" alt="">
-      <div>
-        <h1>AI Use Case Readiness Intake</h1>
-        <p>Capture the information needed to score and prioritize AI use cases.</p>
-      </div>
-    </header>
-    <main>
-      <form id="ai-usecase-form">
-        <div class="badge">Use case overview</div>
-        <div class="two-col">
-          <div>
-            <label for="company">Organization</label>
+
+    <!-- Logo -->
+    <div class="logo-wrap">
+      <img src="Cleveland Strategic Logo.png" alt="Cleveland Strategic Logo">
+    </div>
+
+    <div class="pill">
+      <span class="icon">🤖</span>
+      <span>AI Use Case Readiness</span>
+    </div>
+
+    <div class="title">AI Use Case Readiness Intake</div>
+    <div class="subtitle">
+      Capture the information needed to score and prioritize AI use cases.
+    </div>
+
+    <form id="ai-usecase-form">
+      <!-- Section 1: Use case overview -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Use case overview</div>
+          <div class="section-tag">Section 1</div>
+        </div>
+        <p class="help-text">
+          High-level context about the organization, use case, and accountable owners.
+        </p>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="company" class="required">Organization</label>
             <input id="company" name="company" type="text" required>
           </div>
-          <div>
+          <div class="field">
             <label for="usecase_name">Use case name</label>
             <input id="usecase_name" name="usecase_name" type="text" placeholder="e.g., Churn prediction, claim triage">
           </div>
-          <div>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
             <label for="sponsor">Business sponsor</label>
             <input id="sponsor" name="sponsor" type="text">
           </div>
-          <div>
+          <div class="field">
             <label for="owner">Product / data owner</label>
             <input id="owner" name="owner" type="text">
           </div>
         </div>
+      </div>
 
-        <p class="section-title">Problem statement & objective</p>
-        <textarea id="objective" name="objective"></textarea>
-
-        <p class="section-title">Primary users & workflow</p>
-        <textarea id="users" name="users"></textarea>
-
-        <p class="section-title">Available data for this use case</p>
-        <p class="section-hint">Key tables, logs, events, signals; current storage location.</p>
-        <textarea id="data_available" name="data_available"></textarea>
-
-        <p class="section-title">Data quality & coverage</p>
-        <p class="section-hint">Any known gaps, sparsity, or label quality concerns.</p>
-        <textarea id="data_quality" name="data_quality"></textarea>
-
-        <p class="section-title">Model / logic complexity</p>
-        <p class="section-hint">Is this a straightforward classification/regression, or more advanced?</p>
-        <textarea id="complexity" name="complexity"></textarea>
-
-        <p class="section-title">Technical integration points</p>
-        <p class="section-hint">Where predictions would be consumed (apps, APIs, batch processes).</p>
-        <textarea id="integration" name="integration"></textarea>
-
-        <p class="section-title">Ethical, legal, or regulatory considerations</p>
-        <textarea id="risk" name="risk"></textarea>
-
-        <p class="section-title">Expected business value</p>
-        <p class="section-hint">Rough impact on revenue, cost, risk, or customer experience.</p>
-        <textarea id="value" name="value"></textarea>
-
-        <p class="section-title">Time sensitivity & priority</p>
-        <textarea id="priority" name="priority"></textarea>
-
-        <p class="section-title">Dependencies / prerequisites</p>
-        <textarea id="dependencies" name="dependencies"></textarea>
-
-        <div class="actions">
-          <button type="submit">Download Excel Summary</button>
+      <!-- Section 2: Problem statement & objective -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Problem statement & objective</div>
+          <div class="section-tag">Section 2</div>
         </div>
-      </form>
-    </main>
+        <p class="help-text">
+          What problem are you trying to solve, and how will success be measured?
+        </p>
+        <div class="field">
+          <label for="objective">Describe the problem and objective</label>
+          <textarea id="objective" name="objective"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 3: Primary users & workflow -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Primary users & workflow</div>
+          <div class="section-tag">Section 3</div>
+        </div>
+        <p class="help-text">
+          Who will use this capability, and how does it fit into their day-to-day work?
+        </p>
+        <div class="field">
+          <label for="users">Primary users and how they will use the model</label>
+          <textarea id="users" name="users"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 4: Available data -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Available data for this use case</div>
+          <div class="section-tag">Section 4</div>
+        </div>
+        <p class="help-text">
+          Key tables, logs, events, signals, and where they live today.
+        </p>
+        <div class="field">
+          <label for="data_available">Describe the data available for this use case</label>
+          <textarea id="data_available" name="data_available"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 5: Data quality & coverage -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Data quality & coverage</div>
+          <div class="section-tag">Section 5</div>
+        </div>
+        <p class="help-text">
+          Known gaps, sparsity, label issues, or historical depth constraints.
+        </p>
+        <div class="field">
+          <label for="data_quality">Summarize data quality and coverage concerns</label>
+          <textarea id="data_quality" name="data_quality"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 6: Model / logic complexity -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Model / logic complexity</div>
+          <div class="section-tag">Section 6</div>
+        </div>
+        <p class="help-text">
+          Is this a straightforward classification or regression, or something more advanced?
+        </p>
+        <div class="field">
+          <label for="complexity">Describe expected model or logic complexity</label>
+          <textarea id="complexity" name="complexity"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 7: Technical integration points -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Technical integration points</div>
+          <div class="section-tag">Section 7</div>
+        </div>
+        <p class="help-text">
+          Where predictions will be consumed (apps, APIs, batch processes, workflows).
+        </p>
+        <div class="field">
+          <label for="integration">How and where predictions will be integrated</label>
+          <textarea id="integration" name="integration"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 8: Ethical, legal, or regulatory considerations -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Ethical, legal, or regulatory considerations</div>
+          <div class="section-tag">Section 8</div>
+        </div>
+        <p class="help-text">
+          Fairness, bias, explainability, consent, or compliance questions that may arise.
+        </p>
+        <div class="field">
+          <label for="risk">List key ethical, legal, or regulatory considerations</label>
+          <textarea id="risk" name="risk"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 9: Expected business value -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Expected business value</div>
+          <div class="section-tag">Section 9</div>
+        </div>
+        <p class="help-text">
+          Rough impact on revenue, cost, risk reduction, or customer experience.
+        </p>
+        <div class="field">
+          <label for="value">Describe expected impact or value</label>
+          <textarea id="value" name="value"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 10: Time sensitivity & priority -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Time sensitivity & priority</div>
+          <div class="section-tag">Section 10</div>
+        </div>
+        <div class="field">
+          <label for="priority">How urgent is this use case and why?</label>
+          <textarea id="priority" name="priority"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 11: Dependencies / prerequisites -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Dependencies / prerequisites</div>
+          <div class="section-tag">Section 11</div>
+        </div>
+        <p class="help-text">
+          Data, technology, process, or change management dependencies.
+        </p>
+        <div class="field">
+          <label for="dependencies">List key dependencies or prerequisites</label>
+          <textarea id="dependencies" name="dependencies"></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="btn-secondary">Fields marked with * are required</div>
+        <button type="submit" class="btn-primary">Download Excel Summary</button>
+      </div>
+
+      <div class="footer-note">
+        Cleveland Strategic · Fractional Head of Data and Analytics
+      </div>
+    </form>
   </div>
 </div>
+
+<!-- SheetJS for Excel generation -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
 <script>
   document.getElementById("ai-usecase-form").addEventListener("submit", function(e){
@@ -131,12 +474,12 @@
       ["Time Sensitivity & Priority","priority"],
       ["Dependencies / Prerequisites","dependencies"]
     ];
-    const headerRow = fields.map(f=>f[0]);
-    const valueRow  = fields.map(f=>fd.get(f[1])||"");
-    const ws = XLSX.utils.aoa_to_sheet([headerRow,valueRow]);
+    const headerRow = fields.map(f => f[0]);
+    const valueRow  = fields.map(f => fd.get(f[1]) || "");
+    const ws = XLSX.utils.aoa_to_sheet([headerRow, valueRow]);
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb,ws,"AI Use Case");
-    XLSX.writeFile(wb,"ClevelandStrategic_AI_Use_Case_Readiness.xlsx");
+    XLSX.utils.book_append_sheet(wb, ws, "AI Use Case");
+    XLSX.writeFile(wb, "ClevelandStrategic_AI_Use_Case_Readiness.xlsx");
     alert("Excel file downloaded.");
     e.target.reset();
   });
