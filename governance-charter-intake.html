@@ -4,130 +4,457 @@
   <meta charset="UTF-8">
   <title>Cleveland Strategic | Data Governance Charter Intake</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Capture roles, responsibilities, and scope for a practical data governance charter.">
+
   <style>
-    :root{--bg-gray:#f3f4f6;--text-main:#111827;--text-muted:#6b7280;--accent:#2563eb;
-      --accent-soft:#e0ecff;--border-soft:#e5e7eb;--shadow-soft:0 10px 25px rgba(15,23,42,0.08);}
-    *{box-sizing:border-box;}
-    body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:radial-gradient(circle at top,#0f172a 0,#020617 45%,#020617 100%);color:var(--text-main);}
-    .page{min-height:100vh;display:flex;justify-content:center;padding:32px 16px;}
-    .card{width:100%;max-width:980px;background:#f3f4f6;border-radius:24px;box-shadow:var(--shadow-soft);overflow:hidden;}
-    header{padding:20px 28px 16px;background:linear-gradient(135deg,#020617,#111827);color:#f9fafb;
-      display:flex;align-items:center;gap:16px;}
-    header img{height:40px;object-fit:contain;}
-    header h1{margin:0;font-size:1.35rem;}
-    header p{margin:4px 0 0;font-size:0.85rem;color:#e5e7eb;}
-    main{padding:20px 24px 24px;}
-    .section-title{font-size:0.95rem;font-weight:600;margin:18px 0 6px;}
-    .section-hint{font-size:0.8rem;color:var(--text-muted);margin-bottom:8px;}
-    .two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 16px;}
-    label{display:block;font-size:0.8rem;font-weight:600;margin-bottom:4px;}
-    input[type="text"],textarea{
-      width:100%;border-radius:10px;border:1px solid var(--border-soft);
-      padding:8px 10px;font-size:0.85rem;font-family:inherit;resize:vertical;min-height:36px;}
-    textarea{min-height:70px;}
-    .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--accent-soft);
-      border-radius:999px;font-size:0.72rem;color:#1d4ed8;margin-bottom:4px;}
-    .actions{margin-top:20px;display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;}
-    button[type="submit"]{border:none;border-radius:999px;padding:9px 18px;font-size:0.85rem;font-weight:600;
-      cursor:pointer;background:var(--accent);color:#f9fafb;}
-    button[type="submit"]:hover{background:#1d4ed8;}
+    :root {
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #e0ecff;
+      --border: #e5e7eb;
+      --radius-lg: 20px;
+      --radius-md: 10px;
+      --shadow-soft: 0 12px 28px rgba(15, 23, 42, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #e5edff 0, var(--bg) 52%, #e5e7eb 100%);
+      color: var(--text-main);
+    }
+
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 24px 12px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 960px;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 28px 24px 32px;
+    }
+
+    @media (min-width: 768px) {
+      .card {
+        padding: 32px 40px 40px;
+      }
+    }
+
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .logo-wrap img {
+      max-width: 220px;
+      height: auto;
+      display: inline-block;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 6px;
+      font-size: 1.55rem;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 22px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
+
+    .pill span.icon { font-size: 0.9rem; }
+
+    form { margin-top: 6px; }
+
+    .section {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      padding: 14px 14px 18px;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .section {
+        padding: 18px 20px 22px;
+        margin-bottom: 18px;
+      }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .section-tag {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .help-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .field { margin-bottom: 9px; }
+
+    .field-inline {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .field-inline {
+        flex-direction: row;
+      }
+      .field-inline .field {
+        flex: 1;
+        margin-bottom: 0;
+      }
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .required::after {
+      content: " *";
+      color: #dc2626;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 36px;
+      background-color: #ffffff;
+    }
+
+    textarea { min-height: 70px; }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+
+    .footer-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    .actions {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .btn-primary {
+      border: none;
+      border-radius: 999px;
+      padding: 9px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(to right, #2563eb, #1d4ed8);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover { filter: brightness(0.97); }
+
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 8px 15px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border);
+      background-color: #ffffff;
+      color: var(--text-muted);
+      cursor: default;
+    }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body>
-<div class="page">
+<div class="page-wrap">
   <div class="card">
-    <header>
-      <img src="Cleveland Strategic Logo.png" alt="">
-      <div>
-        <h1>Data Governance Charter Intake</h1>
-        <p>Define scope, roles, and operating model for your data governance program.</p>
+    <div class="logo-wrap">
+      <img src="Cleveland Strategic Logo.png">
+    </div>
+
+    <div class="pill">
+      <span class="icon">📜</span>
+      <span>Data governance charter</span>
+    </div>
+
+    <div class="title">Data Governance Charter Intake</div>
+    <div class="subtitle">
+      Define objectives, scope, roles, and decision rights for your data governance program.
+    </div>
+
+    <form id="intake-form">
+      <!-- Section 1 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Organization & Contact</div>
+          <div class="section-tag">Section 1</div>
+        </div>
+        <p class="help-text">
+          Who owns this charter and how do we reach them?
+        </p>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="org" class="required">Organization</label>
+            <input type="text" id="org" name="org" required>
+          </div>
+          <div class="field">
+            <label for="contact_name" class="required">Primary Contact Name</label>
+            <input type="text" id="contact_name" name="contact_name" required>
+          </div>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="role" class="required">Role / Title</label>
+            <input type="text" id="role" name="role" required>
+          </div>
+          <div class="field">
+            <label for="email" class="required">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
       </div>
-    </header>
-    <main>
-      <form id="gov-charter-form">
-        <div class="badge">Overview</div>
-        <div class="two-col">
-          <div>
-            <label for="company">Organization</label>
-            <input id="company" name="company" type="text" required>
-          </div>
-          <div>
-            <label for="sponsor">Executive sponsor</label>
-            <input id="sponsor" name="sponsor" type="text">
-          </div>
-          <div>
-            <label for="governance_lead">Governance lead / owner</label>
-            <input id="governance_lead" name="governance_lead" type="text">
-          </div>
-          <div>
-            <label for="domains">Initial data domains in scope</label>
-            <input id="domains" name="domains" type="text" placeholder="Customer, Finance, Product, etc.">
-          </div>
+
+      <!-- Section 2 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Objectives & Scope</div>
+          <div class="section-tag">Section 2</div>
+        </div>
+        <p class="help-text">
+          What problems is governance meant to solve, and where will it apply first?
+        </p>
+
+        <div class="field">
+          <label for="objectives" class="required">
+            Primary objectives for data governance
+          </label>
+          <textarea id="objectives" name="objectives" required></textarea>
         </div>
 
-        <p class="section-title">Goal of data governance</p>
-        <textarea id="goal" name="goal"></textarea>
-
-        <p class="section-title">Drivers & pain points</p>
-        <textarea id="drivers" name="drivers"></textarea>
-
-        <p class="section-title">Key roles & responsibilities</p>
-        <p class="section-hint">Data owners, stewards, council members, working groups.</p>
-        <textarea id="roles" name="roles"></textarea>
-
-        <p class="section-title">Decision rights & escalation paths</p>
-        <textarea id="decision_rights" name="decision_rights"></textarea>
-
-        <p class="section-title">Policies & standards to establish</p>
-        <p class="section-hint">Access, quality, retention, classification, lineage, glossary, etc.</p>
-        <textarea id="policies" name="policies"></textarea>
-
-        <p class="section-title">Operating cadence</p>
-        <p class="section-hint">Council meetings, working sessions, review cycles.</p>
-        <textarea id="cadence" name="cadence"></textarea>
-
-        <p class="section-title">Tooling & enablement needs</p>
-        <textarea id="tooling" name="tooling"></textarea>
-
-        <p class="section-title">Success measures for governance</p>
-        <textarea id="success" name="success"></textarea>
-
-        <div class="actions">
-          <button type="submit">Download Excel Summary</button>
+        <div class="field">
+          <label for="scope_domains" class="required">
+            In-scope data domains, systems, or business areas
+          </label>
+          <textarea id="scope_domains" name="scope_domains" required></textarea>
         </div>
-      </form>
-    </main>
+
+        <div class="field">
+          <label for="out_of_scope">
+            Known out-of-scope areas (for now)
+          </label>
+          <textarea id="out_of_scope" name="out_of_scope"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Roles, Forums & Decision Rights</div>
+          <div class="section-tag">Section 3</div>
+        </div>
+        <p class="help-text">
+          How decisions get made, who is accountable, and how people participate.
+        </p>
+
+        <div class="field">
+          <label for="decision_rights" class="required">
+            Key governance decisions and who owns them
+          </label>
+          <textarea id="decision_rights" name="decision_rights" required
+                    placeholder="E.g. approving new KPIs, defining master data, granting data access."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="stewards">
+            Data owners / stewards and their responsibilities
+          </label>
+          <textarea id="stewards" name="stewards"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="councils">
+            Governance councils, committees, or working groups
+          </label>
+          <textarea id="councils" name="councils"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="escalation">
+            Escalation paths for issues or policy exceptions
+          </label>
+          <textarea id="escalation" name="escalation"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Policies, Standards & Controls</div>
+          <div class="section-tag">Section 4</div>
+        </div>
+
+        <div class="field">
+          <label for="key_policies">
+            Existing or planned policies and standards
+          </label>
+          <textarea id="key_policies" name="key_policies"
+                    placeholder="Quality rules, access policies, retention, classification, etc."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="controls">
+            How compliance to policies will be monitored and enforced
+          </label>
+          <textarea id="controls" name="controls"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="metrics">
+            How you will measure governance effectiveness (KPIs)
+          </label>
+          <textarea id="metrics" name="metrics"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 5 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Risks, Dependencies & Timeline</div>
+          <div class="section-tag">Section 5</div>
+        </div>
+
+        <div class="field">
+          <label for="risks">
+            Key risks or obstacles to a functioning governance program
+          </label>
+          <textarea id="risks" name="risks"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="dependencies">
+            Dependencies on other initiatives or teams
+          </label>
+          <textarea id="dependencies" name="dependencies"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="timeline">
+            Initial rollout timeline or milestones
+          </label>
+          <textarea id="timeline" name="timeline"></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="btn-secondary">Fields marked with * are required</div>
+        <button type="submit" class="btn-primary">Download Responses as Excel</button>
+      </div>
+
+      <div class="footer-note">
+        Cleveland Strategic · Data Governance Charter
+      </div>
+    </form>
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script>
-  document.getElementById("gov-charter-form").addEventListener("submit", function(e){
+  document.getElementById("intake-form").addEventListener("submit", function (e) {
     e.preventDefault();
     const fd = new FormData(e.target);
+
     const fields = [
-      ["Organization","company"],
-      ["Executive Sponsor","sponsor"],
-      ["Governance Lead / Owner","governance_lead"],
-      ["Initial Data Domains in Scope","domains"],
-      ["Goal of Data Governance","goal"],
-      ["Drivers & Pain Points","drivers"],
-      ["Key Roles & Responsibilities","roles"],
-      ["Decision Rights & Escalation Paths","decision_rights"],
-      ["Policies & Standards to Establish","policies"],
-      ["Operating Cadence","cadence"],
-      ["Tooling & Enablement Needs","tooling"],
-      ["Success Measures","success"]
+      ["Organization", "org"],
+      ["Primary Contact Name", "contact_name"],
+      ["Role / Title", "role"],
+      ["Email", "email"],
+      ["Governance Objectives", "objectives"],
+      ["In-scope Domains / Systems / Areas", "scope_domains"],
+      ["Out-of-scope (for now)", "out_of_scope"],
+      ["Key Governance Decisions & Owners", "decision_rights"],
+      ["Data Owners / Stewards & Responsibilities", "stewards"],
+      ["Councils / Committees / Working Groups", "councils"],
+      ["Escalation Paths", "escalation"],
+      ["Policies & Standards", "key_policies"],
+      ["Controls & Monitoring Approach", "controls"],
+      ["Governance KPIs / Metrics", "metrics"],
+      ["Risks & Obstacles", "risks"],
+      ["Dependencies", "dependencies"],
+      ["Timeline / Milestones", "timeline"]
     ];
-    const headerRow = fields.map(f=>f[0]);
-    const valueRow  = fields.map(f=>fd.get(f[1])||"");
-    const ws = XLSX.utils.aoa_to_sheet([headerRow,valueRow]);
+
+    const headerRow = fields.map(([label]) => label);
+    const valuesRow = fields.map(([_, key]) => fd.get(key) || "");
+
+    const ws = XLSX.utils.aoa_to_sheet([headerRow, valuesRow]);
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb,ws,"Gov Charter");
-    XLSX.writeFile(wb,"ClevelandStrategic_Governance_Charter_Intake.xlsx");
-    alert("Excel file downloaded.");
+    XLSX.utils.book_append_sheet(wb, ws, "Governance Charter");
+
+    XLSX.writeFile(wb, "ClevelandStrategic_Governance_Charter_Intake.xlsx");
+
+    alert("Thank you! Your responses have been downloaded as an Excel file.");
     e.target.reset();
   });
 </script>
