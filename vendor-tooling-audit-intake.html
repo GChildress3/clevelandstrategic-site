@@ -5,107 +5,430 @@
   <title>Cleveland Strategic | Vendor & Tooling Audit Intake</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Capture data and analytics tools, vendors, and contracts for consolidation and cost optimization.">
+
   <style>
-    :root{--bg-gray:#f3f4f6;--text-main:#111827;--text-muted:#6b7280;--accent:#2563eb;
-      --accent-soft:#e0ecff;--border-soft:#e5e7eb;--shadow-soft:0 10px 25px rgba(15,23,42,0.08);}
-    *{box-sizing:border-box;}
-    body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:radial-gradient(circle at top,#0f172a 0,#020617 45%,#020617 100%);color:var(--text-main);}
-    .page{min-height:100vh;display:flex;justify-content:center;padding:32px 16px;}
-    .card{width:100%;max-width:980px;background:#f3f4f6;border-radius:24px;box-shadow:var(--shadow-soft);overflow:hidden;}
-    header{padding:20px 28px 16px;background:linear-gradient(135deg,#020617,#111827);color:#f9fafb;
-      display:flex;align-items:center;gap:16px;}
-    header img{height:40px;object-fit:contain;}
-    header h1{margin:0;font-size:1.35rem;}
-    header p{margin:4px 0 0;font-size:0.85rem;color:#e5e7eb;}
-    main{padding:20px 24px 24px;}
-    .section-title{font-size:0.95rem;font-weight:600;margin:18px 0 6px;}
-    .section-hint{font-size:0.8rem;color:var(--text-muted);margin-bottom:8px;}
-    .two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 16px;}
-    label{display:block;font-size:0.8rem;font-weight:600;margin-bottom:4px;}
-    input[type="text"],textarea{
-      width:100%;border-radius:10px;border:1px solid var(--border-soft);
-      padding:8px 10px;font-size:0.85rem;font-family:inherit;resize:vertical;min-height:36px;}
-    textarea{min-height:70px;}
-    .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--accent-soft);
-      border-radius:999px;font-size:0.72rem;color:#1d4ed8;margin-bottom:4px;}
-    .actions{margin-top:20px;display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;}
-    button[type="submit"]{border:none;border-radius:999px;padding:9px 18px;font-size:0.85rem;font-weight:600;
-      cursor:pointer;background:var(--accent);color:#f9fafb;}
-    button[type="submit"]:hover{background:#1d4ed8;}
+    :root {
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #e0ecff;
+      --border: #e5e7eb;
+      --radius-lg: 20px;
+      --radius-md: 10px;
+      --shadow-soft: 0 12px 28px rgba(15, 23, 42, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #e5edff 0, var(--bg) 52%, #e5e7eb 100%);
+      color: var(--text-main);
+    }
+
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 24px 12px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 960px;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 28px 24px 32px;
+    }
+
+    @media (min-width: 768px) {
+      .card {
+        padding: 32px 40px 40px;
+      }
+    }
+
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .logo-wrap img {
+      max-width: 220px;
+      height: auto;
+      display: inline-block;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 6px;
+      font-size: 1.55rem;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 22px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
+
+    .pill span.icon {
+      font-size: 0.9rem;
+    }
+
+    form {
+      margin-top: 6px;
+    }
+
+    .section {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      padding: 14px 14px 18px;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .section {
+        padding: 18px 20px 22px;
+        margin-bottom: 18px;
+      }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .section-tag {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .help-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .field {
+      margin-bottom: 9px;
+    }
+
+    .field-inline {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .field-inline {
+        flex-direction: row;
+      }
+      .field-inline .field {
+        flex: 1;
+        margin-bottom: 0;
+      }
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .required::after {
+      content: " *";
+      color: #dc2626;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 36px;
+      background-color: #ffffff;
+    }
+
+    textarea {
+      min-height: 70px;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+
+    .footer-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    .actions {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .btn-primary {
+      border: none;
+      border-radius: 999px;
+      padding: 9px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(to right, #2563eb, #1d4ed8);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(0.97);
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 8px 15px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border);
+      background-color: #ffffff;
+      color: var(--text-muted);
+      cursor: default;
+    }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body>
-<div class="page">
+<div class="page-wrap">
   <div class="card">
-    <header>
-      <img src="Cleveland Strategic Logo.png" alt="">
-      <div>
-        <h1>Vendor & Tooling Audit Intake</h1>
-        <p>Inventory data and analytics tools, vendors, and contracts for optimization and consolidation.</p>
-      </div>
-    </header>
-    <main>
-      <form id="vendor-form">
-        <div class="badge">Context</div>
-        <div class="two-col">
-          <div>
-            <label for="company">Organization</label>
+
+    <!-- Logo -->
+    <div class="logo-wrap">
+      <img src="Cleveland Strategic Logo.png" alt="Cleveland Strategic Logo">
+    </div>
+
+    <div class="pill">
+      <span class="icon">🧰</span>
+      <span>Vendor & Tooling Audit</span>
+    </div>
+
+    <div class="title">Vendor & Tooling Audit Intake</div>
+    <div class="subtitle">
+      Inventory data and analytics tools, vendors, and contracts for optimization and consolidation.
+    </div>
+
+    <form id="vendor-form">
+      <!-- Section 1: Context -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Context</div>
+          <div class="section-tag">Section 1</div>
+        </div>
+        <p class="help-text">
+          High-level information about your organization, budgets, and key contacts.
+        </p>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="company" class="required">Organization</label>
             <input id="company" name="company" type="text" required>
           </div>
-          <div>
+          <div class="field">
             <label for="contact">Primary contact</label>
             <input id="contact" name="contact" type="text">
           </div>
-          <div>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
             <label for="spend_estimate">Approximate annual data/analytics tooling spend</label>
             <input id="spend_estimate" name="spend_estimate" type="text">
           </div>
-          <div>
+          <div class="field">
             <label for="budget_owner">Budget owner(s)</label>
             <input id="budget_owner" name="budget_owner" type="text">
           </div>
         </div>
+      </div>
 
-        <p class="section-title">Core data platforms & warehouses</p>
-        <textarea id="core_platforms" name="core_platforms"></textarea>
-
-        <p class="section-title">ETL / integration tooling</p>
-        <textarea id="etl_tools" name="etl_tools"></textarea>
-
-        <p class="section-title">BI & reporting tools</p>
-        <textarea id="bi_tools" name="bi_tools"></textarea>
-
-        <p class="section-title">Data science / ML / AI platforms</p>
-        <textarea id="ml_tools" name="ml_tools"></textarea>
-
-        <p class="section-title">Data governance / catalog / quality tools</p>
-        <textarea id="governance_tools" name="governance_tools"></textarea>
-
-        <p class="section-title">Overlaps and redundant tools</p>
-        <textarea id="overlap" name="overlap"></textarea>
-
-        <p class="section-title">Contract details & renewal considerations</p>
-        <p class="section-hint">Key vendors, contract terms, renewal dates, early-termination penalties.</p>
-        <textarea id="contracts" name="contracts"></textarea>
-
-        <p class="section-title">Utilization & adoption challenges</p>
-        <textarea id="utilization" name="utilization"></textarea>
-
-        <p class="section-title">Tools the team loves and wants to keep</p>
-        <textarea id="must_keep" name="must_keep"></textarea>
-
-        <p class="section-title">Tools you would retire if you could</p>
-        <textarea id="retire" name="retire"></textarea>
-
-        <div class="actions">
-          <button type="submit">Download Excel Summary</button>
+      <!-- Section 2: Core data platforms & warehouses -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Core data platforms & warehouses</div>
+          <div class="section-tag">Section 2</div>
         </div>
-      </form>
-    </main>
+        <div class="field">
+          <label for="core_platforms">List core data platforms and warehouses</label>
+          <textarea id="core_platforms" name="core_platforms"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 3: ETL / integration tooling -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">ETL / integration tooling</div>
+          <div class="section-tag">Section 3</div>
+        </div>
+        <div class="field">
+          <label for="etl_tools">ETL, ELT, and integration tools</label>
+          <textarea id="etl_tools" name="etl_tools"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 4: BI & reporting tools -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">BI & reporting tools</div>
+          <div class="section-tag">Section 4</div>
+        </div>
+        <div class="field">
+          <label for="bi_tools">BI and reporting tools in use</label>
+          <textarea id="bi_tools" name="bi_tools"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 5: Data science / ML / AI platforms -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Data science / ML / AI platforms</div>
+          <div class="section-tag">Section 5</div>
+        </div>
+        <div class="field">
+          <label for="ml_tools">Data science, ML, and AI platforms</label>
+          <textarea id="ml_tools" name="ml_tools"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 6: Data governance / catalog / quality tools -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Data governance / catalog / quality tools</div>
+          <div class="section-tag">Section 6</div>
+        </div>
+        <div class="field">
+          <label for="governance_tools">Governance, catalog, and data quality tooling</label>
+          <textarea id="governance_tools" name="governance_tools"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 7: Overlaps and redundant tools -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Overlaps and redundant tools</div>
+          <div class="section-tag">Section 7</div>
+        </div>
+        <div class="field">
+          <label for="overlap">Where tools overlap or are redundant</label>
+          <textarea id="overlap" name="overlap"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 8: Contract details & renewal considerations -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Contract details & renewal considerations</div>
+          <div class="section-tag">Section 8</div>
+        </div>
+        <p class="help-text">
+          Key vendors, contract terms, renewal dates, and any early-termination penalties.
+        </p>
+        <div class="field">
+          <label for="contracts">Summarize contracts, renewal dates, and key terms</label>
+          <textarea id="contracts" name="contracts"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 9: Utilization & adoption challenges -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Utilization & adoption challenges</div>
+          <div class="section-tag">Section 9</div>
+        </div>
+        <div class="field">
+          <label for="utilization">Describe utilization, adoption, or training challenges</label>
+          <textarea id="utilization" name="utilization"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 10: Tools the team loves and wants to keep -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Tools the team loves and wants to keep</div>
+          <div class="section-tag">Section 10</div>
+        </div>
+        <div class="field">
+          <label for="must_keep">Tools that are high value and should be retained</label>
+          <textarea id="must_keep" name="must_keep"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 11: Tools you would retire if you could -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Tools you would retire if you could</div>
+          <div class="section-tag">Section 11</div>
+        </div>
+        <div class="field">
+          <label for="retire">Tools that could be retired or replaced</label>
+          <textarea id="retire" name="retire"></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="btn-secondary">Fields marked with * are required</div>
+        <button type="submit" class="btn-primary">Download Excel Summary</button>
+      </div>
+
+      <div class="footer-note">
+        Cleveland Strategic · Fractional Head of Data and Analytics
+      </div>
+    </form>
   </div>
 </div>
+
+<!-- SheetJS for Excel generation -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
 <script>
   document.getElementById("vendor-form").addEventListener("submit", function(e){
@@ -127,12 +450,12 @@
       ["Tools to Definitely Keep","must_keep"],
       ["Tools You Would Retire","retire"]
     ];
-    const headerRow = fields.map(f=>f[0]);
-    const valueRow  = fields.map(f=>fd.get(f[1])||"");
-    const ws = XLSX.utils.aoa_to_sheet([headerRow,valueRow]);
+    const headerRow = fields.map(f => f[0]);
+    const valueRow  = fields.map(f => fd.get(f[1]) || "");
+    const ws = XLSX.utils.aoa_to_sheet([headerRow, valueRow]);
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb,ws,"Vendor Audit");
-    XLSX.writeFile(wb,"ClevelandStrategic_Vendor_Tooling_Audit_Intake.xlsx");
+    XLSX.utils.book_append_sheet(wb, ws, "Vendor Audit");
+    XLSX.writeFile(wb, "ClevelandStrategic_Vendor_Tooling_Audit_Intake.xlsx");
     alert("Excel file downloaded.");
     e.target.reset();
   });
