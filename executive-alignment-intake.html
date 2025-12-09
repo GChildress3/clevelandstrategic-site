@@ -7,330 +7,463 @@
 
   <style>
     :root {
-      --bg: #e5ecff;
+      --bg: #f3f4f6;
       --card-bg: #ffffff;
       --text-main: #111827;
       --text-muted: #6b7280;
       --accent: #2563eb;
       --accent-soft: #e0ecff;
-      --border-soft: #e5e7eb;
-      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
-      --radius-lg: 18px;
+      --border: #e5e7eb;
+      --radius-lg: 20px;
       --radius-md: 10px;
+      --shadow-soft: 0 12px 28px rgba(15, 23, 42, 0.10);
     }
+
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #eef2ff 0, #e5ecff 45%, #dbe4ff 100%);
+      background: radial-gradient(circle at top, #e5edff 0, var(--bg) 52%, #e5e7eb 100%);
       color: var(--text-main);
     }
-    .page {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 32px 16px 48px 16px;
+
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 24px 12px;
     }
+
     .card {
+      width: 100%;
+      max-width: 960px;
       background: var(--card-bg);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border-soft);
-      padding: 32px 26px 28px 26px;
+      padding: 28px 24px 32px;
     }
+
+    @media (min-width: 768px) {
+      .card {
+        padding: 32px 40px 40px;
+      }
+    }
+
     .logo-wrap {
       text-align: center;
       margin-bottom: 18px;
     }
+
     .logo-wrap img {
-      height: 88px;
-      width: auto;
+      max-width: 220px;
+      height: auto;
+      display: inline-block;
     }
-    .badge {
+
+    .title {
+      text-align: center;
+      margin-bottom: 6px;
+      font-size: 1.55rem;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 22px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.8rem;
-      padding: 5px 10px;
+      padding: 5px 11px;
       border-radius: 999px;
-      background: #eef2ff;
+      font-size: 0.78rem;
+      background: var(--accent-soft);
       color: #1d4ed8;
-      border: 1px solid #c7d2fe;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
-    .badge span {
-      font-size: 0.85rem;
-    }
-    h1 {
-      font-size: 1.6rem;
-      text-align: center;
-      margin: 4px 0 4px 0;
-    }
-    .subtitle {
-      text-align: center;
+
+    .pill span.icon {
       font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 26px;
     }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-    }
+
+    form { margin-top: 6px; }
+
     .section {
       border-radius: var(--radius-md);
-      border: 1px solid var(--border-soft);
-      padding: 16px 16px 14px 16px;
-      background: #f9fafb;
+      border: 1px solid var(--border);
+      padding: 14px 14px 18px;
+      margin-bottom: 16px;
     }
+
+    @media (min-width: 768px) {
+      .section {
+        padding: 18px 20px 22px;
+        margin-bottom: 18px;
+      }
+    }
+
     .section-header {
       display: flex;
-      justify-content: space-between;
       align-items: baseline;
-      gap: 12px;
-      margin-bottom: 10px;
+      justify-content: space-between;
+      margin-bottom: 8px;
     }
-    .section-header h2 {
-      margin: 0;
+
+    .section-title {
       font-size: 1rem;
+      font-weight: 600;
     }
-    .section-header span {
-      font-size: 0.75rem;
+
+    .section-tag {
+      font-size: 0.7rem;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
     }
-    .field-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+
+    .help-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
       margin-bottom: 10px;
     }
-    .field {
-      flex: 1 1 220px;
+
+    .field { margin-bottom: 9px; }
+
+    .field-inline {
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      font-size: 0.9rem;
+      gap: 8px;
     }
+
+    @media (min-width: 768px) {
+      .field-inline {
+        flex-direction: row;
+      }
+      .field-inline .field {
+        flex: 1;
+        margin-bottom: 0;
+      }
+    }
+
     label {
+      display: block;
+      font-size: 0.85rem;
       font-weight: 500;
+      margin-bottom: 3px;
     }
-    input, textarea, select {
-      font: inherit;
-      padding: 8px 9px;
-      border-radius: 8px;
-      border: 1px solid #d1d5db;
-      background: #ffffff;
+
+    .required::after {
+      content: " *";
+      color: #dc2626;
     }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
     textarea {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-family: inherit;
       resize: vertical;
-      min-height: 70px;
+      min-height: 36px;
+      background-color: #ffffff;
     }
-    .hint {
+
+    textarea { min-height: 70px; }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+
+    .footer-note {
       font-size: 0.8rem;
       color: var(--text-muted);
-    }
-    .actions {
+      text-align: right;
       margin-top: 10px;
-      display: flex;
-      justify-content: flex-end;
     }
-    button[type="submit"] {
+
+    .actions {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .btn-primary {
       border: none;
       border-radius: 999px;
-      padding: 9px 18px;
+      padding: 9px 20px;
       font-size: 0.9rem;
-      background: var(--accent);
-      color: #ffffff;
+      font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
+      background: linear-gradient(to right, #2563eb, #1d4ed8);
+      color: #ffffff;
     }
-    button[type="submit"]:hover {
-      background: #1d4ed8;
+
+    .btn-primary:hover {
+      filter: brightness(0.97);
     }
-    @media (max-width: 640px) {
-      .card { padding: 22px 16px 22px 16px; }
+
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 8px 15px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border);
+      background-color: #ffffff;
+      color: var(--text-muted);
+      cursor: default;
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <div class="card">
-      <div class="logo-wrap">
-        <img src="Cleveland Strategic Logo.png" alt="Cleveland Strategic logo">
-      </div>
+<div class="page-wrap">
+  <div class="card">
 
-      <div class="badge">
-        <span>Executive alignment & sponsorship</span>
-      </div>
-
-      <h1>Executive Alignment Intake</h1>
-      <p class="subtitle">
-        Capture a senior leader’s perspective on priorities, risks, and what “good” looks like
-        for data, analytics, and AI initiatives.
-      </p>
-
-      <form id="intake-form">
-        <!-- SECTION 1 -->
-        <div class="section">
-          <div class="section-header">
-            <h2>About You</h2>
-            <span>Section 1</span>
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label for="org">Organization *</label>
-              <input id="org" name="org" required>
-            </div>
-            <div class="field">
-              <label for="executive_name">Executive Name *</label>
-              <input id="executive_name" name="executive_name" required>
-            </div>
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label for="role">Role / Title *</label>
-              <input id="role" name="role" required>
-            </div>
-            <div class="field">
-              <label for="function">Primary Function (e.g. COO, CMO)</label>
-              <input id="function" name="function">
-            </div>
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email">
-            </div>
-            <div class="field">
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone">
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION 2 -->
-        <div class="section">
-          <div class="section-header">
-            <h2>Strategic Priorities & Concerns</h2>
-            <span>Section 2</span>
-          </div>
-          <div class="field">
-            <label for="top_priorities">Top 3 strategic priorities over the next 12–24 months *</label>
-            <textarea id="top_priorities" name="top_priorities" required></textarea>
-            <p class="hint">Growth, margin, experience, risk, regulatory, modernization, etc.</p>
-          </div>
-          <div class="field">
-            <label for="top_concerns">Biggest concerns or risks that keep you up at night *</label>
-            <textarea id="top_concerns" name="top_concerns" required></textarea>
-          </div>
-          <div class="field">
-            <label for="role_of_data">In one sentence, what role should data & analytics play?</label>
-            <textarea id="role_of_data" name="role_of_data"></textarea>
-          </div>
-        </div>
-
-        <!-- SECTION 3 -->
-        <div class="section">
-          <div class="section-header">
-            <h2>Current State & Pain Points</h2>
-            <span>Section 3</span>
-          </div>
-          <div class="field">
-            <label for="whats_working">What is working well today?</label>
-            <textarea id="whats_working" name="whats_working"></textarea>
-          </div>
-          <div class="field">
-            <label for="whats_not_working">Where are you most frustrated with data, reporting, or AI today? *</label>
-            <textarea id="whats_not_working" name="whats_not_working" required></textarea>
-          </div>
-          <div class="field">
-            <label for="decisions">Key decisions you wish were better supported by data</label>
-            <textarea id="decisions" name="decisions"></textarea>
-          </div>
-        </div>
-
-        <!-- SECTION 4 -->
-        <div class="section">
-          <div class="section-header">
-            <h2>Success, Sponsorship, and Risk Appetite</h2>
-            <span>Section 4</span>
-          </div>
-          <div class="field">
-            <label for="success_definition">If this work is successful in 18–24 months, what will be different? *</label>
-            <textarea id="success_definition" name="success_definition" required></textarea>
-          </div>
-          <div class="field">
-            <label for="sponsorship_commitments">What sponsorship or support are you personally willing to provide?</label>
-            <textarea id="sponsorship_commitments" name="sponsorship_commitments"></textarea>
-            <p class="hint">Steering committee participation, communication, funding, change advocacy, etc.</p>
-          </div>
-          <div class="field">
-            <label for="risk_appetite">How would you describe your appetite for experimentation and AI? *</label>
-            <textarea id="risk_appetite" name="risk_appetite" required></textarea>
-          </div>
-          <div class="field">
-            <label for="constraints">Non-negotiables, constraints, or “lines we will not cross”</label>
-            <textarea id="constraints" name="constraints"></textarea>
-          </div>
-        </div>
-
-        <!-- SECTION 5 -->
-        <div class="section">
-          <div class="section-header">
-            <h2>Other Notes</h2>
-            <span>Section 5</span>
-          </div>
-          <div class="field">
-            <label for="other_notes">Anything else we should know from your perspective?</label>
-            <textarea id="other_notes" name="other_notes"></textarea>
-          </div>
-        </div>
-
-        <div class="actions">
-          <button type="submit">Download Excel Summary</button>
-        </div>
-      </form>
+    <!-- Logo -->
+    <div class="logo-wrap">
+      <img src="Cleveland Strategic Logo.png">
     </div>
+
+    <div class="pill">
+      <span class="icon">🏛️</span>
+      <span>Executive alignment & sponsorship</span>
+    </div>
+
+    <div class="title">Executive Alignment & Sponsorship Intake</div>
+    <div class="subtitle">
+      Capture a senior leader’s perspective on priorities, risks, and what “good” looks like
+      for data, analytics, and AI initiatives.
+    </div>
+
+    <form id="intake-form">
+      <!-- Section 1 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">About You</div>
+          <div class="section-tag">Section 1</div>
+        </div>
+        <p class="help-text">
+          Basic details so we can connect this executive perspective to the right organization and context.
+        </p>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="org" class="required">Organization</label>
+            <input type="text" id="org" name="org" required>
+          </div>
+          <div class="field">
+            <label for="executive_name" class="required">Executive Name</label>
+            <input type="text" id="executive_name" name="executive_name" required>
+          </div>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="role" class="required">Role / Title</label>
+            <input type="text" id="role" name="role" required>
+          </div>
+          <div class="field">
+            <label for="function">Primary Function (e.g. COO, CMO)</label>
+            <input type="text" id="function" name="function">
+          </div>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Strategic Priorities & Concerns</div>
+          <div class="section-tag">Section 2</div>
+        </div>
+        <p class="help-text">
+          We start with your view of the business, not the technology.
+        </p>
+
+        <div class="field">
+          <label for="top_priorities" class="required">
+            Top 3 strategic priorities over the next 12–24 months
+          </label>
+          <textarea id="top_priorities" name="top_priorities" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="top_concerns" class="required">
+            Biggest concerns or risks that keep you up at night
+          </label>
+          <textarea id="top_concerns" name="top_concerns" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="role_of_data">
+            In one sentence, what role should data & analytics play in achieving these priorities?
+          </label>
+          <textarea id="role_of_data" name="role_of_data"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Current State & Pain Points</div>
+          <div class="section-tag">Section 3</div>
+        </div>
+        <p class="help-text">
+          Where do you feel friction today when you try to make decisions or run the business?
+        </p>
+
+        <div class="field">
+          <label for="whats_working">
+            What is working well today with data, reporting, or analytics?
+          </label>
+          <textarea id="whats_working" name="whats_working"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="whats_not_working" class="required">
+            Where are you most frustrated with data, reporting, or AI today?
+          </label>
+          <textarea id="whats_not_working" name="whats_not_working" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="decisions">
+            Key decisions you wish were better supported by data
+          </label>
+          <textarea id="decisions" name="decisions"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Success, Sponsorship & Risk Appetite</div>
+          <div class="section-tag">Section 4</div>
+        </div>
+        <p class="help-text">
+          This shapes what success looks like and how you want to personally engage.
+        </p>
+
+        <div class="field">
+          <label for="success_definition" class="required">
+            If this work is successful in 18–24 months, what will be different?
+          </label>
+          <textarea id="success_definition" name="success_definition" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="sponsorship_commitments">
+            What sponsorship or support are you personally willing to provide?
+          </label>
+          <textarea id="sponsorship_commitments" name="sponsorship_commitments"
+                    placeholder="Steering meetings, communications, funding decisions, championing change, etc."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="risk_appetite" class="required">
+            How would you describe your appetite for experimentation and AI?
+          </label>
+          <textarea id="risk_appetite" name="risk_appetite" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="constraints">
+            Non-negotiables, constraints, or “lines we will not cross”
+          </label>
+          <textarea id="constraints" name="constraints"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 5 -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Other Notes</div>
+          <div class="section-tag">Section 5</div>
+        </div>
+
+        <div class="field">
+          <label for="other_notes">
+            Anything else we should know from your perspective?
+          </label>
+          <textarea id="other_notes" name="other_notes"></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="btn-secondary">Fields marked with * are required</div>
+        <button type="submit" class="btn-primary">Download Responses as Excel</button>
+      </div>
+
+      <div class="footer-note">
+        Cleveland Strategic · Executive Alignment & Sponsorship
+      </div>
+    </form>
   </div>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script>
-    document.getElementById("intake-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const fd = new FormData(e.target);
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script>
+  document.getElementById("intake-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const fd = new FormData(e.target);
 
-      const fields = [
-        ["Organization", "org"],
-        ["Executive Name", "executive_name"],
-        ["Role / Title", "role"],
-        ["Primary Function", "function"],
-        ["Email", "email"],
-        ["Phone", "phone"],
-        ["Top Strategic Priorities (12–24 months)", "top_priorities"],
-        ["Biggest Concerns / Risks", "top_concerns"],
-        ["Desired Role of Data & Analytics", "role_of_data"],
-        ["What Is Working Well", "whats_working"],
-        ["Key Frustrations with Data / Reporting / AI", "whats_not_working"],
-        ["Decisions That Need Better Support", "decisions"],
-        ["Definition of Success (18–24 months)", "success_definition"],
-        ["Sponsorship Commitments", "sponsorship_commitments"],
-        ["Risk Appetite for Experimentation / AI", "risk_appetite"],
-        ["Constraints / Non-negotiables", "constraints"],
-        ["Other Notes", "other_notes"]
-      ];
+    const fields = [
+      ["Organization", "org"],
+      ["Executive Name", "executive_name"],
+      ["Role / Title", "role"],
+      ["Primary Function", "function"],
+      ["Email", "email"],
+      ["Phone", "phone"],
+      ["Top Strategic Priorities (12–24 months)", "top_priorities"],
+      ["Biggest Concerns / Risks", "top_concerns"],
+      ["Desired Role of Data & Analytics", "role_of_data"],
+      ["What Is Working Well", "whats_working"],
+      ["Key Frustrations with Data / Reporting / AI", "whats_not_working"],
+      ["Decisions That Need Better Support", "decisions"],
+      ["Definition of Success (18–24 months)", "success_definition"],
+      ["Sponsorship Commitments", "sponsorship_commitments"],
+      ["Risk Appetite for Experimentation / AI", "risk_appetite"],
+      ["Constraints / Non-negotiables", "constraints"],
+      ["Other Notes", "other_notes"]
+    ];
 
-      const headerRow = fields.map(([label]) => label);
-      const valuesRow = fields.map(([_, key]) => fd.get(key) || "");
+    const headerRow = fields.map(([label]) => label);
+    const valuesRow = fields.map(([_, key]) => fd.get(key) || "");
 
-      const ws = XLSX.utils.aoa_to_sheet([headerRow, valuesRow]);
-      const wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, "Executive Alignment");
+    const ws = XLSX.utils.aoa_to_sheet([headerRow, valuesRow]);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Executive Alignment");
 
-      XLSX.writeFile(wb, "ClevelandStrategic_Executive_Alignment_Intake.xlsx");
-      alert("Thank you! Your responses have been downloaded as an Excel file.");
-      e.target.reset();
-    });
-  </script>
+    XLSX.writeFile(wb, "ClevelandStrategic_Executive_Alignment_Intake.xlsx");
+
+    alert("Thank you! Your responses have been downloaded as an Excel file.");
+    e.target.reset();
+  });
+</script>
 </body>
 </html>
