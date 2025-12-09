@@ -5,101 +5,406 @@
   <title>Cleveland Strategic | Change Management Readiness Intake</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Assess how ready the organization is to adopt new data and analytics capabilities.">
+
   <style>
-    :root{--bg-gray:#f3f4f6;--text-main:#111827;--text-muted:#6b7280;--accent:#2563eb;
-      --accent-soft:#e0ecff;--border-soft:#e5e7eb;--shadow-soft:0 10px 25px rgba(15,23,42,0.08);}
-    *{box-sizing:border-box;}
-    body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:radial-gradient(circle at top,#0f172a 0,#020617 45%,#020617 100%);color:var(--text-main);}
-    .page{min-height:100vh;display:flex;justify-content:center;padding:32px 16px;}
-    .card{width:100%;max-width:980px;background:#f3f4f6;border-radius:24px;box-shadow:var(--shadow-soft);overflow:hidden;}
-    header{padding:20px 28px 16px;background:linear-gradient(135deg,#020617,#111827);color:#f9fafb;
-      display:flex;align-items:center;gap:16px;}
-    header img{height:40px;object-fit:contain;}
-    header h1{margin:0;font-size:1.35rem;}
-    header p{margin:4px 0 0;font-size:0.85rem;color:#e5e7eb;}
-    main{padding:20px 24px 24px;}
-    .section-title{font-size:0.95rem;font-weight:600;margin:18px 0 6px;}
-    .section-hint{font-size:0.8rem;color:var(--text-muted);margin-bottom:8px;}
-    .two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 16px;}
-    label{display:block;font-size:0.8rem;font-weight:600;margin-bottom:4px;}
-    input[type="text"],textarea{
-      width:100%;border-radius:10px;border:1px solid var(--border-soft);
-      padding:8px 10px;font-size:0.85rem;font-family:inherit;resize:vertical;min-height:36px;}
-    textarea{min-height:70px;}
-    .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--accent-soft);
-      border-radius:999px;font-size:0.72rem;color:#1d4ed8;margin-bottom:4px;}
-    .actions{margin-top:20px;display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;}
-    button[type="submit"]{border:none;border-radius:999px;padding:9px 18px;font-size:0.85rem;font-weight:600;
-      cursor:pointer;background:var(--accent);color:#f9fafb;}
-    button[type="submit"]:hover{background:#1d4ed8;}
+    :root {
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #e0ecff;
+      --border: #e5e7eb;
+      --radius-lg: 20px;
+      --radius-md: 10px;
+      --shadow-soft: 0 12px 28px rgba(15, 23, 42, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #e5edff 0, var(--bg) 52%, #e5e7eb 100%);
+      color: var(--text-main);
+    }
+
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 24px 12px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 960px;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 28px 24px 32px;
+    }
+
+    @media (min-width: 768px) {
+      .card {
+        padding: 32px 40px 40px;
+      }
+    }
+
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .logo-wrap img {
+      max-width: 220px;
+      height: auto;
+      display: inline-block;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 6px;
+      font-size: 1.55rem;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 22px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
+
+    .pill span.icon {
+      font-size: 0.9rem;
+    }
+
+    form {
+      margin-top: 6px;
+    }
+
+    .section {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      padding: 14px 14px 18px;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .section {
+        padding: 18px 20px 22px;
+        margin-bottom: 18px;
+      }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .section-tag {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .help-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .field {
+      margin-bottom: 9px;
+    }
+
+    .field-inline {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .field-inline {
+        flex-direction: row;
+      }
+      .field-inline .field {
+        flex: 1;
+        margin-bottom: 0;
+      }
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .required::after {
+      content: " *";
+      color: #dc2626;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 36px;
+      background-color: #ffffff;
+    }
+
+    textarea {
+      min-height: 70px;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+
+    .footer-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    .actions {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .btn-primary {
+      border: none;
+      border-radius: 999px;
+      padding: 9px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(to right, #2563eb, #1d4ed8);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(0.97);
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 8px 15px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border);
+      background-color: #ffffff;
+      color: var(--text-muted);
+      cursor: default;
+    }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body>
-<div class="page">
+<div class="page-wrap">
   <div class="card">
-    <header>
-      <img src="Cleveland Strategic Logo.png" alt="">
-      <div>
-        <h1>Change Management Readiness Intake</h1>
-        <p>Gauge how your organization handles change and what support is needed for success.</p>
-      </div>
-    </header>
-    <main>
-      <form id="change-form">
-        <div class="badge">Overview</div>
-        <div class="two-col">
-          <div>
-            <label for="company">Organization</label>
+
+    <!-- Logo -->
+    <div class="logo-wrap">
+      <img src="Cleveland Strategic Logo.png" alt="Cleveland Strategic Logo">
+    </div>
+
+    <div class="pill">
+      <span class="icon">🔄</span>
+      <span>Change Management Readiness</span>
+    </div>
+
+    <div class="title">Change Management Readiness Intake</div>
+    <div class="subtitle">
+      Gauge how your organization handles change and what support is needed for successful adoption.
+    </div>
+
+    <form id="change-form">
+      <!-- Section 1: Overview -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Overview</div>
+          <div class="section-tag">Section 1</div>
+        </div>
+        <p class="help-text">
+          High-level context for the change initiative and who will be most impacted.
+        </p>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="company" class="required">Organization</label>
             <input id="company" name="company" type="text" required>
           </div>
-          <div>
+          <div class="field">
             <label for="sponsor">Executive sponsor</label>
             <input id="sponsor" name="sponsor" type="text">
           </div>
-          <div>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
             <label for="hr_partner">HR / change partner (if any)</label>
             <input id="hr_partner" name="hr_partner" type="text">
           </div>
-          <div>
+          <div class="field">
             <label for="people_impacted">People / teams most impacted</label>
             <input id="people_impacted" name="people_impacted" type="text">
           </div>
         </div>
+      </div>
 
-        <p class="section-title">Past experiences with major change</p>
-        <p class="section-hint">Examples of prior system rollouts, restructures, or process changes.</p>
-        <textarea id="history" name="history"></textarea>
-
-        <p class="section-title">Current sentiment toward this initiative</p>
-        <textarea id="sentiment" name="sentiment"></textarea>
-
-        <p class="section-title">Sources of resistance</p>
-        <textarea id="resistance" name="resistance"></textarea>
-
-        <p class="section-title">Key influencers or champions</p>
-        <textarea id="champions" name="champions"></textarea>
-
-        <p class="section-title">Communication channels that work well</p>
-        <textarea id="channels" name="channels"></textarea>
-
-        <p class="section-title">Training & enablement needs</p>
-        <textarea id="training" name="training"></textarea>
-
-        <p class="section-title">Change risks to manage</p>
-        <textarea id="risks" name="risks"></textarea>
-
-        <p class="section-title">What “successful adoption” looks like</p>
-        <textarea id="success" name="success"></textarea>
-
-        <div class="actions">
-          <button type="submit">Download Excel Summary</button>
+      <!-- Section 2: Past experiences with major change -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Past experiences with major change</div>
+          <div class="section-tag">Section 2</div>
         </div>
-      </form>
-    </main>
+        <p class="help-text">
+          Examples of prior system rollouts, restructures, or process changes and how they went.
+        </p>
+        <div class="field">
+          <label for="history">Describe recent or notable change initiatives</label>
+          <textarea id="history" name="history"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 3: Current sentiment -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Current sentiment toward this initiative</div>
+          <div class="section-tag">Section 3</div>
+        </div>
+        <div class="field">
+          <label for="sentiment">How do people feel about this change today?</label>
+          <textarea id="sentiment" name="sentiment"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 4: Sources of resistance -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Sources of resistance</div>
+          <div class="section-tag">Section 4</div>
+        </div>
+        <div class="field">
+          <label for="resistance">Where is resistance likely to show up?</label>
+          <textarea id="resistance" name="resistance"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 5: Key influencers or champions -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Key influencers or champions</div>
+          <div class="section-tag">Section 5</div>
+        </div>
+        <div class="field">
+          <label for="champions">Who can help champion this change?</label>
+          <textarea id="champions" name="champions"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 6: Communication channels -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Communication channels that work well</div>
+          <div class="section-tag">Section 6</div>
+        </div>
+        <div class="field">
+          <label for="channels">What communication channels reach people best?</label>
+          <textarea id="channels" name="channels"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 7: Training & enablement needs -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Training & enablement needs</div>
+          <div class="section-tag">Section 7</div>
+        </div>
+        <div class="field">
+          <label for="training">What support will people need to be successful?</label>
+          <textarea id="training" name="training"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 8: Change risks -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Change risks to manage</div>
+          <div class="section-tag">Section 8</div>
+        </div>
+        <div class="field">
+          <label for="risks">Key risks or failure modes to watch for</label>
+          <textarea id="risks" name="risks"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 9: Definition of successful adoption -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">What “successful adoption” looks like</div>
+          <div class="section-tag">Section 9</div>
+        </div>
+        <div class="field">
+          <label for="success">Describe how you will know this change worked</label>
+          <textarea id="success" name="success"></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="btn-secondary">Fields marked with * are required</div>
+        <button type="submit" class="btn-primary">Download Excel Summary</button>
+      </div>
+
+      <div class="footer-note">
+        Cleveland Strategic · Fractional Head of Data and Analytics
+      </div>
+    </form>
   </div>
 </div>
+
+<!-- SheetJS for Excel generation -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
 <script>
   document.getElementById("change-form").addEventListener("submit", function(e){
@@ -119,12 +424,12 @@
       ["Change Risks to Manage","risks"],
       ["Definition of Successful Adoption","success"]
     ];
-    const headerRow = fields.map(f=>f[0]);
-    const valueRow  = fields.map(f=>fd.get(f[1])||"");
-    const ws = XLSX.utils.aoa_to_sheet([headerRow,valueRow]);
+    const headerRow = fields.map(f => f[0]);
+    const valueRow  = fields.map(f => fd.get(f[1]) || "");
+    const ws = XLSX.utils.aoa_to_sheet([headerRow, valueRow]);
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb,ws,"Change Readiness");
-    XLSX.writeFile(wb,"ClevelandStrategic_Change_Readiness_Intake.xlsx");
+    XLSX.utils.book_append_sheet(wb, ws, "Change Readiness");
+    XLSX.writeFile(wb, "ClevelandStrategic_Change_Readiness_Intake.xlsx");
     alert("Excel file downloaded.");
     e.target.reset();
   });
