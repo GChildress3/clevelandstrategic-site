@@ -13,183 +13,393 @@
       --text-muted: #6b7280;
       --accent: #2563eb;
       --accent-soft: #e0ecff;
-      --border: #e5e7eb;
-      --radius-lg: 18px;
-      --shadow-soft: 0 12px 30px rgba(0,0,0,0.10);
+      --border-soft: #e5e7eb;
+      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
+      --radius-lg: 16px;
+      --radius-md: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: system-ui, sans-serif;
-      background: radial-gradient(circle at top, #e5edff 0, var(--bg) 55%, #e5e7eb 100%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
       color: var(--text-main);
     }
 
-    .page-wrap {
-      min-height: 100vh;
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 16px 48px 16px;
+    }
+
+    header {
       display: flex;
-      justify-content: center;
-      padding: 32px 16px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
     }
 
-    .container {
-      width: 100%;
-      max-width: 960px;
-      text-align: center;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
-    .logo-wrap img {
-      max-width: 240px;
-      margin-bottom: 12px;
+    .brand img {
+      height: 56px;
+      width: auto;
+      border-radius: 8px;
     }
 
-    .title {
-      font-size: 1.9rem;
-      font-weight: 700;
-      margin-bottom: 8px;
+    .brand-text h1 {
+      margin: 0 0 4px 0;
+      font-size: 1.6rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
     }
 
-    .subtitle {
-      font-size: 1rem;
+    .brand-text p {
+      margin: 0;
+      font-size: 0.9rem;
       color: var(--text-muted);
+    }
+
+    .top-links a {
+      font-size: 0.9rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 6px 12px;
+      background: #e5edff;
+      border: 1px solid #c7d2fe;
+    }
+
+    .top-links a:hover {
+      background: #d4e1ff;
+    }
+
+    .intro {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-soft);
       margin-bottom: 28px;
     }
 
-    .grid {
+    .intro h2 {
+      margin: 0 0 8px 0;
+      font-size: 1.2rem;
+    }
+
+    .intro p {
+      margin: 4px 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .intro-rows {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .intro-rows span {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #f9fafb;
+      border: 1px solid var(--border-soft);
+    }
+
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .section-header p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
+      gap: 12px;
     }
 
     .card {
+      display: block;
       background: var(--card-bg);
-      padding: 22px 20px;
       border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
+      padding: 14px 16px 14px 16px;
+      text-decoration: none;
+      color: var(--text-main);
+      border: 1px solid var(--border-soft);
       box-shadow: var(--shadow-soft);
-      text-align: left;
-      transition: transform 0.15s ease, box-shadow 0.2s ease;
+      transition: transform 0.06s ease, box-shadow 0.06s ease, border-color 0.06s ease;
     }
 
     .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 34px rgba(0,0,0,0.14);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+      border-color: var(--accent-soft);
     }
 
-    .card-title {
-      font-size: 1.1rem;
-      font-weight: 600;
+    .card h3 {
+      margin: 0 0 4px 0;
+      font-size: 0.98rem;
+    }
+
+    .card .type {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: #1d4ed8;
+      background: #e0ecff;
+      padding: 3px 8px;
+      border-radius: 999px;
       margin-bottom: 6px;
     }
 
-    .card-text {
+    .card p {
+      margin: 2px 0;
       font-size: 0.85rem;
       color: var(--text-muted);
-      margin-bottom: 14px;
-      line-height: 1.32rem;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 8px 14px;
-      background: var(--accent);
-      color: white;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s ease;
+    footer {
+      margin-top: 32px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
     }
 
-    .btn:hover {
-      background: #1e40af;
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .top-links {
+        align-self: stretch;
+        display: flex;
+        justify-content: flex-start;
+      }
     }
   </style>
 </head>
-
 <body>
-
-<div class="page-wrap">
-  <div class="container">
-
-    <div class="logo-wrap">
-      <img src="Cleveland Strategic Logo.png">
-    </div>
-
-    <div class="title">Discovery Hub</div>
-    <div class="subtitle">
-      A centralized home for all strategy, analytics, governance, and leadership intake forms.
-    </div>
-
-    <div class="grid">
-
-      <!-- Data Strategy -->
-      <div class="card">
-        <div class="card-title">Data Strategy Intake</div>
-        <div class="card-text">
-          Assess current-state reporting, data assets, challenges, and strategic use cases.
+  <div class="page">
+    <header>
+      <div class="brand">
+        <img src="Cleveland Strategic Logo.png" alt="Cleveland Strategic logo">
+        <div class="brand-text">
+          <h1>Discovery Hub</h1>
+          <p>Intake library for data, analytics, and AI work</p>
         </div>
-        <a href="data-strategy-intake.html" class="btn">Open Form</a>
+      </div>
+      <div class="top-links">
+        <a href="index.html">Back to main site</a>
+      </div>
+    </header>
+
+    <section class="intro">
+      <h2>How to use this hub</h2>
+      <p>Select the intake that best matches where you are in the conversation. You can mix and match forms across categories as an engagement deepens.</p>
+      <div class="intro-rows">
+        <span>Strategy and vision</span>
+        <span>Governance and operating model</span>
+        <span>Data quality and architecture</span>
+        <span>AI and use cases</span>
+        <span>Value, KPIs, and business needs</span>
+        <span>Tooling and inventory</span>
+      </div>
+    </section>
+
+    <!-- 1. Strategy & Vision -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Strategy and vision</h2>
+        <p>Use these when you are framing the big picture with senior leaders.</p>
       </div>
 
-      <!-- AI Strategy -->
-      <div class="card">
-        <div class="card-title">AI Strategy Intake</div>
-        <div class="card-text">
-          Capture opportunities for AI across products, services, and internal processes.
-        </div>
-        <a href="ai-strategy-intake.html" class="btn">Open Form</a>
+      <div class="card-grid">
+        <a class="card" href="data-strategy-intake.html">
+          <span class="type">Enterprise data strategy</span>
+          <h3>Data Strategy Discovery Intake</h3>
+          <p>Primary lens: overall data vision, major pain points, and the outcomes a modern data estate should unlock.</p>
+        </a>
+
+        <a class="card" href="ai-strategy-intake.html">
+          <span class="type">AI strategy</span>
+          <h3>AI Strategy Intake</h3>
+          <p>Primary lens: how the organization wants to use AI, where it should not be used, and the guardrails that must be in place.</p>
+        </a>
+
+        <a class="card" href="analytics-maturity.html">
+          <span class="type">Maturity assessment</span>
+          <h3>Analytics Maturity Assessment</h3>
+          <p>Primary lens: current maturity across people, processes, data, and technology, including strengths and gaps.</p>
+        </a>
+
+        <a class="card" href="executive-alignment-intake.html">
+          <span class="type">Executive 1 to 1</span>
+          <h3>Executive Alignment Intake</h3>
+          <p>Primary lens: an individual executive view on priorities, risks, sponsorship, and what success would look like.</p>
+        </a>
+
+        <a class="card" href="leadership-alignment.html">
+          <span class="type">Leadership workshop</span>
+          <h3>Leadership Alignment Survey</h3>
+          <p>Primary lens: cross functional leadership alignment on goals, KPIs, and what will need to change to get there.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- 2. Governance & Operating Model -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Governance and operating model</h2>
+        <p>Use these when you need to understand or design how data work is owned and run.</p>
       </div>
 
-      <!-- KPI Alignment -->
-      <div class="card">
-        <div class="card-title">KPI & Metrics Alignment</div>
-        <div class="card-text">
-          Align on metric definitions, ownership, trust issues, and visibility gaps.
-        </div>
-        <a href="kpi-intake.html" class="btn">Open Form</a>
+      <div class="card-grid">
+        <a class="card" href="governance-intake.html">
+          <span class="type">Discovery</span>
+          <h3>Data Governance Discovery Intake</h3>
+          <p>Primary lens: current governance pain points, decision rights, policies, and where accountability is unclear today.</p>
+        </a>
+
+        <a class="card" href="governance-charter-intake.html">
+          <span class="type">Program design</span>
+          <h3>Governance Charter Design Intake</h3>
+          <p>Primary lens: structure, scope, roles, and cadence for a formal data governance program or council.</p>
+        </a>
+
+        <a class="card" href="data-team-operations-intake.html">
+          <span class="type">Operating model</span>
+          <h3>Data Team Operations Intake</h3>
+          <p>Primary lens: how the data team works today including intake, prioritization, SLAs, and handoffs with the business.</p>
+        </a>
+
+        <a class="card" href="change-readiness-intake.html">
+          <span class="type">Change management</span>
+          <h3>Change Readiness Intake</h3>
+          <p>Primary lens: organizational appetite for change, past experiences, and risks that could slow adoption of new ways of working.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- 3. Data Quality & Architecture -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Data quality and architecture</h2>
+        <p>Use these when you are mapping the data estate or tackling quality problems.</p>
       </div>
 
-      <!-- Analytics Maturity -->
-      <div class="card">
-        <div class="card-title">Analytics Maturity Assessment</div>
-        <div class="card-text">
-          Measure maturity across reporting, systems, governance, and predictive analytics.
-        </div>
-        <a href="analytics-maturity.html" class="btn">Open Form</a>
+      <div class="card-grid">
+        <a class="card" href="data-architecture-intake.html">
+          <span class="type">Data estate</span>
+          <h3>Data Architecture Intake</h3>
+          <p>Primary lens: key systems, data flows, integration patterns, and where data is stored and consumed today.</p>
+        </a>
+
+        <a class="card" href="data-quality-intake.html">
+          <span class="type">Quality program</span>
+          <h3>Data Quality Intake</h3>
+          <p>Primary lens: recurring data quality issues, ownership, processes, and current tooling used to monitor and resolve problems.</p>
+        </a>
+
+        <a class="card" href="data-quality-issue-log-intake.html">
+          <span class="type">Issue log</span>
+          <h3>Data Quality Issue Log Intake</h3>
+          <p>Primary lens: concrete quality incidents with details on impact, severity, root causes, and interim workarounds.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- 4. AI & Use Case Portfolio -->
+    <section class="section">
+      <div class="section-header">
+        <h2>AI and use case portfolio</h2>
+        <p>Use these when you are exploring or scoring specific AI or analytics use cases.</p>
       </div>
 
-      <!-- Data Quality -->
-      <div class="card">
-        <div class="card-title">Data Quality & Reliability Assessment</div>
-        <div class="card-text">
-          Identify data issues, pipeline failures, manual work, and reliability risks.
-        </div>
-        <a href="data-quality-intake.html" class="btn">Open Form</a>
+      <div class="card-grid">
+        <a class="card" href="ai-usecase-readiness-intake.html">
+          <span class="type">Use case scoring</span>
+          <h3>AI Use Case Readiness Intake</h3>
+          <p>Primary lens: per use case inputs such as data availability, complexity, risk, and expected value to help prioritize a portfolio.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- 5. Value, KPIs, Business Needs -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Value, KPIs, and business needs</h2>
+        <p>Use these when you are grounding the work in measurable outcomes and day to day realities.</p>
       </div>
 
-      <!-- Governance -->
-      <div class="card">
-        <div class="card-title">Data Governance Readiness</div>
-        <div class="card-text">
-          Evaluate ownership clarity, access controls, compliance, and metadata standards.
-        </div>
-        <a href="governance-intake.html" class="btn">Open Form</a>
+      <div class="card-grid">
+        <a class="card" href="kpi-intake.html">
+          <span class="type">Measurement</span>
+          <h3>KPI and Metrics Alignment Intake</h3>
+          <p>Primary lens: key metrics, their definitions, owners, and where there are conflicts or gaps in how success is measured.</p>
+        </a>
+
+        <a class="card" href="bu-data-requirements-intake.html">
+          <span class="type">Business unit view</span>
+          <h3>Business Unit Data Requirements Intake</h3>
+          <p>Primary lens: what a specific business unit needs from data, reporting, and self service to run their part of the business.</p>
+        </a>
+
+        <a class="card" href="roi-value-intake.html">
+          <span class="type">Value opportunity</span>
+          <h3>ROI and Value Opportunity Intake</h3>
+          <p>Primary lens: manual work, leakage, and high value opportunities where better data and automation can drive financial or risk reduction impact.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- 6. Tooling & Inventory -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Tooling and inventory</h2>
+        <p>Use this when you need a clear picture of the current vendor, platform, and tooling landscape.</p>
       </div>
 
-      <!-- Leadership Alignment -->
-      <div class="card">
-        <div class="card-title">Leadership Alignment Survey</div>
-        <div class="card-text">
-          Capture executive priorities, friction points, concerns, and expectations ahead of workshops.
-        </div>
-        <a href="leadership-alignment.html" class="btn">Open Form</a>
+      <div class="card-grid">
+        <a class="card" href="vendor-tooling-audit-intake.html">
+          <span class="type">Tooling audit</span>
+          <h3>Vendor and Tooling Audit Intake</h3>
+          <p>Primary lens: data and analytics tools in use, overlapping capabilities, contract details, and where there may be rationalization opportunities.</p>
+        </a>
       </div>
+    </section>
 
-    </div>
+    <footer>
+      Cleveland Strategic &middot; Fractional Head of Data and Analytics
+    </footer>
   </div>
-</div>
-
 </body>
 </html>
