@@ -5,214 +5,432 @@
   <title>Cleveland Strategic | Data Architecture & Systems Mapping Intake</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Intake form for documenting data sources, integrations, and architecture for Cleveland Strategic engagements.">
+
   <style>
     :root {
-      --bg-gray: #f3f4f6;
+      --bg: #f3f4f6;
       --card-bg: #ffffff;
       --text-main: #111827;
       --text-muted: #6b7280;
       --accent: #2563eb;
       --accent-soft: #e0ecff;
-      --border-soft: #e5e7eb;
-      --radius-lg: 14px;
-      --shadow-soft: 0 10px 25px rgba(15,23,42,0.08);
+      --border: #e5e7eb;
+      --radius-lg: 20px;
+      --radius-md: 10px;
+      --shadow-soft: 0 12px 28px rgba(15, 23, 42, 0.10);
     }
-    * { box-sizing: border-box; }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background: radial-gradient(circle at top, #0f172a 0, #020617 45%, #020617 100%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #e5edff 0, var(--bg) 52%, #e5e7eb 100%);
       color: var(--text-main);
     }
-    .page {
+
+    .page-wrap {
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 32px 16px;
+      align-items: flex-start;
+      padding: 24px 12px;
     }
+
     .card {
       width: 100%;
-      max-width: 980px;
-      background: var(--bg-gray);
-      border-radius: 24px;
+      max-width: 960px;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
       box-shadow: var(--shadow-soft);
-      overflow: hidden;
+      padding: 28px 24px 32px;
     }
-    header {
-      padding: 20px 28px 16px;
-      background: linear-gradient(135deg, #020617, #111827);
-      color: #f9fafb;
-      display: flex;
-      align-items: center;
-      gap: 16px;
+
+    @media (min-width: 768px) {
+      .card {
+        padding: 32px 40px 40px;
+      }
     }
-    header img {
-      height: 40px;
-      object-fit: contain;
+
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 18px;
     }
-    header h1 {
-      margin: 0;
-      font-size: 1.4rem;
+
+    .logo-wrap img {
+      max-width: 220px;
+      height: auto;
+      display: inline-block;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 6px;
+      font-size: 1.55rem;
+      font-weight: 650;
       letter-spacing: 0.02em;
     }
-    header p {
-      margin: 4px 0 0;
-      font-size: 0.85rem;
-      color: #e5e7eb;
-    }
-    main {
-      padding: 20px 24px 24px;
-    }
-    .section-title {
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 22px;
       font-size: 0.95rem;
-      font-weight: 600;
-      margin: 18px 0 6px;
-      color: #111827;
-    }
-    .section-hint {
-      font-size: 0.8rem;
       color: var(--text-muted);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
+
+    .pill span.icon {
+      font-size: 0.9rem;
+    }
+
+    form {
+      margin-top: 6px;
+    }
+
+    .section {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      padding: 14px 14px 18px;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .section {
+        padding: 18px 20px 22px;
+        margin-bottom: 18px;
+      }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
       margin-bottom: 8px;
     }
-    .two-col {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px 16px;
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
     }
+
+    .section-tag {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .help-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .field {
+      margin-bottom: 9px;
+    }
+
+    .field-inline {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .field-inline {
+        flex-direction: row;
+      }
+      .field-inline .field {
+        flex: 1;
+        margin-bottom: 0;
+      }
+    }
+
     label {
       display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: #111827;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 3px;
     }
+
+    .required::after {
+      content: " *";
+      color: #dc2626;
+    }
+
     input[type="text"],
     input[type="email"],
     input[type="tel"],
     textarea,
     select {
       width: 100%;
-      border-radius: 10px;
-      border: 1px solid var(--border-soft);
-      padding: 8px 10px;
-      font-size: 0.85rem;
+      padding: 7px 9px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
       font-family: inherit;
       resize: vertical;
       min-height: 36px;
+      background-color: #ffffff;
     }
-    textarea { min-height: 70px; }
+
+    textarea {
+      min-height: 70px;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+
     .hint {
       font-size: 0.75rem;
       color: var(--text-muted);
       margin-top: 2px;
     }
-    .actions {
-      margin-top: 20px;
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-      flex-wrap: wrap;
+
+    .footer-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: right;
+      margin-top: 10px;
     }
-    button[type="submit"] {
+
+    .actions {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .btn-primary {
       border: none;
       border-radius: 999px;
-      padding: 9px 18px;
-      font-size: 0.85rem;
+      padding: 9px 20px;
+      font-size: 0.9rem;
       font-weight: 600;
       cursor: pointer;
-      background: var(--accent);
-      color: #f9fafb;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      background: linear-gradient(to right, #2563eb, #1d4ed8);
+      color: #ffffff;
     }
-    button[type="submit"]:hover {
-      background: #1d4ed8;
+
+    .btn-primary:hover {
+      filter: brightness(0.97);
     }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      background: var(--accent-soft);
+
+    .btn-secondary {
       border-radius: 999px;
-      font-size: 0.72rem;
-      color: #1d4ed8;
-      margin-bottom: 4px;
+      padding: 8px 15px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border);
+      background-color: #ffffff;
+      color: var(--text-muted);
+      cursor: default;
     }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body>
-<div class="page">
+<div class="page-wrap">
   <div class="card">
-    <header>
-      <img src="Cleveland Strategic Logo.png" alt="">
-      <div>
-        <h1>Data Architecture & Systems Mapping Intake</h1>
-        <p>Document core data sources, pipelines, and integrations powering your organization.</p>
-      </div>
-    </header>
-    <main>
-      <form id="architecture-form">
-        <div class="badge">Section 1 · Organization basics</div>
-        <div class="two-col">
-          <div>
-            <label for="company">Organization</label>
+
+    <!-- Logo -->
+    <div class="logo-wrap">
+      <img src="Cleveland Strategic Logo.png" alt="Cleveland Strategic Logo">
+    </div>
+
+    <div class="pill">
+      <span class="icon">🗺️</span>
+      <span>Data Architecture & Systems Mapping</span>
+    </div>
+
+    <div class="title">Data Architecture & Systems Mapping Intake</div>
+    <div class="subtitle">
+      Document core data sources, pipelines, and integrations powering your organization.
+    </div>
+
+    <form id="architecture-form">
+      <!-- Section 1: Organization basics -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Organization basics</div>
+          <div class="section-tag">Section 1</div>
+        </div>
+        <p class="help-text">
+          High-level details about your organization and primary contact for this intake.
+        </p>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="company" class="required">Organization</label>
             <input id="company" name="company" type="text" required>
           </div>
-          <div>
+          <div class="field">
             <label for="industry">Industry</label>
             <input id="industry" name="industry" type="text">
           </div>
-          <div>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
             <label for="contact_name">Your name</label>
             <input id="contact_name" name="contact_name" type="text">
           </div>
-          <div>
+          <div class="field">
             <label for="role">Role / title</label>
             <input id="role" name="role" type="text">
           </div>
         </div>
+      </div>
 
-        <p class="section-title">Core data platforms</p>
-        <p class="section-hint">List primary databases, warehouses, and lakes in use today.</p>
-        <textarea id="platforms" name="platforms"></textarea>
-
-        <p class="section-title">Source systems & applications</p>
-        <p class="section-hint">Major operational systems feeding data (ERP, CRM, EHR, POS, etc.).</p>
-        <textarea id="sources" name="sources"></textarea>
-
-        <p class="section-title">ETL / ELT & data movement</p>
-        <p class="section-hint">Tools used, batch vs real time, typical schedules, critical jobs.</p>
-        <textarea id="etl" name="etl"></textarea>
-
-        <p class="section-title">Reporting & analytics tools</p>
-        <p class="section-hint">BI tools, semantic layers, cubes, or custom analytics apps.</p>
-        <textarea id="bi_tools" name="bi_tools"></textarea>
-
-        <p class="section-title">Known architectural pain points</p>
-        <p class="section-hint">Brittle jobs, performance issues, circular feeds, manual extracts, etc.</p>
-        <textarea id="pain_points" name="pain_points"></textarea>
-
-        <p class="section-title">Data security & access patterns</p>
-        <p class="section-hint">How access is granted, role models, sensitive-data handling.</p>
-        <textarea id="security" name="security"></textarea>
-
-        <p class="section-title">Planned changes or initiatives</p>
-        <p class="section-hint">Upcoming migrations, tool evaluations, or modernization projects.</p>
-        <textarea id="initiatives" name="initiatives"></textarea>
-
-        <div class="section-title">Architecture priorities (next 12–24 months)</div>
-        <textarea id="priorities" name="priorities"></textarea>
-
-        <div class="actions">
-          <button type="submit">Download Excel Summary</button>
+      <!-- Section 2: Core data platforms -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Core data platforms</div>
+          <div class="section-tag">Section 2</div>
         </div>
-      </form>
-    </main>
+        <p class="help-text">
+          List primary databases, warehouses, and lakes in use today.
+        </p>
+        <div class="field">
+          <label for="platforms">Core data platforms</label>
+          <textarea id="platforms" name="platforms"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 3: Source systems & applications -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Source systems & applications</div>
+          <div class="section-tag">Section 3</div>
+        </div>
+        <p class="help-text">
+          Major operational systems feeding data (ERP, CRM, EHR, POS, etc.).
+        </p>
+        <div class="field">
+          <label for="sources">List key source systems and what they support</label>
+          <textarea id="sources" name="sources"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 4: ETL / ELT & data movement -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">ETL / ELT & data movement</div>
+          <div class="section-tag">Section 4</div>
+        </div>
+        <p class="help-text">
+          Tools used, batch vs real time, typical schedules, and critical jobs.
+        </p>
+        <div class="field">
+          <label for="etl">Describe how data moves between systems</label>
+          <textarea id="etl" name="etl"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 5: Reporting & analytics tools -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Reporting & analytics tools</div>
+          <div class="section-tag">Section 5</div>
+        </div>
+        <p class="help-text">
+          BI tools, semantic layers, cubes, or custom analytics applications.
+        </p>
+        <div class="field">
+          <label for="bi_tools">Current reporting and analytics layer</label>
+          <textarea id="bi_tools" name="bi_tools"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 6: Known architectural pain points -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Known architectural pain points</div>
+          <div class="section-tag">Section 6</div>
+        </div>
+        <p class="help-text">
+          Brittle jobs, performance issues, circular feeds, manual extracts, etc.
+        </p>
+        <div class="field">
+          <label for="pain_points">Where does the current architecture struggle?</label>
+          <textarea id="pain_points" name="pain_points"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 7: Data security & access patterns -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Data security & access patterns</div>
+          <div class="section-tag">Section 7</div>
+        </div>
+        <p class="help-text">
+          How access is granted, role models, and sensitive data handling.
+        </p>
+        <div class="field">
+          <label for="security">Summarize security, access, and sensitive-data handling</label>
+          <textarea id="security" name="security"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 8: Planned changes or initiatives -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Planned changes or initiatives</div>
+          <div class="section-tag">Section 8</div>
+        </div>
+        <p class="help-text">
+          Upcoming migrations, tool evaluations, or modernization projects.
+        </p>
+        <div class="field">
+          <label for="initiatives">Upcoming data or architecture initiatives</label>
+          <textarea id="initiatives" name="initiatives"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 9: Architecture priorities -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Architecture priorities (next 12–24 months)</div>
+          <div class="section-tag">Section 9</div>
+        </div>
+        <div class="field">
+          <label for="priorities">Top priorities for your architecture over the next 12–24 months</label>
+          <textarea id="priorities" name="priorities"></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="btn-secondary">Fields marked with * are required</div>
+        <button type="submit" class="btn-primary">Download Excel Summary</button>
+      </div>
+
+      <div class="footer-note">
+        Cleveland Strategic · Fractional Head of Data and Analytics
+      </div>
+    </form>
   </div>
 </div>
+
+<!-- SheetJS for Excel generation -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
 <script>
   document.getElementById("architecture-form").addEventListener("submit", function (e) {
