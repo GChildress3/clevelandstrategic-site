@@ -19,9 +19,7 @@
       --radius-md: 10px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -119,9 +117,7 @@
       border: 1px solid var(--border-soft);
     }
 
-    .section {
-      margin-bottom: 28px;
-    }
+    .section { margin-bottom: 28px; }
 
     .section-header {
       display: flex;
@@ -131,10 +127,7 @@
       margin-bottom: 12px;
     }
 
-    .section-header h2 {
-      margin: 0;
-      font-size: 1.1rem;
-    }
+    .section-header h2 { margin: 0; font-size: 1.1rem; }
 
     .section-header p {
       margin: 0;
@@ -166,10 +159,7 @@
       border-color: var(--accent-soft);
     }
 
-    .card h3 {
-      margin: 0 0 4px 0;
-      font-size: 0.98rem;
-    }
+    .card h3 { margin: 0 0 4px 0; font-size: 0.98rem; }
 
     .card .type {
       display: inline-block;
@@ -195,15 +185,8 @@
     }
 
     @media (max-width: 640px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .top-links {
-        align-self: stretch;
-        display: flex;
-        justify-content: flex-start;
-      }
+      header { flex-direction: column; align-items: flex-start; }
+      .top-links { align-self: stretch; display: flex; justify-content: flex-start; }
     }
   </style>
 </head>
@@ -229,6 +212,7 @@
         <span>Strategy and vision</span>
         <span>Governance and operating model</span>
         <span>Data quality and architecture</span>
+        <span>Platform operations and modernization</span>
         <span>AI and use cases</span>
         <span>Value, KPIs, and business needs</span>
         <span>Tooling and inventory</span>
@@ -337,7 +321,23 @@
       </div>
     </section>
 
-    <!-- 4. AI & Use Case Portfolio -->
+    <!-- 4. Platform Operations & Modernization -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Platform operations and modernization</h2>
+        <p>Use these when you need stable delivery, incident control, partner integrations, and modernization planning.</p>
+      </div>
+
+      <div class="card-grid">
+        <a class="card" href="enterprise-data-platform-ops-modernization-intake.html">
+          <span class="type">Platform ownership</span>
+          <h3>Enterprise Data Platform Operations & Modernization Intake</h3>
+          <p>Primary lens: EDW operations, reliability and escalation, partner integrations, security controls, and modernization priorities.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- 5. AI & Use Case Portfolio -->
     <section class="section">
       <div class="section-header">
         <h2>AI and use case portfolio</h2>
@@ -353,7 +353,7 @@
       </div>
     </section>
 
-    <!-- 5. Value, KPIs, Business Needs -->
+    <!-- 6. Value, KPIs, Business Needs -->
     <section class="section">
       <div class="section-header">
         <h2>Value, KPIs, and business needs</h2>
@@ -381,7 +381,7 @@
       </div>
     </section>
 
-    <!-- 6. Tooling & Inventory -->
+    <!-- 7. Tooling & Inventory -->
     <section class="section">
       <div class="section-header">
         <h2>Tooling and inventory</h2>
