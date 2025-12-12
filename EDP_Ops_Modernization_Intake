@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cleveland Strategic | Enterprise Data Platform Operations & Modernization Intake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #e0ecff;
+      --border: #e5e7eb;
+      --radius-lg: 20px;
+      --radius-md: 10px;
+      --shadow-soft: 0 12px 28px rgba(15, 23, 42, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #e5edff 0, var(--bg) 52%, #e5e7eb 100%);
+      color: var(--text-main);
+    }
+
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 24px 12px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 960px;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 28px 24px 32px;
+    }
+
+    @media (min-width: 768px) {
+      .card { padding: 32px 40px 40px; }
+    }
+
+    .logo-wrap { text-align: center; margin-bottom: 18px; }
+    .logo-wrap img { max-width: 220px; height: auto; display: inline-block; }
+
+    .title {
+      text-align: center;
+      margin-bottom: 6px;
+      font-size: 1.55rem;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 22px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
+
+    .pill span.icon { font-size: 0.9rem; }
+
+    form { margin-top: 6px; }
+
+    .section {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      padding: 14px 14px 18px;
+      margin-bottom: 16px;
+      background-color: #ffffff;
+    }
+
+    @media (min-width: 768px) {
+      .section { padding: 18px 20px 22px; margin-bottom: 18px; }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .section-title { font-size: 1rem; font-weight: 600; }
+    .section-tag {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .help-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .field { margin-bottom: 9px; }
+
+    .field-inline {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .field-inline { flex-direction: row; }
+      .field-inline .field { flex: 1; margin-bottom: 0; }
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .required::after { content: " *"; color: #dc2626; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 36px;
+      background-color: #ffffff;
+    }
+
+    textarea { min-height: 70px; }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+
+    .actions {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .btn-primary {
+      border: none;
+      border-radius: 999px;
+      padding: 9px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(to right, #2563eb, #1d4ed8);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover { filter: brightness(0.97); }
+
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 8px 15px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border);
+      background-color: #ffffff;
+      color: var(--text-muted);
+      cursor: default;
+    }
+
+    .footer-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: right;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <div class="card">
+
+    <!-- Logo from repo root -->
+    <div class="logo-wrap">
+      <img src="Cleveland Strategic Logo.png">
+    </div>
+
+    <div class="pill">
+      <span class="icon">🏗️</span>
+      <span>Platform Operations and Modernization</span>
+    </div>
+
+    <div class="title">Enterprise Data Platform Operations & Modernization Intake</div>
+    <div class="subtitle">
+      Capture the current state of your data platform, EDW operations, partner integrations, reliability practices, and modernization priorities.
+    </div>
+
+    <form id="platform-ops-intake-form">
+
+      <!-- SECTION 1: Contact & Context -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">About You and Your Organization</div>
+          <div class="section-tag">Section 1</div>
+        </div>
+        <p class="help-text">
+          Basic details so we can route follow-ups and tie platform needs to the right business context.
+        </p>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="company" class="required">Organization</label>
+            <input type="text" id="company" name="company" required>
+          </div>
+          <div class="field">
+            <label for="industry">Industry</label>
+            <input type="text" id="industry" name="industry">
+          </div>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="name" class="required">Your Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="role">Your Role / Title</label>
+            <input type="text" id="role" name="role">
+          </div>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="email" class="required">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="platform_outcomes" class="required">Top platform outcomes you need in the next 6 to 12 months</label>
+          <textarea id="platform_outcomes" name="platform_outcomes" required
+                    placeholder="Examples: improve pipeline reliability, reduce manual reprocessing, modernize integrations, increase data trust, enable self-serve, prepare for AI, reduce cost."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="platform_constraints">Key constraints or non-negotiables</label>
+          <textarea id="platform_constraints" name="platform_constraints"
+                    placeholder="Examples: compliance requirements, vendor lock-in, staffing, budget, timelines, platform standards."></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 2: EDW & Core Platform Landscape -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">EDW and Core Platform Landscape</div>
+          <div class="section-tag">Section 2</div>
+        </div>
+        <p class="help-text">
+          A snapshot of your enterprise data warehouse, ingestion and transformation patterns, and supporting infrastructure.
+        </p>
+
+        <div class="field">
+          <label for="edw_definition" class="required">What is considered the “system of record” EDW today?</label>
+          <textarea id="edw_definition" name="edw_definition" required
+                    placeholder="Where does authoritative reporting and analytics come from today?"></textarea>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="primary_db">Primary EDW technology</label>
+            <input type="text" id="primary_db" name="primary_db" placeholder="Example: SQL Server, Snowflake, Synapse, BigQuery">
+          </div>
+          <div class="field">
+            <label for="compute_hosting">Hosting / environment</label>
+            <input type="text" id="compute_hosting" name="compute_hosting" placeholder="Example: on-prem, Azure, AWS, co-lo">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="ingestion_sources">Major source systems and inbound feeds</label>
+          <textarea id="ingestion_sources" name="ingestion_sources"
+                    placeholder="List top systems, data domains, and whether they are batch, streaming, or file-based."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="etl_tools">ETL/ELT tooling and orchestration</label>
+          <textarea id="etl_tools" name="etl_tools"
+                    placeholder="Include orchestration, scheduling, and where transformations live (SQL, dbt, Spark, stored procs, etc.)."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="modeling_pattern">Data modeling approach</label>
+          <textarea id="modeling_pattern" name="modeling_pattern"
+                    placeholder="Examples: star schema, Data Vault, 3NF, medallion, semantic layer."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="downstream_consumers">Downstream consumers and delivery patterns</label>
+          <textarea id="downstream_consumers" name="downstream_consumers"
+                    placeholder="Examples: BI tools, operational apps, extracts, APIs, reporting services, data products."></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 3: Reliability, Incidents, and Escalation -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Reliability, Incidents, and Escalation</div>
+          <div class="section-tag">Section 3</div>
+        </div>
+        <p class="help-text">
+          How stable the platform is, how issues are detected, triaged, and resolved, and what “good” looks like.
+        </p>
+
+        <div class="field">
+          <label for="incident_frequency" class="required">How often do pipeline or data delivery incidents occur?</label>
+          <textarea id="incident_frequency" name="incident_frequency" required
+                    placeholder="Include frequency, typical business impact, and the most common failure modes."></textarea>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="severity_model">Do you use a severity model (Sev 1–3)?</label>
+            <input type="text" id="severity_model" name="severity_model" placeholder="Yes/No + short description">
+          </div>
+          <div class="field">
+            <label for="oncall_model">On-call or escalation coverage</label>
+            <input type="text" id="oncall_model" name="oncall_model" placeholder="Example: rotating on-call, business hours only, ad hoc">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="monitoring_alerting">Monitoring and alerting approach</label>
+          <textarea id="monitoring_alerting" name="monitoring_alerting"
+                    placeholder="What is monitored (freshness, volume, schema drift, failures)? What tools notify teams?"></textarea>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="mttr">Typical MTTR (mean time to recovery)</label>
+            <input type="text" id="mttr" name="mttr" placeholder="Example: 2 hours, same day, 2–3 days">
+          </div>
+          <div class="field">
+            <label for="rto_rpo">Target RTO/RPO (recovery objectives), if applicable</label>
+            <input type="text" id="rto_rpo" name="rto_rpo" placeholder="Optional">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="runbooks">Do you have runbooks, playbooks, or standard triage procedures?</label>
+          <textarea id="runbooks" name="runbooks"
+                    placeholder="Where are they stored? How current are they? Who owns them?"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="postmortems">Do you run postmortems or root cause analysis (RCA) reviews?</label>
+          <textarea id="postmortems" name="postmortems"
+                    placeholder="How often, who attends, and what changes actually get implemented?"></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 4: Data Quality Controls -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Data Quality Controls</div>
+          <div class="section-tag">Section 4</div>
+        </div>
+        <p class="help-text">
+          How you define “trusted data,” how quality is validated, and how issues are tracked and prevented.
+        </p>
+
+        <div class="field">
+          <label for="quality_definitions" class="required">How do you define and measure data quality today?</label>
+          <textarea id="quality_definitions" name="quality_definitions" required
+                    placeholder="Examples: completeness, accuracy, timeliness, consistency, validity, uniqueness."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="quality_checks">Where are quality checks implemented?</label>
+          <textarea id="quality_checks" name="quality_checks"
+                    placeholder="In pipelines, staging, warehouse, semantic layer, reporting, or manual reconciliations."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="reconciliation">Reconciliation and controls</label>
+          <textarea id="reconciliation" name="reconciliation"
+                    placeholder="Examples: source-to-target reconciliations, balancing, audit totals, exception reporting."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="dq_issue_workflow">How are data quality issues logged, prioritized, and resolved?</label>
+          <textarea id="dq_issue_workflow" name="dq_issue_workflow"
+                    placeholder="Tools used, triage process, ownership, and how business is notified."></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 5: Partner Integrations and Data Contracts -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Partner Integrations and Data Contracts</div>
+          <div class="section-tag">Section 5</div>
+        </div>
+        <p class="help-text">
+          Third-party feeds, client integrations, file formats, validation, and how failures are handled.
+        </p>
+
+        <div class="field">
+          <label for="partner_inventory" class="required">List key external partners and the data exchanged</label>
+          <textarea id="partner_inventory" name="partner_inventory" required
+                    placeholder="Include direction (inbound/outbound), business purpose, and frequency."></textarea>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="integration_patterns">Common integration patterns</label>
+            <input type="text" id="integration_patterns" name="integration_patterns" placeholder="Example: SFTP files, APIs, EDI, HL7/FHIR, webhooks">
+          </div>
+          <div class="field">
+            <label for="file_formats">Common file formats</label>
+            <input type="text" id="file_formats" name="file_formats" placeholder="Example: CSV, JSON, XML, X12, fixed width">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="data_contracts">Do you use data contracts or interface specifications?</label>
+          <textarea id="data_contracts" name="data_contracts"
+                    placeholder="Who owns them, how changes are approved, and how schema changes are managed."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="validation_rules">Validation and acceptance rules</label>
+          <textarea id="validation_rules" name="validation_rules"
+                    placeholder="What gets rejected? What triggers warnings? Where do partners see issues?"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="partner_slas">SLAs and expectations with partners</label>
+          <textarea id="partner_slas" name="partner_slas"
+                    placeholder="Examples: delivery windows, retry policies, data quality thresholds, escalation contacts."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="partner_failures">How are partner failures handled end-to-end?</label>
+          <textarea id="partner_failures" name="partner_failures"
+                    placeholder="Detection, communications, business impact, manual workarounds, and escalation flow."></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 6: Security, Privacy, and Compliance -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Security, Privacy, and Compliance</div>
+          <div class="section-tag">Section 6</div>
+        </div>
+        <p class="help-text">
+          Access controls, sensitive data handling, auditing, retention, and regulated-environment expectations.
+        </p>
+
+        <div class="field">
+          <label for="sensitive_data" class="required">What sensitive or regulated data is present in the platform?</label>
+          <textarea id="sensitive_data" name="sensitive_data" required
+                    placeholder="Examples: PHI, PII, financial data, employee data, minors, contractual restrictions."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="access_model">Access control model</label>
+          <textarea id="access_model" name="access_model"
+                    placeholder="Examples: role-based access control, least privilege, row-level security, break-glass access."></textarea>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="audit_logging">Audit logging in place?</label>
+            <input type="text" id="audit_logging" name="audit_logging" placeholder="Yes/No + notes">
+          </div>
+          <div class="field">
+            <label for="encryption">Encryption standards</label>
+            <input type="text" id="encryption" name="encryption" placeholder="At rest / in transit + notes">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="retention">Data retention and deletion practices</label>
+          <textarea id="retention" name="retention"
+                    placeholder="Who defines retention, how deletions are executed, and how compliance is proven."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="security_incidents">History of security or privacy incidents (if any)</label>
+          <textarea id="security_incidents" name="security_incidents"
+                    placeholder="What happened, what changed, and what remains a risk."></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 7: Engineering Standards and Delivery -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Engineering Standards and Delivery</div>
+          <div class="section-tag">Section 7</div>
+        </div>
+        <p class="help-text">
+          How work moves from backlog to production, how quality is enforced, and how reliability improves over time.
+        </p>
+
+        <div class="field">
+          <label for="sdlc">Development lifecycle and release process</label>
+          <textarea id="sdlc" name="sdlc"
+                    placeholder="Examples: branching strategy, code review, CI/CD, release cadence, approvals, change windows."></textarea>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label for="backlog_ownership">Who owns prioritization?</label>
+            <input type="text" id="backlog_ownership" name="backlog_ownership" placeholder="Product, Engineering, shared, ad hoc">
+          </div>
+          <div class="field">
+            <label for="capacity_planning">Capacity planning approach</label>
+            <input type="text" id="capacity_planning" name="capacity_planning" placeholder="Example: sprint planning, Kanban, quarterly planning">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="standards">Technical standards and guardrails</label>
+          <textarea id="standards" name="standards"
+                    placeholder="Examples: naming conventions, documentation standards, testing expectations, modeling standards."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="testing">Testing approach</label>
+          <textarea id="testing" name="testing"
+                    placeholder="Examples: unit tests, data tests, reconciliation tests, integration tests, performance tests."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="documentation">Documentation and knowledge management</label>
+          <textarea id="documentation" name="documentation"
+                    placeholder="What exists, where it lives, and what’s missing (data dictionary, lineage, runbooks, onboarding)."></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 8: Modernization, Cloud Readiness, and AI Enablement -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Modernization, Cloud Readiness, and AI Enablement</div>
+          <div class="section-tag">Section 8</div>
+        </div>
+        <p class="help-text">
+          Future-state goals: automation, cloud readiness (Azure or otherwise), cost control, and laying groundwork for AI.
+        </p>
+
+        <div class="field">
+          <label for="modernization_goals" class="required">What does “modernization” mean for your organization?</label>
+          <textarea id="modernization_goals" name="modernization_goals" required
+                    placeholder="Examples: automate manual steps, replace brittle jobs, reduce batch windows, migrate to cloud, improve observability, enable near real-time, standardize tooling."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="cloud_target">Preferred cloud or target platform (if any)</label>
+          <textarea id="cloud_target" name="cloud_target"
+                    placeholder="Include preferred cloud, constraints, and where you are today (on-prem, hybrid, cloud)."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="automation_opportunities">Top automation opportunities in the platform</label>
+          <textarea id="automation_opportunities" name="automation_opportunities"
+                    placeholder="Examples: automated validation, retries, lineage capture, provisioning, deployments, partner file validation."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ai_enablement">AI enablement needs (near term)</label>
+          <textarea id="ai_enablement" name="ai_enablement"
+                    placeholder="Examples: curated feature-ready datasets, governed semantic layer, strong metadata, consistent identifiers, data access patterns."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="cost_performance">Cost and performance pain points</label>
+          <textarea id="cost_performance" name="cost_performance"
+                    placeholder="Examples: long batch windows, expensive queries, runaway compute, storage bloat, licensing."></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 9: Priorities and 60–90 Day Quick Wins -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Priorities and Quick Wins</div>
+          <div class="section-tag">Section 9</div>
+        </div>
+        <p class="help-text">
+          What to stabilize first, what to modernize next, and what would prove value quickly.
+        </p>
+
+        <div class="field">
+          <label for="top_risks">Top risks if nothing changes</label>
+          <textarea id="top_risks" name="top_risks"
+                    placeholder="Examples: reporting mistrust, failed partner integrations, compliance exposure, operational outages, inability to scale."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="quick_wins">1 to 3 quick wins that could show value in 60 to 90 days</label>
+          <textarea id="quick_wins" name="quick_wins"
+                    placeholder="Examples: add freshness monitoring, implement validation checks for top feeds, standardize releases, reduce manual reprocessing."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="first_focus" class="required">If you had to pick one focus area first, what would it be and why?</label>
+          <textarea id="first_focus" name="first_focus" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="additional_notes">Anything else we should know about the platform?</label>
+          <textarea id="additional_notes" name="additional_notes"></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="btn-secondary">Fields marked with * are required</div>
+        <button type="submit" class="btn-primary">Download Responses as Excel</button>
+      </div>
+
+      <div class="footer-note">
+        Cleveland Strategic · Fractional Head of Data and Analytics
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- SheetJS CDN for Excel generation -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<script>
+  document.getElementById("platform-ops-intake-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const fd = new FormData(form);
+
+    const fields = [
+      ["Organization", "company"],
+      ["Industry", "industry"],
+      ["Your Name", "name"],
+      ["Your Role / Title", "role"],
+      ["Email", "email"],
+      ["Phone", "phone"],
+      ["Top Platform Outcomes (6–12 months)", "platform_outcomes"],
+      ["Key Constraints / Non-negotiables", "platform_constraints"],
+
+      ["EDW System of Record Definition", "edw_definition"],
+      ["Primary EDW Technology", "primary_db"],
+      ["Hosting / Environment", "compute_hosting"],
+      ["Major Source Systems and Inbound Feeds", "ingestion_sources"],
+      ["ETL/ELT Tooling and Orchestration", "etl_tools"],
+      ["Data Modeling Approach", "modeling_pattern"],
+      ["Downstream Consumers and Delivery Patterns", "downstream_consumers"],
+
+      ["Incident Frequency and Common Failure Modes", "incident_frequency"],
+      ["Severity Model (Sev 1–3)", "severity_model"],
+      ["On-call / Escalation Coverage", "oncall_model"],
+      ["Monitoring and Alerting Approach", "monitoring_alerting"],
+      ["Typical MTTR (Mean Time to Recovery)", "mttr"],
+      ["Target RTO/RPO (if applicable)", "rto_rpo"],
+      ["Runbooks / Triage Procedures", "runbooks"],
+      ["Postmortems / Root Cause Analysis (RCA)", "postmortems"],
+
+      ["Data Quality Definition and Metrics", "quality_definitions"],
+      ["Where Quality Checks Are Implemented", "quality_checks"],
+      ["Reconciliation and Controls", "reconciliation"],
+      ["Data Quality Issue Workflow", "dq_issue_workflow"],
+
+      ["Key External Partners and Data Exchanged", "partner_inventory"],
+      ["Integration Patterns", "integration_patterns"],
+      ["Common File Formats", "file_formats"],
+      ["Data Contracts / Interface Specs", "data_contracts"],
+      ["Validation and Acceptance Rules", "validation_rules"],
+      ["Partner SLAs and Expectations", "partner_slas"],
+      ["End-to-end Handling of Partner Failures", "partner_failures"],
+
+      ["Sensitive or Regulated Data Present", "sensitive_data"],
+      ["Access Control Model", "access_model"],
+      ["Audit Logging", "audit_logging"],
+      ["Encryption Standards", "encryption"],
+      ["Retention and Deletion Practices", "retention"],
+      ["Security or Privacy Incident History", "security_incidents"],
+
+      ["Development Lifecycle and Release Process", "sdlc"],
+      ["Prioritization Ownership", "backlog_ownership"],
+      ["Capacity Planning Approach", "capacity_planning"],
+      ["Technical Standards and Guardrails", "standards"],
+      ["Testing Approach", "testing"],
+      ["Documentation and Knowledge Management", "documentation"],
+
+      ["Definition of Modernization for the Organization", "modernization_goals"],
+      ["Preferred Cloud / Target Platform", "cloud_target"],
+      ["Top Platform Automation Opportunities", "automation_opportunities"],
+      ["AI Enablement Needs (Near Term)", "ai_enablement"],
+      ["Cost and Performance Pain Points", "cost_performance"],
+
+      ["Top Risks if Nothing Changes", "top_risks"],
+      ["Quick Wins (60–90 days)", "quick_wins"],
+      ["First Focus Area and Why", "first_focus"],
+      ["Additional Notes", "additional_notes"]
+    ];
+
+    const headerRow = fields.map(([label]) => label);
+    const valuesRow = fields.map(([_, key]) => fd.get(key) || "");
+
+    const ws = XLSX.utils.aoa_to_sheet([headerRow, valuesRow]);
+
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Platform Ops Intake");
+
+    XLSX.writeFile(wb, "ClevelandStrategic_Enterprise_Data_Platform_Ops_Modernization_Intake.xlsx");
+
+    alert("Thank you. Your responses have been downloaded as an Excel file.");
+    form.reset();
+  });
+</script>
+</body>
+</html>
